@@ -1,0 +1,8 @@
+/home/magiic/Escritorio/Pengod/build/CMakeFiles/rebuild_cache.dir
+/home/magiic/Escritorio/Pengod/build/CMakeFiles/Pengo.dir
+/home/magiic/Escritorio/Pengod/build/CMakeFiles/edit_cache.dir
+/home/magiic/Escritorio/Pengod/build/CMakeFiles/libModulos.dir
+/home/magiic/Escritorio/Pengod/build/ej_modulos/CMakeFiles/edit_cache.dir
+/home/magiic/Escritorio/Pengod/build/ej_modulos/CMakeFiles/rebuild_cache.dir
+/home/magiic/Escritorio/Pengod/build/Animacion/CMakeFiles/edit_cache.dir
+/home/magiic/Escritorio/Pengod/build/Animacion/CMakeFiles/rebuild_cache.dir

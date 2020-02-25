@@ -1,0 +1,27 @@
+[
+{
+  "directory": "/home/magiic/Escritorio/Pengod/build",
+  "command": "/usr/bin/g++-5    -I/home/magiic/Escritorio/Pengod/ej_modulos -I/home/magiic/Escritorio/Pengod/Animacion   -std=c++1y -Wall -Wextra -g   -o CMakeFiles/Pengo.dir/main.cpp.o -c /home/magiic/Escritorio/Pengod/main.cpp",
+  "file": "/home/magiic/Escritorio/Pengod/main.cpp"
+},
+{
+  "directory": "/home/magiic/Escritorio/Pengod/build",
+  "command": "/usr/bin/g++-5    -I/home/magiic/Escritorio/Pengod/ej_modulos -I/home/magiic/Escritorio/Pengod/Animacion   -std=c++1y -Wall -Wextra -g   -o CMakeFiles/libModulos.dir/ej_modulos/mimodulo.cpp.o -c /home/magiic/Escritorio/Pengod/ej_modulos/mimodulo.cpp",
+  "file": "/home/magiic/Escritorio/Pengod/ej_modulos/mimodulo.cpp"
+},
+{
+  "directory": "/home/magiic/Escritorio/Pengod/build",
+  "command": "/usr/bin/g++-5    -I/home/magiic/Escritorio/Pengod/ej_modulos -I/home/magiic/Escritorio/Pengod/Animacion   -std=c++1y -Wall -Wextra -g   -o CMakeFiles/libModulos.dir/ej_modulos/mimodulo2.cpp.o -c /home/magiic/Escritorio/Pengod/ej_modulos/mimodulo2.cpp",
+  "file": "/home/magiic/Escritorio/Pengod/ej_modulos/mimodulo2.cpp"
+},
+{
+  "directory": "/home/magiic/Escritorio/Pengod/build",
+  "command": "/usr/bin/g++-5    -I/home/magiic/Escritorio/Pengod/ej_modulos -I/home/magiic/Escritorio/Pengod/Animacion   -std=c++1y -Wall -Wextra -g   -o CMakeFiles/libModulos.dir/Animacion/Player.cpp.o -c /home/magiic/Escritorio/Pengod/Animacion/Player.cpp",
+  "file": "/home/magiic/Escritorio/Pengod/Animacion/Player.cpp"
+},
+{
+  "directory": "/home/magiic/Escritorio/Pengod/build",
+  "command": "/usr/bin/g++-5    -I/home/magiic/Escritorio/Pengod/ej_modulos -I/home/magiic/Escritorio/Pengod/Animacion   -std=c++1y -Wall -Wextra -g   -o CMakeFiles/libModulos.dir/Animacion/Animacion.cpp.o -c /home/magiic/Escritorio/Pengod/Animacion/Animacion.cpp",
+  "file": "/home/magiic/Escritorio/Pengod/Animacion/Animacion.cpp"
+}
+]

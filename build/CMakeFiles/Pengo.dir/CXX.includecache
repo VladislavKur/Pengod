@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../Animacion/Animacion.h
+SFML/Graphics.hpp
+-
+
+../Animacion/Player.h
+SFML/Graphics.hpp
+-
+Animacion.h
+../Animacion/Animacion.h
+
+/home/magiic/Escritorio/Pengod/main.cpp
+SFML/Graphics.hpp
+-
+Player.h
+/home/magiic/Escritorio/Pengod/Player.h
+iostream
+-
+

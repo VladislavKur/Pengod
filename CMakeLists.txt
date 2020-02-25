@@ -12,6 +12,9 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1y -Wall -Wextra")
 #Se desea generar un ejecutable, se especifica donde está el main
 #y ficheros que aporten código que no sean librerias o subcarpetas 
 add_executable(Pengo main.cpp)
+add_subdirectory(Animacion)
+
+
 
 #Añadir todos los objetos (ficheros o) que requiera el ejecutable. 
 #Habitualmente todas las librerias definidas mediante subcarpetas
@@ -24,6 +27,7 @@ find_package(SFML REQUIRED system window graphics network audio)
 if (SFML_FOUND)
     include_directories(${SFML_INCLUDE_DIR})
     target_link_libraries(Pengo ${SFML_LIBRARIES})
+    
 
 endif()
 
