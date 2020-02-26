@@ -25,6 +25,8 @@ Player::~Player(){}
 void Player::Update(float deltaTime){
     sf::Vector2f movement(0.0f,0.0f);
 
+    /*
+
     if(sf::Keyboard().isKeyPressed(sf::Keyboard::Left)){
         movement.x -= speed; fila = 3;
     }
@@ -40,7 +42,7 @@ void Player::Update(float deltaTime){
     if(sf::Keyboard().isKeyPressed(sf::Keyboard::Down)){
         movement.y += speed; fila= 0;
     }
-        
+        */
 
     
 

@@ -18,7 +18,7 @@ int main() {
   
 
 //ANIMACIOn
-  Player player(&playerTexture, sf::Vector2u(40,19), 2000.0f,100.0f);
+  Player player(&playerTexture, sf::Vector2u(40,19), 0.2f,100.0f);
 
   float deltaTime =0.0f;
 

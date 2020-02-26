@@ -20,13 +20,13 @@ textureRect.width = textura->getSize().x/ float(cantidadImagenes.x);
 
 void Animacion::Update(int fila, float deltaTime){
 
-    spriteActual.x = fila;
+    spriteActual.y = fila;
     tiempoTotal += deltaTime;
     
 
     if(tiempoTotal >= cambioImagen){
         tiempoTotal -= cambioImagen;
-        std::cout << spriteActual.x << std::endl;
+        
         spriteActual.x++;
 
         if (spriteActual.x >= 7)
