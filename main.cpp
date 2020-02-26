@@ -15,12 +15,14 @@ int main() {
 // TEXTURAS PENGO
   sf::Texture playerTexture;
   playerTexture.loadFromFile("resources/pengoybees.png");
-  
 
 //ANIMACIOn
-  Player player(&playerTexture, sf::Vector2u(40,19), 0.2f,100.0f);
+  int accion= -1;
+  Player player(&playerTexture, sf::Vector2u(40,19), 100.0f,0.20f,accion);
 
   float deltaTime =0.0f;
+  
+  
 
   sf::Clock clock;
 
@@ -40,6 +42,39 @@ int main() {
       switch (evnt.type) {
       case sf::Event::Closed: window.close(); break;
       case sf::Event::KeyPressed:
+
+        switch (evnt.key.code) {
+
+        //Mapeo del cursor
+        case sf::Keyboard::D:
+         accion = 3;
+          break;
+
+        case sf::Keyboard::A:
+          accion = 1;
+          break;
+
+        case sf::Keyboard::W:
+         accion = 2;
+          break;
+
+        case sf::Keyboard::S:
+          accion = 0;
+          
+          break;
+        
+        //Tecla ESC para salir
+        case sf::Keyboard::Escape:
+          window.close();
+          break;
+
+        //Cualquier tecla desconocida se imprime por pantalla su código
+        default:
+          std::cout << evnt.key.code << std::endl;
+          break;
+        }
+
+      
       default: break;
       }
        
@@ -49,7 +84,7 @@ int main() {
     ////////////
     ///UPDATE///
     ////////////
-    player.Update(deltaTime);
+    player.Update(deltaTime, accion);
 
 
     ///////////////
