@@ -3,15 +3,15 @@
 #include <iostream>
 
 Animacion::~Animacion(){}
-Animacion::Animacion(sf::Texture* textura, sf::Vector2u cantidadImagenes, float cambioImagen, int accion){
+Animacion::Animacion(sf::Texture* textura, sf::Vector2u cantidadImagenes, float SwitchTimeSprite){
 
     this->cantidadImagenes = cantidadImagenes;
-    this->cambioImagen = cambioImagen;
+    this->SwitchTimeSprite = SwitchTimeSprite;
 
-    accion = 0;
-
+   
+    swit = true;
     spriteActual.x =0;
-    tiempoTotal = 0.0f;
+    tiempoTotalDelta = 0.0f;
     
 
 textureRect.height = textura->getSize().y/ float(cantidadImagenes.y);
@@ -20,28 +20,22 @@ textureRect.width = textura->getSize().x/ float(cantidadImagenes.x);
 
 }
 
-void Animacion::Update(int fila, float deltaTime, int accion){
-    bool swit = true;
-    int cambiador = 0;
-    if(accion == -1) cambiador = 0;else cambiador = accion;
+void Animacion::Update(sf::Vector2u Sprites, float deltaTime){
     
-    spriteActual.y = fila;
+    
+    spriteActual.y = Sprites.y;
    
-
-
-    spriteActual.x = cambiador*2;
-    tiempoTotal += deltaTime;
-
+    tiempoTotalDelta += deltaTime;
+    spriteActual.x = Sprites.x;
     
-    
-
-    if(tiempoTotal >= cambioImagen){
-        tiempoTotal -= cambioImagen;
-        std:: cout << swit << std:: endl;
+    if(tiempoTotalDelta >= SwitchTimeSprite){
+        tiempoTotalDelta -= SwitchTimeSprite;
+        
         if(swit){
        
-        swit= false;
-        spriteActual.x++;
+            swit= false;
+            spriteActual.x=5;
+            std::cout << "entra\n";
         }
         else{
          
@@ -50,10 +44,16 @@ void Animacion::Update(int fila, float deltaTime, int accion){
         } 
 
         
-    }
+    }else{  std::cout << "NOentra\n";;}
 
     textureRect.left = spriteActual.x * textureRect.width;
     textureRect.top = spriteActual.y * textureRect.height;
+    std::cout << spriteActual.x << std:: endl;
+     
+      std::cout << spriteActual.y<< std:: endl;
+      std::cout << "------------------" << std:: endl;
+       
+
 }
 
 

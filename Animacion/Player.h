@@ -3,21 +3,17 @@
 
 class Player{
     public:
-    Player(sf::Texture* textura, sf::Vector2u cantidadImagenes, float cambioImagen, float speed, int accion);
+    Player(sf::Texture* textura, sf::Vector2u cantidadImagenes, float SwitchTimeSprite, int movimiento);
     ~Player();
-    void Update(float deltaTime, int accion);
+    void Update(int movi, float deltaTime);
     void Draw(sf::RenderWindow &window);
-    void setmover(int accion);
+
     
 
     private:
 
     sf::RectangleShape cuerpo;
     Animacion animacion;
-
-
-    
-    unsigned int fila;
-    float speed;
-
+    sf::Vector2u fila;
+   
 };

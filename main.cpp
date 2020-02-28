@@ -4,6 +4,8 @@
 
 #define kVel 5
 
+
+
 int main() {
   /////////////
   ////START////
@@ -18,7 +20,8 @@ int main() {
 
 //ANIMACIOn
   int accion= -1;
-  Player player(&playerTexture, sf::Vector2u(40,19), 100.0f,0.20f,accion);
+  Player player(&playerTexture, sf::Vector2u(40,19),1.20f,accion);
+  
 
   float deltaTime =0.0f;
   
@@ -77,14 +80,15 @@ int main() {
       
       default: break;
       }
-       
+       break;
     }
 
 
     ////////////
     ///UPDATE///
     ////////////
-    player.Update(deltaTime, accion);
+    
+    player.Update(accion,deltaTime);
 
 
     ///////////////
@@ -96,5 +100,5 @@ int main() {
     }
   
 
-  return 0;
-}
+  
+return 0;}

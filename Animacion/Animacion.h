@@ -3,9 +3,9 @@
 class Animacion{
 
     public:
-        Animacion(sf::Texture* textura, sf::Vector2u cantidadImagenes, float cambioImagen, int accion);
+        Animacion(sf::Texture* textura, sf::Vector2u cantidadImagenes, float SwitchTimeSprite);
         ~Animacion();
-        void Update(int fila, float deltaTime, int accion);
+        void Update(sf::Vector2u Sprites, float deltaTime);
         
 
 
@@ -14,8 +14,9 @@ class Animacion{
     private:
         sf::Vector2u cantidadImagenes;
         sf::Vector2u spriteActual;
-        int accion;
+        
 
-        float tiempoTotal;
-        float cambioImagen;
+        float tiempoTotalDelta;
+        float SwitchTimeSprite;
+        bool swit;
 };
