@@ -23,11 +23,11 @@ Player::~Player(){}
 
 
 void Player::Update(int movimiento, float deltaTime){
-    sf::Vector2u movement;
+    sf::Vector2f movement;
     sf::Vector2u sprite;
     
     switch (movimiento){
-        case -1:break;
+        case -1:sprite.x = 1; break;
         case 0: sprite.x = 1;  movement.y=  50;break;
         case 1: sprite.x = 3;  movement.x= -abs(50);break;
         case 2: sprite.x = 5;  movement.y= -abs(50);break;

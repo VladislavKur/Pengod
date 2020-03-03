@@ -20,7 +20,7 @@ int main() {
 
 //ANIMACIOn
   int accion= -1;
-  Player player(&playerTexture, sf::Vector2u(40,19),1.20f,accion);
+  Player player(&playerTexture, sf::Vector2u(40,19),0.20f,accion);
   
 
   float deltaTime =0.0f;

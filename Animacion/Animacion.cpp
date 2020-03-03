@@ -10,7 +10,8 @@ Animacion::Animacion(sf::Texture* textura, sf::Vector2u cantidadImagenes, float 
 
    
     swit = true;
-    spriteActual.x =0;
+    spriteActual.x =1;
+    
     tiempoTotalDelta = 0.0f;
     
 
@@ -26,20 +27,20 @@ void Animacion::Update(sf::Vector2u Sprites, float deltaTime){
     spriteActual.y = Sprites.y;
    
     tiempoTotalDelta += deltaTime;
-    spriteActual.x = Sprites.x;
+   // spriteActual.x = Sprites.x; // esto tengo que ponerlo antes
     
     if(tiempoTotalDelta >= SwitchTimeSprite){
-        tiempoTotalDelta -= SwitchTimeSprite;
+        tiempoTotalDelta = 0;
         
         if(swit){
        
             swit= false;
-            spriteActual.x=5;
-            std::cout << "entra\n";
+            spriteActual.x=Sprites.x;
+            
         }
         else{
-         
-            spriteActual.x--;
+         std::cout << "entra\n";
+            spriteActual.x --;
             swit = true;
         } 
 
