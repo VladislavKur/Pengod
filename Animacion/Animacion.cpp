@@ -22,40 +22,44 @@ textureRect.width = textura->getSize().x/ float(cantidadImagenes.x);
 }
 
 void Animacion::Update(sf::Vector2u Sprites, float deltaTime){
-    
-    
+
     spriteActual.y = Sprites.y;
-   
+    //spriteActual.x = Sprites.x; // esto tengo que ponerlo antes
+
     tiempoTotalDelta += deltaTime;
-   // spriteActual.x = Sprites.x; // esto tengo que ponerlo antes
-    
     if(tiempoTotalDelta >= SwitchTimeSprite){
         tiempoTotalDelta = 0;
-        
+        std::cout << "entra if tiempo" << std:: endl;
         if(swit){
-       
+             std::cout << "entra true" << std:: endl;
             swit= false;
             spriteActual.x=Sprites.x;
             
         }
         else{
-         std::cout << "entra\n";
+         std::cout << "entra false" << std:: endl;
             spriteActual.x --;
             swit = true;
         } 
 
         
-    }else{  std::cout << "NOentra\n";;}
+    }
 
     textureRect.left = spriteActual.x * textureRect.width;
     textureRect.top = spriteActual.y * textureRect.height;
-    std::cout << spriteActual.x << std:: endl;
-     
-      std::cout << spriteActual.y<< std:: endl;
-      std::cout << "------------------" << std:: endl;
+    
        
 
 }
+
+ void Animacion::setSprite(sf::Vector2u Sprites){
+    spriteActual.x=Sprites.x;
+    spriteActual.y=Sprites.y;
+
+    textureRect.left = spriteActual.x * textureRect.width;
+    textureRect.top = spriteActual.y * textureRect.height;
+
+ }
 
 
 

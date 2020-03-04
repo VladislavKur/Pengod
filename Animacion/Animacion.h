@@ -6,6 +6,7 @@ class Animacion{
         Animacion(sf::Texture* textura, sf::Vector2u cantidadImagenes, float SwitchTimeSprite);
         ~Animacion();
         void Update(sf::Vector2u Sprites, float deltaTime);
+        void setSprite(sf::Vector2u Sprites);
         
 
 

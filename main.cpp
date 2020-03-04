@@ -20,7 +20,9 @@ int main() {
 
 //ANIMACIOn
   int accion= -1;
-  Player player(&playerTexture, sf::Vector2u(40,19),0.20f,accion);
+  int speed= 100;
+  sf::Vector2u sprite(0,0);
+  Player player(&playerTexture, sf::Vector2u(40,19),0.33f, speed);
   
 
   float deltaTime =0.0f;
@@ -51,18 +53,27 @@ int main() {
         //Mapeo del cursor
         case sf::Keyboard::D:
          accion = 3;
+         sprite.x = 7,sprite.y =0;
+         player.setPlayerSprite(sprite);
           break;
 
         case sf::Keyboard::A:
           accion = 1;
+           sprite.x = 3,sprite.y =0;
+         player.setPlayerSprite(sprite);
           break;
 
         case sf::Keyboard::W:
          accion = 2;
+          sprite.x = 5,sprite.y =0;
+         player.setPlayerSprite(sprite);
           break;
 
         case sf::Keyboard::S:
+        
           accion = 0;
+           sprite.x = 1,sprite.y =0;
+         player.setPlayerSprite(sprite);
           
           break;
         
@@ -88,7 +99,7 @@ int main() {
     ///UPDATE///
     ////////////
     
-    player.Update(accion,deltaTime);
+    player.Update(accion,deltaTime,speed);
 
 
     ///////////////
