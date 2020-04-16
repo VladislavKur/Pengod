@@ -5,7 +5,7 @@ class Player{
     public:
     Player(sf::Texture* textura, sf::Vector2u cantidadImagenes, float SwitchTimeSprite);
     ~Player();
-    void Update(int accion, float deltaTime,float speed);
+    void Update(int accion, float deltaTime);
     void Draw(sf::RenderWindow &window);
      void setPlayerSprite(sf::Vector2u Sprites);
      void setPosDespues(float, float);
@@ -20,7 +20,7 @@ class Player{
     Animacion animacion;
     sf::Vector2u fila;
     
-    float speed;
+    float speed= 75;
     int accion;
     float tiempoMov;
     sf::Vector2f PosDestino;

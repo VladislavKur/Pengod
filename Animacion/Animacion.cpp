@@ -23,9 +23,9 @@ textureRect.width = textura->getSize().x/ float(cantidadImagenes.x);
 
 void Animacion::Update(sf::Vector2u Sprites, float deltaTime){
 
-    spriteActual.y = Sprites.y;
-    //spriteActual.x = Sprites.x; // esto tengo que ponerlo antes
-
+   // spriteActual.y = Sprites.y;
+   
+   
     tiempoTotalDelta += deltaTime;
     if(tiempoTotalDelta >= SwitchTimeSprite){
         tiempoTotalDelta = 0;

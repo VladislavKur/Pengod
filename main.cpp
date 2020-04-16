@@ -18,9 +18,9 @@ int main() {
 
 //ANIMACIOn
   int accion= -1;
-  int speed= 75;
+  
   sf::Vector2u sprite(0,0);
-  Player player(&playerTexture, sf::Vector2u(40,19),0.4f);
+  Player player(&playerTexture, sf::Vector2u(40,19),0.25f);
   
 
   float deltaTime =0.0f;
@@ -51,31 +51,46 @@ int main() {
 
         //Mapeo del cursor
         case sf::Keyboard::D:
+        deltaTime = clock.restart().asSeconds();
         
          accion = 3; 
          sprite.x = 7,sprite.y =0;
          player.setPlayerSprite(sprite);
-         player.setPosDespues(player.getBody().getPosition().x+32, player.getBody().getPosition().y );
+         if((((int)player.getBody().getPosition().y+48)%48 <= (((int)player.getBody().getPosition().y+48)%48)+0.01) 
+         && ((int)player.getBody().getPosition().y+48)%48 >= (((int)player.getBody().getPosition().y+48)%48)-0.01)
+         player.setPosDespues(player.getBody().getPosition().x+48, player.getBody().getPosition().y );
        
           break;
 
         case sf::Keyboard::A:
+        deltaTime = clock.restart().asSeconds();
           accion = 1;
            sprite.x = 3,sprite.y =0;
          player.setPlayerSprite(sprite);
+        if((((int)player.getBody().getPosition().x+48)%48 <= (((int)player.getBody().getPosition().x+48)%48)+0.01) 
+         && ((int)player.getBody().getPosition().x+48)%48 >= (((int)player.getBody().getPosition().x+48)%48)-0.01)
+         player.setPosDespues(player.getBody().getPosition().x-48, player.getBody().getPosition().y );
           break;
 
         case sf::Keyboard::W:
+        deltaTime = clock.restart().asSeconds();
          accion = 2;
           sprite.x = 5,sprite.y =0;
          player.setPlayerSprite(sprite);
+         if((((int)player.getBody().getPosition().y+48)%48 <= (((int)player.getBody().getPosition().y+48)%48)+0.01) 
+         && ((int)player.getBody().getPosition().y+48)%48 >= (((int)player.getBody().getPosition().y+48)%48)-0.01)
+         player.setPosDespues(player.getBody().getPosition().x, player.getBody().getPosition().y-48 );
           break;
 
         case sf::Keyboard::S:
+        deltaTime = clock.restart().asSeconds();
         
           accion = 0;
            sprite.x = 1,sprite.y =0;
          player.setPlayerSprite(sprite);
+         if((((int)player.getBody().getPosition().y+48)%48 <= (((int)player.getBody().getPosition().y+48)%48)+0.01) 
+         && ((int)player.getBody().getPosition().y+48)%48 >= (((int)player.getBody().getPosition().y+48)%48)-0.01)
+         player.setPosDespues(player.getBody().getPosition().x, player.getBody().getPosition().y+48 );
           
           break;
         
@@ -101,7 +116,7 @@ int main() {
     ///UPDATE///
     ////////////
     
-    player.Update(accion,deltaTime,speed);
+    player.Update(accion,deltaTime);
 
 
     ///////////////
