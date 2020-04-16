@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="25" height="24" tilewidth="16" tileheight="16" nextobjectid="1">
- <tileset firstgid="1" name="Arcade - Pengo - Playfield &amp; Blocks" tilewidth="16" tileheight="16" tilecount="1139">
-  <image source="../../Arcade - Pengo - Playfield &amp; Blocks.png" width="1080" height="280"/>
+ <tileset firstgid="1" name="mecagoentodo" tilewidth="16" tileheight="16" tilecount="1139">
+  <image source="mapaxml/mecagoentodo.png" width="1080" height="280"/>
  </tileset>
  <layer name="Capa de patrones 2" width="25" height="24">
   <data>

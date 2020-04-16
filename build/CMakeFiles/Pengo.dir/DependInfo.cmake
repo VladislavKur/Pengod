@@ -10,13 +10,14 @@ set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "../ej_modulos"
   "../Animacion"
+  "../Juego"
+  "../mapaxml"
   )
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/magiic/Escritorio/Pengod/build/CMakeFiles/libModulos.dir/DependInfo.cmake"
+  "/home/magiic/Escritorio/Pengod/build/CMakeFiles/libClases.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

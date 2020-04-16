@@ -90,7 +90,7 @@ Pengo_EXTERNAL_OBJECTS =
 
 Pengo: CMakeFiles/Pengo.dir/main.cpp.o
 Pengo: CMakeFiles/Pengo.dir/build.make
-Pengo: liblibModulos.a
+Pengo: liblibClases.a
 Pengo: /usr/lib/x86_64-linux-gnu/libsfml-system.so
 Pengo: /usr/lib/x86_64-linux-gnu/libsfml-window.so
 Pengo: /usr/lib/x86_64-linux-gnu/libsfml-graphics.so

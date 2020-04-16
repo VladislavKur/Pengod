@@ -3,11 +3,14 @@
 
 class Player{
     public:
-    Player(sf::Texture* textura, sf::Vector2u cantidadImagenes, float SwitchTimeSprite, float speed);
+    Player(sf::Texture* textura, sf::Vector2u cantidadImagenes, float SwitchTimeSprite);
     ~Player();
     void Update(int accion, float deltaTime,float speed);
     void Draw(sf::RenderWindow &window);
      void setPlayerSprite(sf::Vector2u Sprites);
+     void setPosDespues(float, float);
+    sf::RectangleShape getBody(){return cuerpo;}
+     
 
     
 
@@ -18,5 +21,10 @@ class Player{
     sf::Vector2u fila;
     
     float speed;
+    int accion;
+    float tiempoMov;
+    sf::Vector2f PosDestino;
+
+    bool notifaller = false;
    
 };

@@ -29,15 +29,15 @@ void Animacion::Update(sf::Vector2u Sprites, float deltaTime){
     tiempoTotalDelta += deltaTime;
     if(tiempoTotalDelta >= SwitchTimeSprite){
         tiempoTotalDelta = 0;
-        std::cout << "entra if tiempo" << std:: endl;
+        
         if(swit){
-             std::cout << "entra true" << std:: endl;
+            
             swit= false;
             spriteActual.x=Sprites.x;
             
         }
         else{
-         std::cout << "entra false" << std:: endl;
+         
             spriteActual.x --;
             swit = true;
         } 

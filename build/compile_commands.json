@@ -1,27 +1,47 @@
 [
 {
   "directory": "/home/magiic/Escritorio/Pengod/build",
-  "command": "/usr/bin/g++-5    -I/home/magiic/Escritorio/Pengod/ej_modulos -I/home/magiic/Escritorio/Pengod/Animacion   -std=c++1y -Wall -Wextra -g   -o CMakeFiles/Pengo.dir/main.cpp.o -c /home/magiic/Escritorio/Pengod/main.cpp",
+  "command": "/usr/bin/g++-5    -I/home/magiic/Escritorio/Pengod/Animacion -I/home/magiic/Escritorio/Pengod/Juego -I/home/magiic/Escritorio/Pengod/mapaxml   -std=c++1y -Wall -Wextra -g   -o CMakeFiles/Pengo.dir/main.cpp.o -c /home/magiic/Escritorio/Pengod/main.cpp",
   "file": "/home/magiic/Escritorio/Pengod/main.cpp"
 },
 {
   "directory": "/home/magiic/Escritorio/Pengod/build",
-  "command": "/usr/bin/g++-5    -I/home/magiic/Escritorio/Pengod/ej_modulos -I/home/magiic/Escritorio/Pengod/Animacion   -std=c++1y -Wall -Wextra -g   -o CMakeFiles/libModulos.dir/ej_modulos/mimodulo.cpp.o -c /home/magiic/Escritorio/Pengod/ej_modulos/mimodulo.cpp",
-  "file": "/home/magiic/Escritorio/Pengod/ej_modulos/mimodulo.cpp"
-},
-{
-  "directory": "/home/magiic/Escritorio/Pengod/build",
-  "command": "/usr/bin/g++-5    -I/home/magiic/Escritorio/Pengod/ej_modulos -I/home/magiic/Escritorio/Pengod/Animacion   -std=c++1y -Wall -Wextra -g   -o CMakeFiles/libModulos.dir/ej_modulos/mimodulo2.cpp.o -c /home/magiic/Escritorio/Pengod/ej_modulos/mimodulo2.cpp",
-  "file": "/home/magiic/Escritorio/Pengod/ej_modulos/mimodulo2.cpp"
-},
-{
-  "directory": "/home/magiic/Escritorio/Pengod/build",
-  "command": "/usr/bin/g++-5    -I/home/magiic/Escritorio/Pengod/ej_modulos -I/home/magiic/Escritorio/Pengod/Animacion   -std=c++1y -Wall -Wextra -g   -o CMakeFiles/libModulos.dir/Animacion/Player.cpp.o -c /home/magiic/Escritorio/Pengod/Animacion/Player.cpp",
+  "command": "/usr/bin/g++-5    -I/home/magiic/Escritorio/Pengod/Animacion -I/home/magiic/Escritorio/Pengod/Juego -I/home/magiic/Escritorio/Pengod/mapaxml   -std=c++1y -Wall -Wextra -g   -o CMakeFiles/libClases.dir/Animacion/Player.cpp.o -c /home/magiic/Escritorio/Pengod/Animacion/Player.cpp",
   "file": "/home/magiic/Escritorio/Pengod/Animacion/Player.cpp"
 },
 {
   "directory": "/home/magiic/Escritorio/Pengod/build",
-  "command": "/usr/bin/g++-5    -I/home/magiic/Escritorio/Pengod/ej_modulos -I/home/magiic/Escritorio/Pengod/Animacion   -std=c++1y -Wall -Wextra -g   -o CMakeFiles/libModulos.dir/Animacion/Animacion.cpp.o -c /home/magiic/Escritorio/Pengod/Animacion/Animacion.cpp",
+  "command": "/usr/bin/g++-5    -I/home/magiic/Escritorio/Pengod/Animacion -I/home/magiic/Escritorio/Pengod/Juego -I/home/magiic/Escritorio/Pengod/mapaxml   -std=c++1y -Wall -Wextra -g   -o CMakeFiles/libClases.dir/Animacion/Animacion.cpp.o -c /home/magiic/Escritorio/Pengod/Animacion/Animacion.cpp",
   "file": "/home/magiic/Escritorio/Pengod/Animacion/Animacion.cpp"
+},
+{
+  "directory": "/home/magiic/Escritorio/Pengod/build",
+  "command": "/usr/bin/g++-5    -I/home/magiic/Escritorio/Pengod/Animacion -I/home/magiic/Escritorio/Pengod/Juego -I/home/magiic/Escritorio/Pengod/mapaxml   -std=c++1y -Wall -Wextra -g   -o CMakeFiles/libClases.dir/Juego/Juego.cpp.o -c /home/magiic/Escritorio/Pengod/Juego/Juego.cpp",
+  "file": "/home/magiic/Escritorio/Pengod/Juego/Juego.cpp"
+},
+{
+  "directory": "/home/magiic/Escritorio/Pengod/build",
+  "command": "/usr/bin/g++-5    -I/home/magiic/Escritorio/Pengod/Animacion -I/home/magiic/Escritorio/Pengod/Juego -I/home/magiic/Escritorio/Pengod/mapaxml   -std=c++1y -Wall -Wextra -g   -o CMakeFiles/libClases.dir/mapaxml/mapa.cpp.o -c /home/magiic/Escritorio/Pengod/mapaxml/mapa.cpp",
+  "file": "/home/magiic/Escritorio/Pengod/mapaxml/mapa.cpp"
+},
+{
+  "directory": "/home/magiic/Escritorio/Pengod/build",
+  "command": "/usr/bin/g++-5    -I/home/magiic/Escritorio/Pengod/Animacion -I/home/magiic/Escritorio/Pengod/Juego -I/home/magiic/Escritorio/Pengod/mapaxml   -std=c++1y -Wall -Wextra -g   -o CMakeFiles/libClases.dir/mapaxml/tinystr.cpp.o -c /home/magiic/Escritorio/Pengod/mapaxml/tinystr.cpp",
+  "file": "/home/magiic/Escritorio/Pengod/mapaxml/tinystr.cpp"
+},
+{
+  "directory": "/home/magiic/Escritorio/Pengod/build",
+  "command": "/usr/bin/g++-5    -I/home/magiic/Escritorio/Pengod/Animacion -I/home/magiic/Escritorio/Pengod/Juego -I/home/magiic/Escritorio/Pengod/mapaxml   -std=c++1y -Wall -Wextra -g   -o CMakeFiles/libClases.dir/mapaxml/tinyxml.cpp.o -c /home/magiic/Escritorio/Pengod/mapaxml/tinyxml.cpp",
+  "file": "/home/magiic/Escritorio/Pengod/mapaxml/tinyxml.cpp"
+},
+{
+  "directory": "/home/magiic/Escritorio/Pengod/build",
+  "command": "/usr/bin/g++-5    -I/home/magiic/Escritorio/Pengod/Animacion -I/home/magiic/Escritorio/Pengod/Juego -I/home/magiic/Escritorio/Pengod/mapaxml   -std=c++1y -Wall -Wextra -g   -o CMakeFiles/libClases.dir/mapaxml/tinyxmlparser.cpp.o -c /home/magiic/Escritorio/Pengod/mapaxml/tinyxmlparser.cpp",
+  "file": "/home/magiic/Escritorio/Pengod/mapaxml/tinyxmlparser.cpp"
+},
+{
+  "directory": "/home/magiic/Escritorio/Pengod/build",
+  "command": "/usr/bin/g++-5    -I/home/magiic/Escritorio/Pengod/Animacion -I/home/magiic/Escritorio/Pengod/Juego -I/home/magiic/Escritorio/Pengod/mapaxml   -std=c++1y -Wall -Wextra -g   -o CMakeFiles/libClases.dir/mapaxml/tinyxmlerror.cpp.o -c /home/magiic/Escritorio/Pengod/mapaxml/tinyxmlerror.cpp",
+  "file": "/home/magiic/Escritorio/Pengod/mapaxml/tinyxmlerror.cpp"
 }
 ]

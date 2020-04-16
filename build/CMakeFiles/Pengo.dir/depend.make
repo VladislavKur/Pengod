@@ -3,5 +3,9 @@
 
 CMakeFiles/Pengo.dir/main.cpp.o: ../Animacion/Animacion.h
 CMakeFiles/Pengo.dir/main.cpp.o: ../Animacion/Player.h
+CMakeFiles/Pengo.dir/main.cpp.o: ../Juego/Juego.h
 CMakeFiles/Pengo.dir/main.cpp.o: ../main.cpp
+CMakeFiles/Pengo.dir/main.cpp.o: ../mapaxml/mapa.h
+CMakeFiles/Pengo.dir/main.cpp.o: ../mapaxml/tinystr.h
+CMakeFiles/Pengo.dir/main.cpp.o: ../mapaxml/tinyxml.h
 

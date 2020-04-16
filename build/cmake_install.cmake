@@ -34,8 +34,9 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/magiic/Escritorio/Pengod/build/ej_modulos/cmake_install.cmake")
   include("/home/magiic/Escritorio/Pengod/build/Animacion/cmake_install.cmake")
+  include("/home/magiic/Escritorio/Pengod/build/Juego/cmake_install.cmake")
+  include("/home/magiic/Escritorio/Pengod/build/mapaxml/cmake_install.cmake")
 
 endif()
 

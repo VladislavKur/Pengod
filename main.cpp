@@ -1,10 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include "Player.h"
+#include "Juego/Juego.h"
 #include <iostream>
-
-#define kVel 5
-
-
 
 int main() {
   /////////////
@@ -13,6 +10,7 @@ int main() {
 
   //Creamos una ventana
   sf::RenderWindow window(sf::VideoMode (1024.0f,1024.0f), "Pengod", sf::Style::Close);
+  Juego* Juego = Juego::instance();
 
 // TEXTURAS PENGO
   sf::Texture playerTexture;
@@ -20,13 +18,14 @@ int main() {
 
 //ANIMACIOn
   int accion= -1;
-  int speed= 100;
+  int speed= 75;
   sf::Vector2u sprite(0,0);
-  Player player(&playerTexture, sf::Vector2u(40,19),0.33f, speed);
+  Player player(&playerTexture, sf::Vector2u(40,19),0.4f);
   
 
   float deltaTime =0.0f;
-  
+
+
   
 
   sf::Clock clock;
@@ -52,9 +51,12 @@ int main() {
 
         //Mapeo del cursor
         case sf::Keyboard::D:
-         accion = 3;
+        
+         accion = 3; 
          sprite.x = 7,sprite.y =0;
          player.setPlayerSprite(sprite);
+         player.setPosDespues(player.getBody().getPosition().x+32, player.getBody().getPosition().y );
+       
           break;
 
         case sf::Keyboard::A:
@@ -106,7 +108,10 @@ int main() {
     /////DRAW/////
     //////////////
     window.clear();
+    Juego->Draw(window);
     player.Draw(window);
+   
+    
     window.display();
     }
   

@@ -56,17 +56,6 @@ CMAKE_BINARY_DIR = /home/magiic/Escritorio/Pengod/build
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -77,6 +66,17 @@ edit_cache:
 edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
+
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -124,17 +124,17 @@ Pengo/fast:
 .PHONY : Pengo/fast
 
 #=============================================================================
-# Target rules for targets named libModulos
+# Target rules for targets named libClases
 
 # Build rule for target.
-libModulos: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 libModulos
-.PHONY : libModulos
+libClases: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 libClases
+.PHONY : libClases
 
 # fast build rule for target.
-libModulos/fast:
-	$(MAKE) -f CMakeFiles/libModulos.dir/build.make CMakeFiles/libModulos.dir/build
-.PHONY : libModulos/fast
+libClases/fast:
+	$(MAKE) -f CMakeFiles/libClases.dir/build.make CMakeFiles/libClases.dir/build
+.PHONY : libClases/fast
 
 Animacion/Animacion.o: Animacion/Animacion.cpp.o
 
@@ -142,7 +142,7 @@ Animacion/Animacion.o: Animacion/Animacion.cpp.o
 
 # target to build an object file
 Animacion/Animacion.cpp.o:
-	$(MAKE) -f CMakeFiles/libModulos.dir/build.make CMakeFiles/libModulos.dir/Animacion/Animacion.cpp.o
+	$(MAKE) -f CMakeFiles/libClases.dir/build.make CMakeFiles/libClases.dir/Animacion/Animacion.cpp.o
 .PHONY : Animacion/Animacion.cpp.o
 
 Animacion/Animacion.i: Animacion/Animacion.cpp.i
@@ -151,7 +151,7 @@ Animacion/Animacion.i: Animacion/Animacion.cpp.i
 
 # target to preprocess a source file
 Animacion/Animacion.cpp.i:
-	$(MAKE) -f CMakeFiles/libModulos.dir/build.make CMakeFiles/libModulos.dir/Animacion/Animacion.cpp.i
+	$(MAKE) -f CMakeFiles/libClases.dir/build.make CMakeFiles/libClases.dir/Animacion/Animacion.cpp.i
 .PHONY : Animacion/Animacion.cpp.i
 
 Animacion/Animacion.s: Animacion/Animacion.cpp.s
@@ -160,7 +160,7 @@ Animacion/Animacion.s: Animacion/Animacion.cpp.s
 
 # target to generate assembly for a file
 Animacion/Animacion.cpp.s:
-	$(MAKE) -f CMakeFiles/libModulos.dir/build.make CMakeFiles/libModulos.dir/Animacion/Animacion.cpp.s
+	$(MAKE) -f CMakeFiles/libClases.dir/build.make CMakeFiles/libClases.dir/Animacion/Animacion.cpp.s
 .PHONY : Animacion/Animacion.cpp.s
 
 Animacion/Player.o: Animacion/Player.cpp.o
@@ -169,7 +169,7 @@ Animacion/Player.o: Animacion/Player.cpp.o
 
 # target to build an object file
 Animacion/Player.cpp.o:
-	$(MAKE) -f CMakeFiles/libModulos.dir/build.make CMakeFiles/libModulos.dir/Animacion/Player.cpp.o
+	$(MAKE) -f CMakeFiles/libClases.dir/build.make CMakeFiles/libClases.dir/Animacion/Player.cpp.o
 .PHONY : Animacion/Player.cpp.o
 
 Animacion/Player.i: Animacion/Player.cpp.i
@@ -178,7 +178,7 @@ Animacion/Player.i: Animacion/Player.cpp.i
 
 # target to preprocess a source file
 Animacion/Player.cpp.i:
-	$(MAKE) -f CMakeFiles/libModulos.dir/build.make CMakeFiles/libModulos.dir/Animacion/Player.cpp.i
+	$(MAKE) -f CMakeFiles/libClases.dir/build.make CMakeFiles/libClases.dir/Animacion/Player.cpp.i
 .PHONY : Animacion/Player.cpp.i
 
 Animacion/Player.s: Animacion/Player.cpp.s
@@ -187,62 +187,35 @@ Animacion/Player.s: Animacion/Player.cpp.s
 
 # target to generate assembly for a file
 Animacion/Player.cpp.s:
-	$(MAKE) -f CMakeFiles/libModulos.dir/build.make CMakeFiles/libModulos.dir/Animacion/Player.cpp.s
+	$(MAKE) -f CMakeFiles/libClases.dir/build.make CMakeFiles/libClases.dir/Animacion/Player.cpp.s
 .PHONY : Animacion/Player.cpp.s
 
-ej_modulos/mimodulo.o: ej_modulos/mimodulo.cpp.o
+Juego/Juego.o: Juego/Juego.cpp.o
 
-.PHONY : ej_modulos/mimodulo.o
-
-# target to build an object file
-ej_modulos/mimodulo.cpp.o:
-	$(MAKE) -f CMakeFiles/libModulos.dir/build.make CMakeFiles/libModulos.dir/ej_modulos/mimodulo.cpp.o
-.PHONY : ej_modulos/mimodulo.cpp.o
-
-ej_modulos/mimodulo.i: ej_modulos/mimodulo.cpp.i
-
-.PHONY : ej_modulos/mimodulo.i
-
-# target to preprocess a source file
-ej_modulos/mimodulo.cpp.i:
-	$(MAKE) -f CMakeFiles/libModulos.dir/build.make CMakeFiles/libModulos.dir/ej_modulos/mimodulo.cpp.i
-.PHONY : ej_modulos/mimodulo.cpp.i
-
-ej_modulos/mimodulo.s: ej_modulos/mimodulo.cpp.s
-
-.PHONY : ej_modulos/mimodulo.s
-
-# target to generate assembly for a file
-ej_modulos/mimodulo.cpp.s:
-	$(MAKE) -f CMakeFiles/libModulos.dir/build.make CMakeFiles/libModulos.dir/ej_modulos/mimodulo.cpp.s
-.PHONY : ej_modulos/mimodulo.cpp.s
-
-ej_modulos/mimodulo2.o: ej_modulos/mimodulo2.cpp.o
-
-.PHONY : ej_modulos/mimodulo2.o
+.PHONY : Juego/Juego.o
 
 # target to build an object file
-ej_modulos/mimodulo2.cpp.o:
-	$(MAKE) -f CMakeFiles/libModulos.dir/build.make CMakeFiles/libModulos.dir/ej_modulos/mimodulo2.cpp.o
-.PHONY : ej_modulos/mimodulo2.cpp.o
+Juego/Juego.cpp.o:
+	$(MAKE) -f CMakeFiles/libClases.dir/build.make CMakeFiles/libClases.dir/Juego/Juego.cpp.o
+.PHONY : Juego/Juego.cpp.o
 
-ej_modulos/mimodulo2.i: ej_modulos/mimodulo2.cpp.i
+Juego/Juego.i: Juego/Juego.cpp.i
 
-.PHONY : ej_modulos/mimodulo2.i
+.PHONY : Juego/Juego.i
 
 # target to preprocess a source file
-ej_modulos/mimodulo2.cpp.i:
-	$(MAKE) -f CMakeFiles/libModulos.dir/build.make CMakeFiles/libModulos.dir/ej_modulos/mimodulo2.cpp.i
-.PHONY : ej_modulos/mimodulo2.cpp.i
+Juego/Juego.cpp.i:
+	$(MAKE) -f CMakeFiles/libClases.dir/build.make CMakeFiles/libClases.dir/Juego/Juego.cpp.i
+.PHONY : Juego/Juego.cpp.i
 
-ej_modulos/mimodulo2.s: ej_modulos/mimodulo2.cpp.s
+Juego/Juego.s: Juego/Juego.cpp.s
 
-.PHONY : ej_modulos/mimodulo2.s
+.PHONY : Juego/Juego.s
 
 # target to generate assembly for a file
-ej_modulos/mimodulo2.cpp.s:
-	$(MAKE) -f CMakeFiles/libModulos.dir/build.make CMakeFiles/libModulos.dir/ej_modulos/mimodulo2.cpp.s
-.PHONY : ej_modulos/mimodulo2.cpp.s
+Juego/Juego.cpp.s:
+	$(MAKE) -f CMakeFiles/libClases.dir/build.make CMakeFiles/libClases.dir/Juego/Juego.cpp.s
+.PHONY : Juego/Juego.cpp.s
 
 main.o: main.cpp.o
 
@@ -271,31 +244,178 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/Pengo.dir/build.make CMakeFiles/Pengo.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+mapaxml/mapa.o: mapaxml/mapa.cpp.o
+
+.PHONY : mapaxml/mapa.o
+
+# target to build an object file
+mapaxml/mapa.cpp.o:
+	$(MAKE) -f CMakeFiles/libClases.dir/build.make CMakeFiles/libClases.dir/mapaxml/mapa.cpp.o
+.PHONY : mapaxml/mapa.cpp.o
+
+mapaxml/mapa.i: mapaxml/mapa.cpp.i
+
+.PHONY : mapaxml/mapa.i
+
+# target to preprocess a source file
+mapaxml/mapa.cpp.i:
+	$(MAKE) -f CMakeFiles/libClases.dir/build.make CMakeFiles/libClases.dir/mapaxml/mapa.cpp.i
+.PHONY : mapaxml/mapa.cpp.i
+
+mapaxml/mapa.s: mapaxml/mapa.cpp.s
+
+.PHONY : mapaxml/mapa.s
+
+# target to generate assembly for a file
+mapaxml/mapa.cpp.s:
+	$(MAKE) -f CMakeFiles/libClases.dir/build.make CMakeFiles/libClases.dir/mapaxml/mapa.cpp.s
+.PHONY : mapaxml/mapa.cpp.s
+
+mapaxml/tinystr.o: mapaxml/tinystr.cpp.o
+
+.PHONY : mapaxml/tinystr.o
+
+# target to build an object file
+mapaxml/tinystr.cpp.o:
+	$(MAKE) -f CMakeFiles/libClases.dir/build.make CMakeFiles/libClases.dir/mapaxml/tinystr.cpp.o
+.PHONY : mapaxml/tinystr.cpp.o
+
+mapaxml/tinystr.i: mapaxml/tinystr.cpp.i
+
+.PHONY : mapaxml/tinystr.i
+
+# target to preprocess a source file
+mapaxml/tinystr.cpp.i:
+	$(MAKE) -f CMakeFiles/libClases.dir/build.make CMakeFiles/libClases.dir/mapaxml/tinystr.cpp.i
+.PHONY : mapaxml/tinystr.cpp.i
+
+mapaxml/tinystr.s: mapaxml/tinystr.cpp.s
+
+.PHONY : mapaxml/tinystr.s
+
+# target to generate assembly for a file
+mapaxml/tinystr.cpp.s:
+	$(MAKE) -f CMakeFiles/libClases.dir/build.make CMakeFiles/libClases.dir/mapaxml/tinystr.cpp.s
+.PHONY : mapaxml/tinystr.cpp.s
+
+mapaxml/tinyxml.o: mapaxml/tinyxml.cpp.o
+
+.PHONY : mapaxml/tinyxml.o
+
+# target to build an object file
+mapaxml/tinyxml.cpp.o:
+	$(MAKE) -f CMakeFiles/libClases.dir/build.make CMakeFiles/libClases.dir/mapaxml/tinyxml.cpp.o
+.PHONY : mapaxml/tinyxml.cpp.o
+
+mapaxml/tinyxml.i: mapaxml/tinyxml.cpp.i
+
+.PHONY : mapaxml/tinyxml.i
+
+# target to preprocess a source file
+mapaxml/tinyxml.cpp.i:
+	$(MAKE) -f CMakeFiles/libClases.dir/build.make CMakeFiles/libClases.dir/mapaxml/tinyxml.cpp.i
+.PHONY : mapaxml/tinyxml.cpp.i
+
+mapaxml/tinyxml.s: mapaxml/tinyxml.cpp.s
+
+.PHONY : mapaxml/tinyxml.s
+
+# target to generate assembly for a file
+mapaxml/tinyxml.cpp.s:
+	$(MAKE) -f CMakeFiles/libClases.dir/build.make CMakeFiles/libClases.dir/mapaxml/tinyxml.cpp.s
+.PHONY : mapaxml/tinyxml.cpp.s
+
+mapaxml/tinyxmlerror.o: mapaxml/tinyxmlerror.cpp.o
+
+.PHONY : mapaxml/tinyxmlerror.o
+
+# target to build an object file
+mapaxml/tinyxmlerror.cpp.o:
+	$(MAKE) -f CMakeFiles/libClases.dir/build.make CMakeFiles/libClases.dir/mapaxml/tinyxmlerror.cpp.o
+.PHONY : mapaxml/tinyxmlerror.cpp.o
+
+mapaxml/tinyxmlerror.i: mapaxml/tinyxmlerror.cpp.i
+
+.PHONY : mapaxml/tinyxmlerror.i
+
+# target to preprocess a source file
+mapaxml/tinyxmlerror.cpp.i:
+	$(MAKE) -f CMakeFiles/libClases.dir/build.make CMakeFiles/libClases.dir/mapaxml/tinyxmlerror.cpp.i
+.PHONY : mapaxml/tinyxmlerror.cpp.i
+
+mapaxml/tinyxmlerror.s: mapaxml/tinyxmlerror.cpp.s
+
+.PHONY : mapaxml/tinyxmlerror.s
+
+# target to generate assembly for a file
+mapaxml/tinyxmlerror.cpp.s:
+	$(MAKE) -f CMakeFiles/libClases.dir/build.make CMakeFiles/libClases.dir/mapaxml/tinyxmlerror.cpp.s
+.PHONY : mapaxml/tinyxmlerror.cpp.s
+
+mapaxml/tinyxmlparser.o: mapaxml/tinyxmlparser.cpp.o
+
+.PHONY : mapaxml/tinyxmlparser.o
+
+# target to build an object file
+mapaxml/tinyxmlparser.cpp.o:
+	$(MAKE) -f CMakeFiles/libClases.dir/build.make CMakeFiles/libClases.dir/mapaxml/tinyxmlparser.cpp.o
+.PHONY : mapaxml/tinyxmlparser.cpp.o
+
+mapaxml/tinyxmlparser.i: mapaxml/tinyxmlparser.cpp.i
+
+.PHONY : mapaxml/tinyxmlparser.i
+
+# target to preprocess a source file
+mapaxml/tinyxmlparser.cpp.i:
+	$(MAKE) -f CMakeFiles/libClases.dir/build.make CMakeFiles/libClases.dir/mapaxml/tinyxmlparser.cpp.i
+.PHONY : mapaxml/tinyxmlparser.cpp.i
+
+mapaxml/tinyxmlparser.s: mapaxml/tinyxmlparser.cpp.s
+
+.PHONY : mapaxml/tinyxmlparser.s
+
+# target to generate assembly for a file
+mapaxml/tinyxmlparser.cpp.s:
+	$(MAKE) -f CMakeFiles/libClases.dir/build.make CMakeFiles/libClases.dir/mapaxml/tinyxmlparser.cpp.s
+.PHONY : mapaxml/tinyxmlparser.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
+	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Pengo"
-	@echo "... edit_cache"
-	@echo "... libModulos"
+	@echo "... libClases"
 	@echo "... Animacion/Animacion.o"
 	@echo "... Animacion/Animacion.i"
 	@echo "... Animacion/Animacion.s"
 	@echo "... Animacion/Player.o"
 	@echo "... Animacion/Player.i"
 	@echo "... Animacion/Player.s"
-	@echo "... ej_modulos/mimodulo.o"
-	@echo "... ej_modulos/mimodulo.i"
-	@echo "... ej_modulos/mimodulo.s"
-	@echo "... ej_modulos/mimodulo2.o"
-	@echo "... ej_modulos/mimodulo2.i"
-	@echo "... ej_modulos/mimodulo2.s"
+	@echo "... Juego/Juego.o"
+	@echo "... Juego/Juego.i"
+	@echo "... Juego/Juego.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... mapaxml/mapa.o"
+	@echo "... mapaxml/mapa.i"
+	@echo "... mapaxml/mapa.s"
+	@echo "... mapaxml/tinystr.o"
+	@echo "... mapaxml/tinystr.i"
+	@echo "... mapaxml/tinystr.s"
+	@echo "... mapaxml/tinyxml.o"
+	@echo "... mapaxml/tinyxml.i"
+	@echo "... mapaxml/tinyxml.s"
+	@echo "... mapaxml/tinyxmlerror.o"
+	@echo "... mapaxml/tinyxmlerror.i"
+	@echo "... mapaxml/tinyxmlerror.s"
+	@echo "... mapaxml/tinyxmlparser.o"
+	@echo "... mapaxml/tinyxmlparser.i"
+	@echo "... mapaxml/tinyxmlparser.s"
 .PHONY : help
 
 
