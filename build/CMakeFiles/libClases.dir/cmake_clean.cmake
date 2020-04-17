@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/libClases.dir/Animacion/Player.cpp.o"
   "CMakeFiles/libClases.dir/Animacion/Animacion.cpp.o"
+  "CMakeFiles/libClases.dir/Animacion/Enemigo.cpp.o"
   "CMakeFiles/libClases.dir/Juego/Juego.cpp.o"
   "CMakeFiles/libClases.dir/mapaxml/mapa.cpp.o"
   "CMakeFiles/libClases.dir/mapaxml/tinystr.cpp.o"

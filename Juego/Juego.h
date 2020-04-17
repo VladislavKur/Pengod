@@ -13,6 +13,7 @@
             static Juego* pinstance;
             int numEmenigos; 
             int numObjetos;
+            bool no = false;
         protected:
             Juego();
 
@@ -20,7 +21,10 @@
             static Juego *instance();
             void update(float deltaTime);
             
-            void Draw(sf::RenderWindow &window);            
+            void Draw(sf::RenderWindow &window);
+            bool ComprobarMov(float);      
+            int MovAleatorio();     
+            
 
             /*void colisionBulletJugador(float deltatime);
             void colisionBulletEnemigo(float deltaTime);

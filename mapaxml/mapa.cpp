@@ -138,8 +138,8 @@ void Mapa::cargarmapa(const char * f){
                 columna = 0;
               }
               tileMapaSprite[l][y][x]->setTextureRect(sf::IntRect(columna*16, fila*16, 16, 16));
-              tileMapaSprite[l][y][x]->setPosition(x*(tileWidth*3), y*3*tileHeight);
-              tileMapaSprite[l][y][x]->setScale(3,3);
+              tileMapaSprite[l][y][x]->setPosition(x*(tileWidth*2), y*2*tileHeight);
+              tileMapaSprite[l][y][x]->setScale(2,2);
               pintada = true;
             }else{
               tileMapaSprite[l][y][x] = NULL;
@@ -188,7 +188,8 @@ void Mapa::draw(sf::RenderWindow& window){
  for(int l=0; l< nLayers;l++){
     for(int y=0; y<height;y++){
       for(int x=0; x<width;x++){
-          window.draw(*(tileMapaSprite[l][y][x]));
+        if(tileMapaSprite[0][y][x]!= NULL)
+          window.draw(*(tileMapaSprite[0][y][x]));
       }
     }
   }

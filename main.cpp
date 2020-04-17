@@ -1,5 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include "Player.h"
+#include "Enemigo.h"
 #include "Juego/Juego.h"
 #include <iostream>
 
@@ -9,7 +10,7 @@ int main() {
   /////////////
 
   //Creamos una ventana
-  sf::RenderWindow window(sf::VideoMode (1024.0f,1024.0f), "Pengod", sf::Style::Close);
+  sf::RenderWindow window(sf::VideoMode (720.0f,720.0f), "Pengod", sf::Style::Close);
   Juego* Juego = Juego::instance();
 
 // TEXTURAS PENGO
@@ -18,10 +19,34 @@ int main() {
 
 //ANIMACIOn
   int accion= -1;
+  bool nopulsar =true;
+  srand(time(NULL));
   
-  sf::Vector2u sprite(0,0);
-  Player player(&playerTexture, sf::Vector2u(40,19),0.25f);
+
   
+  sf::Vector2u PlayerSprite(0,0);
+  sf::Vector2u EnemigoSprite(0,9);
+  Player player(&playerTexture, sf::Vector2u(40,18),0.25f);
+  Enemigo enem1(&playerTexture, sf::Vector2u(40,18),0.25f, sf::Vector2f(2,2));
+  Enemigo enem2(&playerTexture, sf::Vector2u(40,18),0.25f, sf::Vector2f(2,2));
+  Enemigo enem3(&playerTexture, sf::Vector2u(40,18),0.25f, sf::Vector2f(2,2));
+  Enemigo enem4(&playerTexture, sf::Vector2u(40,18),0.25f, sf::Vector2f(2,2));
+  
+ 
+   std::vector<Enemigo *>  listaEnem;
+   listaEnem.push_back(&enem1);
+   listaEnem.push_back(&enem2);
+   listaEnem.push_back(&enem3);
+   listaEnem.push_back(&enem4);
+
+  /*for(unsigned int f = 0; f< listaEnem.size();f++)
+
+
+  listaEnem.push_back(new Enemigo (&playerTexture, sf::Vector2u(40,18),0.25f, sf::Vector2f(2,2)) );*/
+
+ 
+
+ 
 
   float deltaTime =0.0f;
 
@@ -50,48 +75,56 @@ int main() {
         switch (evnt.key.code) {
 
         //Mapeo del cursor
-        case sf::Keyboard::D:
+        case sf::Keyboard::Right:
         deltaTime = clock.restart().asSeconds();
         
-         accion = 3; 
-         sprite.x = 7,sprite.y =0;
-         player.setPlayerSprite(sprite);
-         if((((int)player.getBody().getPosition().y+48)%48 <= (((int)player.getBody().getPosition().y+48)%48)+0.01) 
-         && ((int)player.getBody().getPosition().y+48)%48 >= (((int)player.getBody().getPosition().y+48)%48)-0.01)
-         player.setPosDespues(player.getBody().getPosition().x+48, player.getBody().getPosition().y );
+        accion = 3;
+        
+        PlayerSprite.x = 7,PlayerSprite.y =0;
+       
+        if(Juego->ComprobarMov(player.getBody().getPosition().x))
+          player.setPosDespues(player.getBody().getPosition().x+32, player.getBody().getPosition().y );
+
        
           break;
 
-        case sf::Keyboard::A:
+        case sf::Keyboard::Left:
         deltaTime = clock.restart().asSeconds();
           accion = 1;
-           sprite.x = 3,sprite.y =0;
-         player.setPlayerSprite(sprite);
-        if((((int)player.getBody().getPosition().x+48)%48 <= (((int)player.getBody().getPosition().x+48)%48)+0.01) 
-         && ((int)player.getBody().getPosition().x+48)%48 >= (((int)player.getBody().getPosition().x+48)%48)-0.01)
-         player.setPosDespues(player.getBody().getPosition().x-48, player.getBody().getPosition().y );
+           PlayerSprite.x = 3,PlayerSprite.y =0;
+          // EnemigoSprite.x = 3,EnemigoSprite.y =9;
+         
+         player.setPlayerSprite(PlayerSprite);
+       if(Juego->ComprobarMov(player.getBody().getPosition().x))
+         player.setPosDespues(player.getBody().getPosition().x-32, player.getBody().getPosition().y );
+         nopulsar = false;
           break;
 
-        case sf::Keyboard::W:
+        case sf::Keyboard::Up:
         deltaTime = clock.restart().asSeconds();
          accion = 2;
-          sprite.x = 5,sprite.y =0;
-         player.setPlayerSprite(sprite);
-         if((((int)player.getBody().getPosition().y+48)%48 <= (((int)player.getBody().getPosition().y+48)%48)+0.01) 
-         && ((int)player.getBody().getPosition().y+48)%48 >= (((int)player.getBody().getPosition().y+48)%48)-0.01)
-         player.setPosDespues(player.getBody().getPosition().x, player.getBody().getPosition().y-48 );
+          PlayerSprite.x = 5,PlayerSprite.y =0;
+         // EnemigoSprite.x = 5,EnemigoSprite.y =9;
+                 player.setPlayerSprite(PlayerSprite);
+         if(Juego->ComprobarMov(player.getBody().getPosition().y))
+         player.setPosDespues(player.getBody().getPosition().x, player.getBody().getPosition().y-32 );
+          nopulsar = false;
           break;
 
-        case sf::Keyboard::S:
+        case sf::Keyboard::Down:
         deltaTime = clock.restart().asSeconds();
         
           accion = 0;
-           sprite.x = 1,sprite.y =0;
-         player.setPlayerSprite(sprite);
-         if((((int)player.getBody().getPosition().y+48)%48 <= (((int)player.getBody().getPosition().y+48)%48)+0.01) 
-         && ((int)player.getBody().getPosition().y+48)%48 >= (((int)player.getBody().getPosition().y+48)%48)-0.01)
-         player.setPosDespues(player.getBody().getPosition().x, player.getBody().getPosition().y+48 );
-          
+           PlayerSprite.x = 1,PlayerSprite.y =0;
+           //EnemigoSprite.x = 1,EnemigoSprite.y =9;
+         
+         player.setPlayerSprite(PlayerSprite);
+         if(Juego->ComprobarMov(player.getBody().getPosition().y))
+         player.setPosDespues(player.getBody().getPosition().x, player.getBody().getPosition().y+32 );
+           nopulsar = false;
+          break;
+          case sf::Keyboard::Space:
+            //empujar
           break;
         
         //Tecla ESC para salir
@@ -115,8 +148,18 @@ int main() {
     ////////////
     ///UPDATE///
     ////////////
+      nopulsar=player.noPulsarChek();
+      if(nopulsar)player.Update(accion,deltaTime);
+
+ 
+  
     
-    player.Update(accion,deltaTime);
+    
+    for(unsigned int k = 0; k < listaEnem.size();k++) {
+     // listaEnem[k].setEnemigoSprite(EnemigoSprite);
+      listaEnem[k]->Update(deltaTime);
+    
+    }
 
 
     ///////////////
@@ -124,6 +167,11 @@ int main() {
     //////////////
     window.clear();
     Juego->Draw(window);
+     for(unsigned int k = 0; k < listaEnem.size();k++) {
+     // listaEnem[k].setEnemigoSprite(EnemigoSprite);
+      listaEnem[k]->Draw(window);
+    
+    }
     player.Draw(window);
    
     

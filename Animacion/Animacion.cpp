@@ -12,6 +12,7 @@ Animacion::Animacion(sf::Texture* textura, sf::Vector2u cantidadImagenes, float 
     swit = true;
     spriteActual.x =1;
     
+    
     tiempoTotalDelta = 0.0f;
     
 
@@ -23,7 +24,7 @@ textureRect.width = textura->getSize().x/ float(cantidadImagenes.x);
 
 void Animacion::Update(sf::Vector2u Sprites, float deltaTime){
 
-   // spriteActual.y = Sprites.y;
+   spriteActual.y = Sprites.y;
    
    
     tiempoTotalDelta += deltaTime;

@@ -1,3 +1,5 @@
+#pragma once
+
 #include <SFML/Graphics.hpp>
 #include "Animacion.h"
 
@@ -10,6 +12,9 @@ class Player{
      void setPlayerSprite(sf::Vector2u Sprites);
      void setPosDespues(float, float);
     sf::RectangleShape getBody(){return cuerpo;}
+    bool noPulsarChek();
+
+    void setvidas();
      
 
     
@@ -19,12 +24,12 @@ class Player{
     sf::RectangleShape cuerpo;
     Animacion animacion;
     sf::Vector2u fila;
-    
+    bool nopulsarCheck=true;
     float speed= 75;
     int accion;
-    float tiempoMov;
+    
     sf::Vector2f PosDestino;
 
-    bool notifaller = false;
+    int vida;
    
 };
