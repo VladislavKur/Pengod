@@ -23,6 +23,8 @@ SFML/Graphics.hpp
 -
 Animacion.h
 ../Animacion/Animacion.h
+../Juego/Juego.h
+../Juego/Juego.h
 
 ../Juego/Juego.h
 SFML/Graphics.hpp

@@ -19,10 +19,10 @@ int main() {
 
 //ANIMACIOn
   int accion= -1;
-  bool nopulsar =true;
+ 
   srand(time(NULL));
   
-
+bool algo=false;
   
   sf::Vector2u PlayerSprite(0,0);
   sf::Vector2u EnemigoSprite(0,9);
@@ -70,34 +70,45 @@ int main() {
 
       switch (evnt.type) {
       case sf::Event::Closed: window.close(); break;
+      if(algo=false)
       case sf::Event::KeyPressed:
 
         switch (evnt.key.code) {
 
         //Mapeo del cursor
         case sf::Keyboard::Right:
-        deltaTime = clock.restart().asSeconds();
+        if(algo=false){
+          deltaTime = clock.restart().asSeconds();
         
         accion = 3;
         
         PlayerSprite.x = 7,PlayerSprite.y =0;
-       
-        if(Juego->ComprobarMov(player.getBody().getPosition().x))
+      // std::cout << player.posDestino().x << ", " << player.posDestino().y << std::endl;
+       if(abs((int)player.getBody().getPosition().x %32)==0)
           player.setPosDespues(player.getBody().getPosition().x+32, player.getBody().getPosition().y );
+           else player.setPosicionPlayer();
 
-       
+           algo=true;
+          
+        }
+        
+
+        
           break;
 
         case sf::Keyboard::Left:
-        deltaTime = clock.restart().asSeconds();
+          algo=true;
+          deltaTime = clock.restart().asSeconds();
           accion = 1;
            PlayerSprite.x = 3,PlayerSprite.y =0;
           // EnemigoSprite.x = 3,EnemigoSprite.y =9;
          
          player.setPlayerSprite(PlayerSprite);
-       if(Juego->ComprobarMov(player.getBody().getPosition().x))
+         //std::cout << player.posDestino().x << ", " << player.posDestino().y << std::endl;
+        if(abs((int)player.getBody().getPosition().x %32)==0)
          player.setPosDespues(player.getBody().getPosition().x-32, player.getBody().getPosition().y );
-         nopulsar = false;
+          else player.setPosicionPlayer();
+         
           break;
 
         case sf::Keyboard::Up:
@@ -106,9 +117,11 @@ int main() {
           PlayerSprite.x = 5,PlayerSprite.y =0;
          // EnemigoSprite.x = 5,EnemigoSprite.y =9;
                  player.setPlayerSprite(PlayerSprite);
-         if(Juego->ComprobarMov(player.getBody().getPosition().y))
+                // std::cout << player.posDestino().x << ", " << player.posDestino().y << std::endl;
+          if(abs((int)player.getBody().getPosition().y %32)==0)
          player.setPosDespues(player.getBody().getPosition().x, player.getBody().getPosition().y-32 );
-          nopulsar = false;
+         else player.setPosicionPlayer();
+          
           break;
 
         case sf::Keyboard::Down:
@@ -119,9 +132,11 @@ int main() {
            //EnemigoSprite.x = 1,EnemigoSprite.y =9;
          
          player.setPlayerSprite(PlayerSprite);
-         if(Juego->ComprobarMov(player.getBody().getPosition().y))
+         //std::cout << player.posDestino().x << ", " << player.posDestino().y << std::endl;
+         if(abs((int)player.getBody().getPosition().y %32)==0)
          player.setPosDespues(player.getBody().getPosition().x, player.getBody().getPosition().y+32 );
-           nopulsar = false;
+          else player.setPosicionPlayer();
+          
           break;
           case sf::Keyboard::Space:
             //empujar
@@ -148,8 +163,7 @@ int main() {
     ////////////
     ///UPDATE///
     ////////////
-      nopulsar=player.noPulsarChek();
-      if(nopulsar)player.Update(accion,deltaTime);
+      player.Update(accion,deltaTime);
 
  
   

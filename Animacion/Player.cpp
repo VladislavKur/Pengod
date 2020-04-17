@@ -25,23 +25,29 @@ Player::~Player(){}
 void Player::Update(int acciones, float deltaTime){
     sf::Vector2f movement;
     sf::Vector2u sprite;
-  
     
-
+        
+        
 
       switch (acciones){
             case -1: sprite.x = 1; movement.x=0; movement.y=0;break;
-            case 0: sprite.x = 1;  if ((int)cuerpo.getPosition().y == (int)PosDestino.y){movement.y=0;nopulsarCheck=true;} else movement.y=  speed; ;break;
-            case 1: sprite.x = 3; if((int)cuerpo.getPosition().x == (int)PosDestino.x){ movement.x= 0;nopulsarCheck=true;}else movement.x= -abs(speed);;break;
-            case 2: sprite.x = 5;  if ((int)cuerpo.getPosition().y == (int)PosDestino.y){movement.y=  0;nopulsarCheck=true;} else movement.y= -abs(speed);;break;
-            case 3: sprite.x = 7;  if((int)cuerpo.getPosition().x == (int)PosDestino.x){movement.y=  0;nopulsarCheck=true;} else movement.x=  speed;;break;
+            case 0: sprite.x = 1;  movement.y=  speed;break;
+            case 1: sprite.x = 3;  movement.x= -abs(speed); break;
+            case 2: sprite.x = 5;   movement.y= -abs(speed); break;
+            case 3: sprite.x = 7;  movement.x=  speed; break;
             
 
         default :  break;
         }
         //std::cout << cuerpo.getPosition().x << ", " << cuerpo.getPosition().y <<" ====" << PosDestino.x <<", " << PosDestino.y << std::endl;
+      //if(Juego->ComprobarMov(cuerpo.getPosition().x))movement.x=0;
+     // if(Juego->ComprobarMov(cuerpo.getPosition().y))movement.y=0;
+      std:: cout << cuerpo.getPosition().x <<", " <<cuerpo.getPosition().y <<"====" << PosDestino.x <<", " <<PosDestino.y << std::endl;
+     if((int)cuerpo.getPosition().x == (int)PosDestino.x) movement.x = 0;
+     
+     if((int)cuerpo.getPosition().y == (int)PosDestino.y) movement.y = 0;
         
-   cuerpo.move(movement.x*deltaTime,movement.y*deltaTime);
+    cuerpo.move(movement.x*deltaTime,movement.y*deltaTime);
 
     animacion.Update(sprite, deltaTime);
     cuerpo.setTextureRect(animacion.textureRect);
@@ -64,11 +70,49 @@ void Player::setvidas(){
    // if(vida<= 0) morir();
 }
 
+void Player::setPosicionPlayer(){
+    float resto =0;
+    float necesito = 0;
+    int final =0;
+    if((int)cuerpo.getPosition().x%32 != 0){
+        resto= (cuerpo.getPosition().x/32)-(int)(cuerpo.getPosition().x/32) ;
+        std::cout << resto <<std::endl;
+        necesito = 32-resto*32;
+        if(resto >= 16){
+            final = 32-necesito;
+            cuerpo.setPosition(cuerpo.getPosition().x+final,cuerpo.getPosition().y);
+            
+        }else{
+            cuerpo.setPosition(cuerpo.getPosition().x-necesito,cuerpo.getPosition().y);
+            
+        }
+
+        
+       
+
+    }
+
+     
+     if((int)cuerpo.getPosition().y %32 != 0) {
+        resto= (cuerpo.getPosition().x/32)-(int)(cuerpo.getPosition().x/32) ;
+        necesito = 32-resto*32;
+        if(resto >= 16){
+            final = 32-necesito;
+            cuerpo.setPosition(cuerpo.getPosition().x,cuerpo.getPosition().y+final);
+            
+        }else{
+            cuerpo.setPosition(cuerpo.getPosition().x,cuerpo.getPosition().y-necesito);
+            
+        }
+            
+
+     }
+
+}
+
 
 void Player::Draw(sf::RenderWindow &window){
     window.draw(cuerpo);
 }
 
-bool Player::noPulsarChek(){
-    return nopulsarCheck;
-}
+

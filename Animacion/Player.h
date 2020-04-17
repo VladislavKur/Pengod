@@ -2,6 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 #include "Animacion.h"
+#include "../Juego/Juego.h"
 
 class Player{
     public:
@@ -12,9 +13,10 @@ class Player{
      void setPlayerSprite(sf::Vector2u Sprites);
      void setPosDespues(float, float);
     sf::RectangleShape getBody(){return cuerpo;}
-    bool noPulsarChek();
+    sf::Vector2f posDestino(){return PosDestino;}
 
     void setvidas();
+    void setPosicionPlayer();
      
 
     
@@ -24,7 +26,7 @@ class Player{
     sf::RectangleShape cuerpo;
     Animacion animacion;
     sf::Vector2u fila;
-    bool nopulsarCheck=true;
+    bool nopulsarCheck=false;
     float speed= 75;
     int accion;
     

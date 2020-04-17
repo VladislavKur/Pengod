@@ -15,6 +15,10 @@ CMakeFiles/libClases.dir/Animacion/Enemigo.cpp.o: ../mapaxml/tinyxml.h
 CMakeFiles/libClases.dir/Animacion/Player.cpp.o: ../Animacion/Animacion.h
 CMakeFiles/libClases.dir/Animacion/Player.cpp.o: ../Animacion/Player.cpp
 CMakeFiles/libClases.dir/Animacion/Player.cpp.o: ../Animacion/Player.h
+CMakeFiles/libClases.dir/Animacion/Player.cpp.o: ../Juego/Juego.h
+CMakeFiles/libClases.dir/Animacion/Player.cpp.o: ../mapaxml/mapa.h
+CMakeFiles/libClases.dir/Animacion/Player.cpp.o: ../mapaxml/tinystr.h
+CMakeFiles/libClases.dir/Animacion/Player.cpp.o: ../mapaxml/tinyxml.h
 
 CMakeFiles/libClases.dir/Juego/Juego.cpp.o: ../Juego/Juego.cpp
 CMakeFiles/libClases.dir/Juego/Juego.cpp.o: ../Juego/Juego.h
