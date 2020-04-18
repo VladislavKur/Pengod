@@ -129,9 +129,33 @@ CMakeFiles/libClases.dir/Animacion/Enemigo.cpp.o.provides: CMakeFiles/libClases.
 CMakeFiles/libClases.dir/Animacion/Enemigo.cpp.o.provides.build: CMakeFiles/libClases.dir/Animacion/Enemigo.cpp.o
 
 
+CMakeFiles/libClases.dir/Animacion/Bloque.cpp.o: CMakeFiles/libClases.dir/flags.make
+CMakeFiles/libClases.dir/Animacion/Bloque.cpp.o: ../Animacion/Bloque.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/magiic/Escritorio/Pengod/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/libClases.dir/Animacion/Bloque.cpp.o"
+	/usr/bin/g++-5   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/libClases.dir/Animacion/Bloque.cpp.o -c /home/magiic/Escritorio/Pengod/Animacion/Bloque.cpp
+
+CMakeFiles/libClases.dir/Animacion/Bloque.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/libClases.dir/Animacion/Bloque.cpp.i"
+	/usr/bin/g++-5  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/magiic/Escritorio/Pengod/Animacion/Bloque.cpp > CMakeFiles/libClases.dir/Animacion/Bloque.cpp.i
+
+CMakeFiles/libClases.dir/Animacion/Bloque.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/libClases.dir/Animacion/Bloque.cpp.s"
+	/usr/bin/g++-5  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/magiic/Escritorio/Pengod/Animacion/Bloque.cpp -o CMakeFiles/libClases.dir/Animacion/Bloque.cpp.s
+
+CMakeFiles/libClases.dir/Animacion/Bloque.cpp.o.requires:
+
+.PHONY : CMakeFiles/libClases.dir/Animacion/Bloque.cpp.o.requires
+
+CMakeFiles/libClases.dir/Animacion/Bloque.cpp.o.provides: CMakeFiles/libClases.dir/Animacion/Bloque.cpp.o.requires
+	$(MAKE) -f CMakeFiles/libClases.dir/build.make CMakeFiles/libClases.dir/Animacion/Bloque.cpp.o.provides.build
+.PHONY : CMakeFiles/libClases.dir/Animacion/Bloque.cpp.o.provides
+
+CMakeFiles/libClases.dir/Animacion/Bloque.cpp.o.provides.build: CMakeFiles/libClases.dir/Animacion/Bloque.cpp.o
+
+
 CMakeFiles/libClases.dir/Juego/Juego.cpp.o: CMakeFiles/libClases.dir/flags.make
 CMakeFiles/libClases.dir/Juego/Juego.cpp.o: ../Juego/Juego.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/magiic/Escritorio/Pengod/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/libClases.dir/Juego/Juego.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/magiic/Escritorio/Pengod/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/libClases.dir/Juego/Juego.cpp.o"
 	/usr/bin/g++-5   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/libClases.dir/Juego/Juego.cpp.o -c /home/magiic/Escritorio/Pengod/Juego/Juego.cpp
 
 CMakeFiles/libClases.dir/Juego/Juego.cpp.i: cmake_force
@@ -155,7 +179,7 @@ CMakeFiles/libClases.dir/Juego/Juego.cpp.o.provides.build: CMakeFiles/libClases.
 
 CMakeFiles/libClases.dir/mapaxml/mapa.cpp.o: CMakeFiles/libClases.dir/flags.make
 CMakeFiles/libClases.dir/mapaxml/mapa.cpp.o: ../mapaxml/mapa.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/magiic/Escritorio/Pengod/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/libClases.dir/mapaxml/mapa.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/magiic/Escritorio/Pengod/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/libClases.dir/mapaxml/mapa.cpp.o"
 	/usr/bin/g++-5   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/libClases.dir/mapaxml/mapa.cpp.o -c /home/magiic/Escritorio/Pengod/mapaxml/mapa.cpp
 
 CMakeFiles/libClases.dir/mapaxml/mapa.cpp.i: cmake_force
@@ -179,7 +203,7 @@ CMakeFiles/libClases.dir/mapaxml/mapa.cpp.o.provides.build: CMakeFiles/libClases
 
 CMakeFiles/libClases.dir/mapaxml/tinystr.cpp.o: CMakeFiles/libClases.dir/flags.make
 CMakeFiles/libClases.dir/mapaxml/tinystr.cpp.o: ../mapaxml/tinystr.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/magiic/Escritorio/Pengod/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/libClases.dir/mapaxml/tinystr.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/magiic/Escritorio/Pengod/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/libClases.dir/mapaxml/tinystr.cpp.o"
 	/usr/bin/g++-5   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/libClases.dir/mapaxml/tinystr.cpp.o -c /home/magiic/Escritorio/Pengod/mapaxml/tinystr.cpp
 
 CMakeFiles/libClases.dir/mapaxml/tinystr.cpp.i: cmake_force
@@ -203,7 +227,7 @@ CMakeFiles/libClases.dir/mapaxml/tinystr.cpp.o.provides.build: CMakeFiles/libCla
 
 CMakeFiles/libClases.dir/mapaxml/tinyxml.cpp.o: CMakeFiles/libClases.dir/flags.make
 CMakeFiles/libClases.dir/mapaxml/tinyxml.cpp.o: ../mapaxml/tinyxml.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/magiic/Escritorio/Pengod/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/libClases.dir/mapaxml/tinyxml.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/magiic/Escritorio/Pengod/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/libClases.dir/mapaxml/tinyxml.cpp.o"
 	/usr/bin/g++-5   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/libClases.dir/mapaxml/tinyxml.cpp.o -c /home/magiic/Escritorio/Pengod/mapaxml/tinyxml.cpp
 
 CMakeFiles/libClases.dir/mapaxml/tinyxml.cpp.i: cmake_force
@@ -227,7 +251,7 @@ CMakeFiles/libClases.dir/mapaxml/tinyxml.cpp.o.provides.build: CMakeFiles/libCla
 
 CMakeFiles/libClases.dir/mapaxml/tinyxmlparser.cpp.o: CMakeFiles/libClases.dir/flags.make
 CMakeFiles/libClases.dir/mapaxml/tinyxmlparser.cpp.o: ../mapaxml/tinyxmlparser.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/magiic/Escritorio/Pengod/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/libClases.dir/mapaxml/tinyxmlparser.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/magiic/Escritorio/Pengod/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/libClases.dir/mapaxml/tinyxmlparser.cpp.o"
 	/usr/bin/g++-5   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/libClases.dir/mapaxml/tinyxmlparser.cpp.o -c /home/magiic/Escritorio/Pengod/mapaxml/tinyxmlparser.cpp
 
 CMakeFiles/libClases.dir/mapaxml/tinyxmlparser.cpp.i: cmake_force
@@ -251,7 +275,7 @@ CMakeFiles/libClases.dir/mapaxml/tinyxmlparser.cpp.o.provides.build: CMakeFiles/
 
 CMakeFiles/libClases.dir/mapaxml/tinyxmlerror.cpp.o: CMakeFiles/libClases.dir/flags.make
 CMakeFiles/libClases.dir/mapaxml/tinyxmlerror.cpp.o: ../mapaxml/tinyxmlerror.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/magiic/Escritorio/Pengod/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/libClases.dir/mapaxml/tinyxmlerror.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/magiic/Escritorio/Pengod/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/libClases.dir/mapaxml/tinyxmlerror.cpp.o"
 	/usr/bin/g++-5   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/libClases.dir/mapaxml/tinyxmlerror.cpp.o -c /home/magiic/Escritorio/Pengod/mapaxml/tinyxmlerror.cpp
 
 CMakeFiles/libClases.dir/mapaxml/tinyxmlerror.cpp.i: cmake_force
@@ -278,6 +302,7 @@ libClases_OBJECTS = \
 "CMakeFiles/libClases.dir/Animacion/Player.cpp.o" \
 "CMakeFiles/libClases.dir/Animacion/Animacion.cpp.o" \
 "CMakeFiles/libClases.dir/Animacion/Enemigo.cpp.o" \
+"CMakeFiles/libClases.dir/Animacion/Bloque.cpp.o" \
 "CMakeFiles/libClases.dir/Juego/Juego.cpp.o" \
 "CMakeFiles/libClases.dir/mapaxml/mapa.cpp.o" \
 "CMakeFiles/libClases.dir/mapaxml/tinystr.cpp.o" \
@@ -291,6 +316,7 @@ libClases_EXTERNAL_OBJECTS =
 liblibClases.a: CMakeFiles/libClases.dir/Animacion/Player.cpp.o
 liblibClases.a: CMakeFiles/libClases.dir/Animacion/Animacion.cpp.o
 liblibClases.a: CMakeFiles/libClases.dir/Animacion/Enemigo.cpp.o
+liblibClases.a: CMakeFiles/libClases.dir/Animacion/Bloque.cpp.o
 liblibClases.a: CMakeFiles/libClases.dir/Juego/Juego.cpp.o
 liblibClases.a: CMakeFiles/libClases.dir/mapaxml/mapa.cpp.o
 liblibClases.a: CMakeFiles/libClases.dir/mapaxml/tinystr.cpp.o
@@ -299,7 +325,7 @@ liblibClases.a: CMakeFiles/libClases.dir/mapaxml/tinyxmlparser.cpp.o
 liblibClases.a: CMakeFiles/libClases.dir/mapaxml/tinyxmlerror.cpp.o
 liblibClases.a: CMakeFiles/libClases.dir/build.make
 liblibClases.a: CMakeFiles/libClases.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/magiic/Escritorio/Pengod/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX static library liblibClases.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/magiic/Escritorio/Pengod/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX static library liblibClases.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/libClases.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/libClases.dir/link.txt --verbose=$(VERBOSE)
 
@@ -311,6 +337,7 @@ CMakeFiles/libClases.dir/build: liblibClases.a
 CMakeFiles/libClases.dir/requires: CMakeFiles/libClases.dir/Animacion/Player.cpp.o.requires
 CMakeFiles/libClases.dir/requires: CMakeFiles/libClases.dir/Animacion/Animacion.cpp.o.requires
 CMakeFiles/libClases.dir/requires: CMakeFiles/libClases.dir/Animacion/Enemigo.cpp.o.requires
+CMakeFiles/libClases.dir/requires: CMakeFiles/libClases.dir/Animacion/Bloque.cpp.o.requires
 CMakeFiles/libClases.dir/requires: CMakeFiles/libClases.dir/Juego/Juego.cpp.o.requires
 CMakeFiles/libClases.dir/requires: CMakeFiles/libClases.dir/mapaxml/mapa.cpp.o.requires
 CMakeFiles/libClases.dir/requires: CMakeFiles/libClases.dir/mapaxml/tinystr.cpp.o.requires

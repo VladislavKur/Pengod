@@ -5,6 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/magiic/Escritorio/Pengod/Animacion/Animacion.cpp" "/home/magiic/Escritorio/Pengod/build/CMakeFiles/libClases.dir/Animacion/Animacion.cpp.o"
+  "/home/magiic/Escritorio/Pengod/Animacion/Bloque.cpp" "/home/magiic/Escritorio/Pengod/build/CMakeFiles/libClases.dir/Animacion/Bloque.cpp.o"
   "/home/magiic/Escritorio/Pengod/Animacion/Enemigo.cpp" "/home/magiic/Escritorio/Pengod/build/CMakeFiles/libClases.dir/Animacion/Enemigo.cpp.o"
   "/home/magiic/Escritorio/Pengod/Animacion/Player.cpp" "/home/magiic/Escritorio/Pengod/build/CMakeFiles/libClases.dir/Animacion/Player.cpp.o"
   "/home/magiic/Escritorio/Pengod/Juego/Juego.cpp" "/home/magiic/Escritorio/Pengod/build/CMakeFiles/libClases.dir/Juego/Juego.cpp.o"

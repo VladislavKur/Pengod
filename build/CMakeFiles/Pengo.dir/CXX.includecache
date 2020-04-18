@@ -10,9 +10,13 @@
 SFML/Graphics.hpp
 -
 
+../Animacion/Bloque.h
+SFML/Graphics.hpp
+-
+Animacion.h
+../Animacion/Animacion.h
+
 ../Animacion/Enemigo.h
-../Juego/Juego.h
-../Juego/Juego.h
 SFML/Graphics.hpp
 -
 Animacion.h
@@ -33,6 +37,32 @@ SFML/Graphics.hpp
 ../mapaxml/mapa.h
 iostream
 -
+../Animacion/Bloque.h
+../Animacion/Bloque.h
+../Animacion/Enemigo.h
+../Animacion/Enemigo.h
+../Animacion/Player.h
+../Animacion/Player.h
+
+/home/magiic/Escritorio/Pengod/Animacion/Bloque.h
+SFML/Graphics.hpp
+-
+Animacion.h
+/home/magiic/Escritorio/Pengod/Animacion/Animacion.h
+
+/home/magiic/Escritorio/Pengod/Animacion/Enemigo.h
+SFML/Graphics.hpp
+-
+Animacion.h
+/home/magiic/Escritorio/Pengod/Animacion/Animacion.h
+
+/home/magiic/Escritorio/Pengod/Animacion/Player.h
+SFML/Graphics.hpp
+-
+Animacion.h
+/home/magiic/Escritorio/Pengod/Animacion/Animacion.h
+../Juego/Juego.h
+/home/magiic/Escritorio/Pengod/Juego/Juego.h
 
 /home/magiic/Escritorio/Pengod/Juego/Juego.h
 SFML/Graphics.hpp
@@ -41,6 +71,12 @@ SFML/Graphics.hpp
 /home/magiic/Escritorio/Pengod/mapaxml/mapa.h
 iostream
 -
+../Animacion/Bloque.h
+/home/magiic/Escritorio/Pengod/Animacion/Bloque.h
+../Animacion/Enemigo.h
+/home/magiic/Escritorio/Pengod/Animacion/Enemigo.h
+../Animacion/Player.h
+/home/magiic/Escritorio/Pengod/Animacion/Player.h
 
 /home/magiic/Escritorio/Pengod/main.cpp
 SFML/Graphics.hpp
@@ -49,9 +85,15 @@ Player.h
 /home/magiic/Escritorio/Pengod/Player.h
 Enemigo.h
 /home/magiic/Escritorio/Pengod/Enemigo.h
+Bloque.h
+/home/magiic/Escritorio/Pengod/Bloque.h
 Juego/Juego.h
 /home/magiic/Escritorio/Pengod/Juego/Juego.h
 iostream
+-
+stdlib.h
+-
+time.h
 -
 
 /home/magiic/Escritorio/Pengod/mapaxml/mapa.h

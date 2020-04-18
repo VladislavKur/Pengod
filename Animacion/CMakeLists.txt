@@ -3,6 +3,7 @@ target_sources(libClases PRIVATE
     "${CMAKE_CURRENT_SOURCE_DIR}/Player.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/Animacion.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/Enemigo.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/Bloque.cpp"
     
 )
 

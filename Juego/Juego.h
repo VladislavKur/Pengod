@@ -2,6 +2,9 @@
 #include <SFML/Graphics.hpp>
 #include "../mapaxml/mapa.h"
 #include <iostream>
+#include "../Animacion/Bloque.h"
+#include "../Animacion/Enemigo.h"
+#include "../Animacion/Player.h"
 
 #ifndef JUEGO_H
 #define JUEGO_H
@@ -14,6 +17,9 @@
             int numEmenigos; 
             int numObjetos;
             bool no = false;
+            std::vector<Bloque *>  listaBloque;
+            std::vector<Enemigo *>  listaEnemigos;
+
         protected:
             Juego();
 
@@ -22,8 +28,17 @@
             void update(float deltaTime);
             
             void Draw(sf::RenderWindow &window);
+            void DrawBloques(sf::RenderWindow &window);
+            void DrawEnemigos(sf::RenderWindow &window);
+
+
             bool ComprobarMov(float);      
-            int MovAleatorio();     
+            int MovAleatorio(); 
+
+            void crearBloques(); 
+            void crearEnemigos();
+
+            std::vector<Enemigo *> getListaEnemigos(){return listaEnemigos;}
             
 
             /*void colisionBulletJugador(float deltatime);

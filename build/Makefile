@@ -163,6 +163,33 @@ Animacion/Animacion.cpp.s:
 	$(MAKE) -f CMakeFiles/libClases.dir/build.make CMakeFiles/libClases.dir/Animacion/Animacion.cpp.s
 .PHONY : Animacion/Animacion.cpp.s
 
+Animacion/Bloque.o: Animacion/Bloque.cpp.o
+
+.PHONY : Animacion/Bloque.o
+
+# target to build an object file
+Animacion/Bloque.cpp.o:
+	$(MAKE) -f CMakeFiles/libClases.dir/build.make CMakeFiles/libClases.dir/Animacion/Bloque.cpp.o
+.PHONY : Animacion/Bloque.cpp.o
+
+Animacion/Bloque.i: Animacion/Bloque.cpp.i
+
+.PHONY : Animacion/Bloque.i
+
+# target to preprocess a source file
+Animacion/Bloque.cpp.i:
+	$(MAKE) -f CMakeFiles/libClases.dir/build.make CMakeFiles/libClases.dir/Animacion/Bloque.cpp.i
+.PHONY : Animacion/Bloque.cpp.i
+
+Animacion/Bloque.s: Animacion/Bloque.cpp.s
+
+.PHONY : Animacion/Bloque.s
+
+# target to generate assembly for a file
+Animacion/Bloque.cpp.s:
+	$(MAKE) -f CMakeFiles/libClases.dir/build.make CMakeFiles/libClases.dir/Animacion/Bloque.cpp.s
+.PHONY : Animacion/Bloque.cpp.s
+
 Animacion/Enemigo.o: Animacion/Enemigo.cpp.o
 
 .PHONY : Animacion/Enemigo.o
@@ -419,6 +446,9 @@ help:
 	@echo "... Animacion/Animacion.o"
 	@echo "... Animacion/Animacion.i"
 	@echo "... Animacion/Animacion.s"
+	@echo "... Animacion/Bloque.o"
+	@echo "... Animacion/Bloque.i"
+	@echo "... Animacion/Bloque.s"
 	@echo "... Animacion/Enemigo.o"
 	@echo "... Animacion/Enemigo.i"
 	@echo "... Animacion/Enemigo.s"

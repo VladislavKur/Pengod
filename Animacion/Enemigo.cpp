@@ -11,6 +11,7 @@ animacion(textura, cantidadImagenes, SwitchTimeSprite)
     cuerpo.setSize(sf::Vector2f(16.0f*2,16.0f*2));
     cuerpo.setPosition(2*16*pos.x,2*16*pos.y);
     cuerpo.setTexture(textura);
+    cuerpo.setTextureRect(sf::IntRect(1*16,9*16,16,16));
 
     
    
@@ -26,27 +27,30 @@ void Enemigo::Update( float deltaTime){
     
     sf::Vector2f movement;
     sf::Vector2u sprite;
-    
+    float timer = 0;
+
+    timer += deltaTime;
     for(int i = 0; i <= 4; i++){
     int acciones;
     
     acciones = rand()%4;
     
-  
+    // aqui luego ira un bool donde diga que a colisionado con algo
       switch (acciones){
-            case -1: sprite.x = 1;sprite.y = 9; movement.x=0; movement.y=0;break;
-            case 0: sprite.x = 1;sprite.y = 9;  movement.y=  speed; ;break;
-            case 1: sprite.x = 3;sprite.y = 9;  movement.x= -abs(speed);;break;
-            case 2: sprite.x = 5;sprite.y = 9;  movement.y= -abs(speed);;break;
-            case 3: sprite.x = 7;sprite.y = 9;  movement.x=  speed;;break;
+            
+            case 0: sprite.x = 1;sprite.y = 9; ;break;
+            case 1: sprite.x = 3;sprite.y = 9; ;break;
+            case 2: sprite.x = 5;sprite.y = 9; ;break;
+            case 3: sprite.x = 7;sprite.y = 9;  ;;break;
             
 
         default :  break;
         }
+       
     }
         //std::cout << cuerpo.getPosition().x << ", " << cuerpo.getPosition().y <<" ====" << PosDestino.x <<", " << PosDestino.y << std::endl;
         
-   cuerpo.move(movement.x*deltaTime,movement.y*deltaTime);
+   cuerpo.move(0*deltaTime,0*deltaTime);
 
     animacion.Update(sprite, deltaTime);
     cuerpo.setTextureRect(animacion.textureRect);

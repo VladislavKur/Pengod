@@ -40,12 +40,11 @@ void Player::Update(int acciones, float deltaTime){
         default :  break;
         }
         //std::cout << cuerpo.getPosition().x << ", " << cuerpo.getPosition().y <<" ====" << PosDestino.x <<", " << PosDestino.y << std::endl;
-      //if(Juego->ComprobarMov(cuerpo.getPosition().x))movement.x=0;
-     // if(Juego->ComprobarMov(cuerpo.getPosition().y))movement.y=0;
-      std:: cout << cuerpo.getPosition().x <<", " <<cuerpo.getPosition().y <<"====" << PosDestino.x <<", " <<PosDestino.y << std::endl;
-     if((int)cuerpo.getPosition().x == (int)PosDestino.x) movement.x = 0;
+      
+     // std:: cout << cuerpo.getPosition().x <<", " <<cuerpo.getPosition().y <<"====" << PosDestino.x <<", " <<PosDestino.y << std::endl;
+     if((int)cuerpo.getPosition().x == (int)PosDestino.x){ movement.x = 0;} 
      
-     if((int)cuerpo.getPosition().y == (int)PosDestino.y) movement.y = 0;
+     if((int)cuerpo.getPosition().y == (int)PosDestino.y) { movement.y = 0;} 
         
     cuerpo.move(movement.x*deltaTime,movement.y*deltaTime);
 
