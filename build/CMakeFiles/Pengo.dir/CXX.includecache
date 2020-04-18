@@ -91,10 +91,6 @@ Juego/Juego.h
 /home/magiic/Escritorio/Pengod/Juego/Juego.h
 iostream
 -
-stdlib.h
--
-time.h
--
 
 /home/magiic/Escritorio/Pengod/mapaxml/mapa.h
 tinyxml.h

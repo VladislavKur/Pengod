@@ -65,6 +65,12 @@ Animacion.h
 /home/magiic/Escritorio/Pengod/Juego/Juego.cpp
 Juego.h
 /home/magiic/Escritorio/Pengod/Juego/Juego.h
+stdlib.h
+-
+time.h
+-
+stdio.h
+-
 
 /home/magiic/Escritorio/Pengod/Juego/Juego.h
 SFML/Graphics.hpp

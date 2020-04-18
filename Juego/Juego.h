@@ -17,8 +17,8 @@
             int numEmenigos; 
             int numObjetos;
             bool no = false;
-            std::vector<Bloque *>  listaBloque;
-            std::vector<Enemigo *>  listaEnemigos;
+            std::vector<std::vector<Bloque *>>  listaBloque;
+            std::vector<std::vector<Enemigo *>>  listaEnemigos;
 
         protected:
             Juego();
@@ -38,7 +38,7 @@
             void crearBloques(); 
             void crearEnemigos();
 
-            std::vector<Enemigo *> getListaEnemigos(){return listaEnemigos;}
+            std::vector<std::vector<Enemigo *>> getListaEnemigos(){return listaEnemigos;}
             
 
             /*void colisionBulletJugador(float deltatime);

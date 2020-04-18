@@ -4,10 +4,10 @@
 #include "Bloque.h"
 #include "Juego/Juego.h"
 #include <iostream>
-#include <stdlib.h>
-#include <time.h>
+
 
 int main() {
+  srand(time(NULL));
   /////////////
   ////START////
   /////////////
@@ -26,7 +26,7 @@ int main() {
   int accion= -1;
   
  
-  srand(time(NULL));
+  
   
 bool algo=false;
   
@@ -75,7 +75,7 @@ bool algo=false;
         PlayerSprite.x = 7,PlayerSprite.y =0;
         player.setPlayerSprite(PlayerSprite);
       // std::cout << player.posDestino().x << ", " << player.posDestino().y << std::endl;
-       if(abs((int)player.getBody().getPosition().x %32)==0){
+       if(abs((int)player.getBody().getPosition().x %32)==0 && abs((int)player.getBody().getPosition().y %32)==0){
           player.setPosDespues(player.getBody().getPosition().x+32, player.getBody().getPosition().y );
            //else player.setPosicionPlayer();
 
@@ -93,7 +93,7 @@ bool algo=false;
           
           deltaTime = clock.restart().asSeconds();
           accion = 1;
-           PlayerSprite.x = 3,PlayerSprite.y =0;
+           PlayerSprite.x = 1,PlayerSprite.y =0;
           
          
          player.setPlayerSprite(PlayerSprite);
@@ -113,7 +113,7 @@ bool algo=false;
        
                  player.setPlayerSprite(PlayerSprite);
                 // std::cout << player.posDestino().x << ", " << player.posDestino().y << std::endl;
-          if(abs((int)player.getBody().getPosition().y %32)==0)
+          if(abs((int)player.getBody().getPosition().y %32)==0 && abs((int)player.getBody().getPosition().x %32)==0)
          player.setPosDespues(player.getBody().getPosition().x, player.getBody().getPosition().y-32 );
          //else player.setPosicionPlayer();
         
@@ -169,8 +169,9 @@ bool algo=false;
     
     
     for(unsigned int k = 0; k < Juego->getListaEnemigos().size();k++) {
+      for(unsigned int n = 0; n < Juego->getListaEnemigos()[1].size();n++) {
     
-      Juego->getListaEnemigos()[k]->Update(deltaTime);
+      Juego->getListaEnemigos()[k][n]->Update(deltaTime);
     
     }
 

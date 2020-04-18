@@ -9,7 +9,7 @@
             "name": "Pengo Main",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/build/Pengo",
+            "program": "${workspaceFolder}/Pengo",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",

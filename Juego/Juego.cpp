@@ -1,5 +1,8 @@
 #pragma once
 #include "Juego.h"
+#include <stdlib.h>
+#include <time.h>
+#include <stdio.h>
 
 
 
@@ -53,8 +56,8 @@ void Juego::crearBloques(){
         for(int j = 1; j<= 15;j++){
                
             if(sad < 3){
-                  std::cout << i <<"," << j<< "rand -->"<< sad<<std::endl;
-                listaBloque.push_back(new Bloque (text, sf::Vector2u(40,18),0.25f, sf::Vector2f(i,j),0));
+                 // std::cout << i <<"," << j<< "rand -->"<< sad<<std::endl;
+                listaBloque[i].push_back(new Bloque (text, sf::Vector2u(40,18),0.25f, sf::Vector2f(i,j),0));
             }
             sad= rand()%11;
         }
@@ -63,9 +66,10 @@ void Juego::crearBloques(){
 
 void Juego::DrawBloques(sf::RenderWindow &window){
     
-    for(unsigned int i = 0; i < listaBloque.size();i++){
+     for(unsigned int i = 0; i < listaBloque.size();i++){
+        for(unsigned int j = 0; j < listaBloque[1].size();j++){
        
-        listaBloque[i]->Draw(window);
+        listaBloque[i][j]->Draw(window);
     }
     
 }
@@ -74,25 +78,25 @@ void Juego::crearEnemigos(){
      sf::Texture *text = new sf::Texture;
       text->loadFromFile("resources/pengoybees.png");
       int puto=rand()%10;
-    
+
     for(int i = 1; i <= 15;i++){
         for(int j = 1; j<= 13;j++){
-            
-            for(unsigned int k = 0; k < listaBloque.size();k++){
-                if(listaBloque[k]->getBody().getPosition().x !=i && listaBloque[k]->getBody().getPosition().y !=j){
-                    if(puto == 0){
-                        
-                        if(listaEnemigos.size() < 4){
-                             
+
+            //for(unsigned int k = 0; k < listaBloque.size();k++){
+                //if(listaBloque[k]->getBody().getPosition().x !=i && listaBloque[k]->getBody().getPosition().y !=j){
+                    if(puto == 0 ){
+
+                        if(listaEnemigos.size() < 4 ){
+                            
                         listaEnemigos.push_back(new Enemigo (text, sf::Vector2u(40,18),0.25f, sf::Vector2f(i,j)));
                         j++;
-                       
+
                         }
                     }
 
-                }
-            }
-            
+                //}
+            //}
+
              puto = rand()%10;
         }
     }
@@ -101,8 +105,9 @@ void Juego::crearEnemigos(){
 void Juego::DrawEnemigos(sf::RenderWindow &window){
   
     for(unsigned int i = 0; i < listaEnemigos.size();i++){
+        for(unsigned int j = 0; j < listaEnemigos[1].size();j++){
        
-        listaEnemigos[i]->Draw(window);
+        listaEnemigos[i][j]->Draw(window);
     }
     
 }
