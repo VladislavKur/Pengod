@@ -36,14 +36,18 @@
 
 
         
-
+            void Reinicio(sf::RenderWindow &window);
+            void Next(sf::RenderWindow &window);
+            void Borrar();
             void crearBloques(); 
             void crearEnemigos();
-            void crearBloquesR(); 
-            void crearEnemigosR();
+
+
+            
+            
 
             bool PlayerBloqueColision(Player * jugador,int ); 
-
+            int EnemigoBloqueColision();
             std::vector<std::vector<Enemigo *>> getListaEnemigos(){return listaEnemigos;}
             
 

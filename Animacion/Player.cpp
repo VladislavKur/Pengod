@@ -42,10 +42,9 @@ void Player::Update(int acciones, float deltaTime){
         //std::cout << cuerpo.getPosition().x << ", " << cuerpo.getPosition().y <<" ====" << PosDestino.x <<", " << PosDestino.y << std::endl;
       
      // std:: cout << cuerpo.getPosition().x <<", " <<cuerpo.getPosition().y <<"====" << PosDestino.x <<", " <<PosDestino.y << std::endl;
-     if((int)cuerpo.getPosition().x == (int)PosDestino.x){ movement.x = 0;} 
-     
-     if((int)cuerpo.getPosition().y == (int)PosDestino.y) { movement.y = 0;} 
-        
+     if((int)cuerpo.getPosition().x == (int)PosDestino.x){ movement.x = 0; velx=false;} 
+     if((int)cuerpo.getPosition().y == (int)PosDestino.y) { movement.y = 0; vely= false;} 
+    
     cuerpo.move(movement.x*deltaTime,movement.y*deltaTime);
 
     animacion.Update(sprite, deltaTime);
@@ -69,45 +68,6 @@ void Player::setvidas(){
    // if(vida<= 0) morir();
 }
 
-void Player::setPosicionPlayer(){
-    float resto =0;
-    float necesito = 0;
-    int final =0;
-    if((int)cuerpo.getPosition().x%32 != 0){
-        resto= (cuerpo.getPosition().x/32)-(int)(cuerpo.getPosition().x/32) ;
-        std::cout << resto <<std::endl;
-        necesito = 32-resto*32;
-        if(resto >= 16){
-            final = 32-necesito;
-            cuerpo.setPosition(cuerpo.getPosition().x+final,cuerpo.getPosition().y);
-            
-        }else{
-            cuerpo.setPosition(cuerpo.getPosition().x-necesito,cuerpo.getPosition().y);
-            
-        }
-
-        
-       
-
-    }
-
-     
-     if((int)cuerpo.getPosition().y %32 != 0) {
-        resto= (cuerpo.getPosition().x/32)-(int)(cuerpo.getPosition().x/32) ;
-        necesito = 32-resto*32;
-        if(resto >= 16){
-            final = 32-necesito;
-            cuerpo.setPosition(cuerpo.getPosition().x,cuerpo.getPosition().y+final);
-            
-        }else{
-            cuerpo.setPosition(cuerpo.getPosition().x,cuerpo.getPosition().y-necesito);
-            
-        }
-            
-
-     }
-
-}
 
 
 void Player::Draw(sf::RenderWindow &window){

@@ -8,7 +8,7 @@ class Bloque{
     public:
     Bloque(sf::Texture* textura, sf::Vector2u cantidadImagenes, float SwitchTimeSprite,sf::Vector2f pos, int );
     ~Bloque();
-    void Update(int accion, float deltaTime);
+    void Update(float deltaTime);
     void Draw(sf::RenderWindow &window);
      void setBloqueSprite(sf::Vector2u Sprites);
      void setPosDespues(float, float);
@@ -16,8 +16,6 @@ class Bloque{
     sf::Vector2f posDestino(){return PosDestino;}
 
     
-    void setPosicionPlayer();
-     
 
     
 

@@ -14,10 +14,15 @@ class Player{
      void setPosDespues(float, float);
     sf::RectangleShape getBody(){return cuerpo;}
     sf::Vector2f posDestino(){return PosDestino;}
-    bool velocidad(){return vel;}
-    bool setVel(bool v){vel = v;}
+    
+    
+    bool getvelocidadx(){return velx;}
+    void setVelx(bool v){velx = v;}
+    bool getvelocidady(){return vely;}
+    void setVely(bool v){vely = v;}
+
     void setvidas();
-    void setPosicionPlayer();
+    
      
 
     
@@ -29,11 +34,14 @@ class Player{
     sf::Vector2u fila;
     bool nopulsarCheck=false;
     float speed= 75;
-    bool vel= false;
+    
     int accion;
     
     sf::Vector2f PosDestino;
 
     int vida;
+
+    bool velx= false;
+    bool vely= false;
    
 };

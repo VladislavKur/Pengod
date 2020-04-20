@@ -25,10 +25,6 @@ int main() {
 //ANIMACIOn
   int accion= -1;
   
- 
-  
-  
-bool algo=false;
   
   sf::Vector2u PlayerSprite(0,0);
 
@@ -66,78 +62,92 @@ bool algo=false;
 
         //Mapeo del cursor
         case sf::Keyboard::Right:
-        
+         if(player.getvelocidadx() == false && player.getvelocidady() == false  ){
+         PlayerSprite.x = 7,PlayerSprite.y =0;
+          player.setPlayerSprite(PlayerSprite);
+
           if(!Juego->PlayerBloqueColision(&player,3)){
           deltaTime = clock.restart().asSeconds();
         
         accion = 3;
         
-        PlayerSprite.x = 7,PlayerSprite.y =0;
-        player.setPlayerSprite(PlayerSprite);
+       
       // std::cout << player.posDestino().x << ", " << player.posDestino().y << std::endl;
        if(abs((int)player.getBody().getPosition().x %32)==0 && abs((int)player.getBody().getPosition().y %32)==0){
           player.setPosDespues(player.getBody().getPosition().x+32, player.getBody().getPosition().y );
-           //else player.setPosicionPlayer();
-
+          player.setVelx(true);player.setVely(true);
           
           }
           
        }
-        
+        }
 
         
           break;
 
         case sf::Keyboard::Left:
-          
+         if(player.getvelocidadx() == false && player.getvelocidady() == false  ){
+          PlayerSprite.x = 3,PlayerSprite.y =0;
+          player.setPlayerSprite(PlayerSprite);
+
           if(!Juego->PlayerBloqueColision(&player,1)){
           deltaTime = clock.restart().asSeconds();
           accion = 1;
-           PlayerSprite.x = 1,PlayerSprite.y =0;
-          
-         
-         player.setPlayerSprite(PlayerSprite);
+           
          //std::cout << player.posDestino().x << ", " << player.posDestino().y << std::endl;
         if(abs((int)player.getBody().getPosition().x %32)==0)
          player.setPosDespues(player.getBody().getPosition().x-32, player.getBody().getPosition().y );
-          //else player.setPosicionPlayer();
+          player.setVelx(true);player.setVely(true);
           
           }
+        }
           break;
 
         case sf::Keyboard::Up:
+         if(player.getvelocidadx() == false && player.getvelocidady() == false  ){
+        PlayerSprite.x = 5,PlayerSprite.y =0;
+        player.setPlayerSprite(PlayerSprite);
+
         if(!Juego->PlayerBloqueColision(&player,2)){
         deltaTime = clock.restart().asSeconds();
          accion = 2;
-          PlayerSprite.x = 5,PlayerSprite.y =0;
-       
-                 player.setPlayerSprite(PlayerSprite);
+          
                 // std::cout << player.posDestino().x << ", " << player.posDestino().y << std::endl;
           if(abs((int)player.getBody().getPosition().y %32)==0 && abs((int)player.getBody().getPosition().x %32)==0)
          player.setPosDespues(player.getBody().getPosition().x, player.getBody().getPosition().y-32 );
-         //else player.setPosicionPlayer();
-        
+         player.setVelx(true);player.setVely(true);
+        }
         }
           break;
 
         case sf::Keyboard::Down:
+        if(player.getvelocidadx() == false && player.getvelocidady() == false  ){
+        PlayerSprite.x = 1,PlayerSprite.y =0;
+         player.setPlayerSprite(PlayerSprite);
+
         if(!Juego->PlayerBloqueColision(&player,0)){
         deltaTime = clock.restart().asSeconds();
         
           accion = 0;
-           PlayerSprite.x = 1,PlayerSprite.y =0;
            
-         
-         player.setPlayerSprite(PlayerSprite);
          //std::cout << player.posDestino().x << ", " << player.posDestino().y << std::endl;
          if(abs((int)player.getBody().getPosition().y %32)==0)
          player.setPosDespues(player.getBody().getPosition().x, player.getBody().getPosition().y+32 );
           //else player.setPosicionPlayer();
-          
-        }
+          player.setVelx(true);player.setVely(true);
+        }}
           break;
           case sf::Keyboard::Space:
             //empujar
+          break;
+          case sf::Keyboard::G:
+            //player.PUTODIOS();
+          break;
+          case sf::Keyboard::X:
+            Juego->Reinicio(window);
+          break;
+          case sf::Keyboard::N:
+            Juego->Next(window);
           break;
         
         //Tecla ESC para salir
@@ -164,19 +174,13 @@ bool algo=false;
     
       player.Update(accion,deltaTime);
 
+      Juego->update(deltaTime);
+
  
   
     
     
-    for(unsigned int k = 0; k < Juego->getListaEnemigos().size();k++) {
-      for(unsigned int n = 0; n < Juego->getListaEnemigos()[k].size();n++) {
-        
-        if(Juego->getListaEnemigos()[k][n] == nullptr) continue;
-      Juego->getListaEnemigos()[k][n]->Update(deltaTime);
     
-      }
-    }
-
 
     ///////////////
     /////DRAW/////
@@ -186,11 +190,7 @@ bool algo=false;
    
     Juego->DrawBloques(window);
     Juego->DrawEnemigos(window);
-   
-    
     player.Draw(window);
-   
-    
     window.display();
     
   }

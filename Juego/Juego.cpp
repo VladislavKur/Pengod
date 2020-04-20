@@ -1,4 +1,4 @@
-#pragma once
+
 #include "Juego.h"
 #include <stdlib.h>
 #include <time.h>
@@ -14,6 +14,25 @@ Juego::Juego(){ //WIP FUNCION CARGARNIVEL
     mundo->hacerSprites();
     crearBloques();
     crearEnemigos();
+   
+}
+void Juego::update(float deltatime){
+
+    for(unsigned int k = 0; k < listaEnemigos.size();k++) {
+      for(unsigned int n = 0; n < listaEnemigos[k].size();n++) {
+        
+        if(listaEnemigos[k][n] == nullptr) continue;
+            listaEnemigos[k][n]->Update(deltatime);
+
+        if(listaBloque[k][n] == nullptr) continue;
+            listaBloque[k][n]->Update(deltatime);
+    
+      }
+    }
+
+    
+
+
 }
 
 Juego* Juego::instance(){
@@ -25,6 +44,29 @@ Juego* Juego::instance(){
     }
 
     return(pinstance);
+}
+
+int Juego::EnemigoBloqueColision(){
+
+    int dir = 0;
+    float xb =0, yb = 0, xe = 0, ye = 0;
+    for(unsigned int i = 0; i< listaBloque.size();i++){
+        for(unsigned int j = 0; j<listaBloque[i].size();j++){
+
+            if(listaBloque[i][j]->getBody().getGlobalBounds().intersects(listaEnemigos[i][j]->getBody().getGlobalBounds())){
+                    xb = (int) listaBloque[i][j]->getBody().getPosition().x/32;
+                    yb = (int) listaBloque[i][j]->getBody().getPosition().y/32;
+                    xe = (int) listaEnemigos[i][j]->getBody().getPosition().x/32;
+                    ye = (int) listaEnemigos[i][j]->getBody().getPosition().y/32;
+
+                    if(xe-xb != 0 && ye-yb == 0) dir = xe - xb; //bloque a la izq == 1 ||bloque derecha == -1
+                    if(ye-yb != 0 && xe-xb == 0) dir = ye - yb; //bloque a la arriba == 1 || bloque abajo == -1
+                return dir;
+             }
+        }
+    }//fori
+
+    return dir;
 }
 
 bool Juego::PlayerBloqueColision(Player * jugador, int dir){
@@ -75,11 +117,9 @@ bool Juego::PlayerBloqueColision(Player * jugador, int dir){
     return false;
 }
 
-
-
-
-
 void Juego::crearBloques(){
+    rlistaBloque.clear();
+
      sf::Texture *text = new sf::Texture;
      std::vector<Bloque *> auxB;
       text->loadFromFile("resources/CuboDeHielo.png");
@@ -95,10 +135,10 @@ void Juego::crearBloques(){
         }
         }
         listaBloque.push_back(auxB);
+        rlistaBloque.push_back(auxB);
         auxB.clear();
     }
 }
-
 void Juego::DrawBloques(sf::RenderWindow &window){
     
      for(unsigned int i = 0; i < listaBloque.size();i++){
@@ -109,16 +149,16 @@ void Juego::DrawBloques(sf::RenderWindow &window){
     }
     
 }
-
 void Juego::crearEnemigos(){
+    rlistaEnemigos.clear();
      sf::Texture *text = new sf::Texture;
      std::vector<Enemigo *> auxE;
       text->loadFromFile("resources/pengoybees.png");
       int ran=rand()%10;
     int contadro = 0;
     while(contadro < 4)
-    for(int i = 1; i <= 15;i++){
-        for(int j = 1; j<= 13;j++){
+    for(int i = 1; i <= 13;i++){
+        for(int j = 1; j<= 15;j++){
             
             
                     if(ran == 0 ){
@@ -138,46 +178,69 @@ void Juego::crearEnemigos(){
              ran = rand()%10;
         }
         listaEnemigos.push_back(auxE);
+        rlistaEnemigos.push_back(auxE);
         auxE.clear();
     }
 }
-
 void Juego::DrawEnemigos(sf::RenderWindow &window){
   
     for(unsigned int i = 0; i < listaEnemigos.size();i++){
         for(unsigned int j = 0; j < listaEnemigos[i].size();j++){
-       if(listaEnemigos[i][j]!= nullptr)
-        listaEnemigos[i][j]->Draw(window);
-    }
+            if(listaEnemigos[i][j]!= nullptr)
+                listaEnemigos[i][j]->Draw(window);
+        }
     }
     
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 void Juego::Draw(sf::RenderWindow &window){
     Mapa * mundo = Mapa::instance(); 
     mundo->draw(window);
 
  }
+
+
+
+void Juego::Borrar(){
+     listaEnemigos.clear(); 
+     listaBloque.clear();
+       
+}
+void Juego::Reinicio(sf::RenderWindow &window){
+    std::vector<Enemigo *> auxE;
+    std::vector<Bloque *> auxB;
+
+    Borrar();
+    for(unsigned int i = 0; i< rlistaBloque.size();i++){
+        for(unsigned int j = 0; j < rlistaBloque[i].size();j++){
+            if(rlistaBloque[i][j] != nullptr){
+                auxB.push_back(rlistaBloque[i][j]);
+                
+            }else{
+                auxB.push_back(NULL);
+            }
+        }
+        listaBloque.push_back(auxB);
+        auxB.clear();
+    }
+     for(unsigned int i = 0; i< rlistaEnemigos.size();i++){
+        for(unsigned int j = 0; j < rlistaEnemigos[i].size();j++){
+            if(rlistaEnemigos[i][j] != nullptr){
+                auxE.push_back(rlistaEnemigos[i][j]);
+                
+            }else{
+                auxE.push_back(NULL);
+            }
+        }
+        listaEnemigos.push_back(auxE);
+        auxE.clear();
+    }
+    DrawBloques(window);
+    DrawEnemigos(window);
+}
+void Juego::Next(sf::RenderWindow &window){
+    Borrar();crearBloques();crearEnemigos();
+    DrawBloques(window);
+    DrawEnemigos(window);
+}
+
 

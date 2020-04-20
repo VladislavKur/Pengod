@@ -1,4 +1,4 @@
-#pragma once
+
 #include <SFML/Graphics.hpp>
 #include "Bloque.h"
 #include <iostream>
@@ -39,7 +39,7 @@ animacion(textura, cantidadImagenes, SwitchTimeSprite)
  
 Bloque::~Bloque(){}
           
-void Bloque::Update( int accion,float deltaTime){
+void Bloque::Update(float deltaTime){
     sf::Vector2u sprite;
     
         //std::cout << cuerpo.getPosition().x << ", " << cuerpo.getPosition().y <<" ====" << PosDestino.x <<", " << PosDestino.y << std::endl;
