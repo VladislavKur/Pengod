@@ -67,7 +67,7 @@ bool algo=false;
         //Mapeo del cursor
         case sf::Keyboard::Right:
         
-          
+          if(!Juego->PlayerBloqueColision(&player,3)){
           deltaTime = clock.restart().asSeconds();
         
         accion = 3;
@@ -82,7 +82,7 @@ bool algo=false;
           
           }
           
-       
+       }
         
 
         
@@ -90,7 +90,7 @@ bool algo=false;
 
         case sf::Keyboard::Left:
           
-          
+          if(!Juego->PlayerBloqueColision(&player,1)){
           deltaTime = clock.restart().asSeconds();
           accion = 1;
            PlayerSprite.x = 1,PlayerSprite.y =0;
@@ -102,11 +102,11 @@ bool algo=false;
          player.setPosDespues(player.getBody().getPosition().x-32, player.getBody().getPosition().y );
           //else player.setPosicionPlayer();
           
-          
+          }
           break;
 
         case sf::Keyboard::Up:
-        
+        if(!Juego->PlayerBloqueColision(&player,2)){
         deltaTime = clock.restart().asSeconds();
          accion = 2;
           PlayerSprite.x = 5,PlayerSprite.y =0;
@@ -117,11 +117,11 @@ bool algo=false;
          player.setPosDespues(player.getBody().getPosition().x, player.getBody().getPosition().y-32 );
          //else player.setPosicionPlayer();
         
-        
+        }
           break;
 
         case sf::Keyboard::Down:
-        
+        if(!Juego->PlayerBloqueColision(&player,0)){
         deltaTime = clock.restart().asSeconds();
         
           accion = 0;
@@ -134,7 +134,7 @@ bool algo=false;
          player.setPosDespues(player.getBody().getPosition().x, player.getBody().getPosition().y+32 );
           //else player.setPosicionPlayer();
           
-        
+        }
           break;
           case sf::Keyboard::Space:
             //empujar
@@ -169,10 +169,12 @@ bool algo=false;
     
     
     for(unsigned int k = 0; k < Juego->getListaEnemigos().size();k++) {
-      for(unsigned int n = 0; n < Juego->getListaEnemigos()[1].size();n++) {
-    
+      for(unsigned int n = 0; n < Juego->getListaEnemigos()[k].size();n++) {
+        
+        if(Juego->getListaEnemigos()[k][n] == nullptr) continue;
       Juego->getListaEnemigos()[k][n]->Update(deltaTime);
     
+      }
     }
 
 

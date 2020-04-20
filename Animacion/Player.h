@@ -2,7 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 #include "Animacion.h"
-#include "../Juego/Juego.h"
+
 
 class Player{
     public:

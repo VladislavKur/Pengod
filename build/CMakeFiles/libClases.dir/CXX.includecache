@@ -59,8 +59,6 @@ SFML/Graphics.hpp
 -
 Animacion.h
 /home/magiic/Escritorio/Pengod/Animacion/Animacion.h
-../Juego/Juego.h
-/home/magiic/Escritorio/Pengod/Juego/Juego.h
 
 /home/magiic/Escritorio/Pengod/Juego/Juego.cpp
 Juego.h

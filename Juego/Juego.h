@@ -19,6 +19,9 @@
             bool no = false;
             std::vector<std::vector<Bloque *>>  listaBloque;
             std::vector<std::vector<Enemigo *>>  listaEnemigos;
+            std::vector<std::vector<Bloque *>>  rlistaBloque;
+            std::vector<std::vector<Enemigo *>>  rlistaEnemigos;
+            
 
         protected:
             Juego();
@@ -32,34 +35,19 @@
             void DrawEnemigos(sf::RenderWindow &window);
 
 
-            bool ComprobarMov(float);      
-            int MovAleatorio(); 
+        
 
             void crearBloques(); 
             void crearEnemigos();
+            void crearBloquesR(); 
+            void crearEnemigosR();
+
+            bool PlayerBloqueColision(Player * jugador,int ); 
 
             std::vector<std::vector<Enemigo *>> getListaEnemigos(){return listaEnemigos;}
             
 
-            /*void colisionBulletJugador(float deltatime);
-            void colisionBulletEnemigo(float deltaTime);
-            void colisionPlayerMundo(float deltaTime);
-            void colisionBulletMundo(float deltaTime);
-
-            void crearObjetos();
-            void destruirObjetos(Objeto*);
-            void crearEnemigos();
-            Player *getJugador(){return jugador;};
-            void matarEnemigo(Enemigo* enem);
-            void matarJugador();
-            void disparar(float deltaTime);
-            void dispararEnemigo(float deltaTime, float x, float y, bool direccion);
-            void colisionEnemigoPlayer(Enemigo* enem, float deltaTime);*/
-            
-
-
-            
-            //sf::View view;
+       
     };
 
 #endif
