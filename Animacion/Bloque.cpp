@@ -26,6 +26,7 @@ animacion(textura, cantidadImagenes, SwitchTimeSprite)
 
      
     cuerpo.setTexture(text);
+    
 
    //por defecto es un bloque de hielo, no diamante ese raro
 
@@ -62,5 +63,6 @@ void Bloque::setBloqueSprite(sf::Vector2u Sprites){
 
 
 void Bloque::Draw(sf::RenderWindow &window){
+    cuerpo.setTextureRect(sf::IntRect (0,0,16,16));
     window.draw(cuerpo);
 }

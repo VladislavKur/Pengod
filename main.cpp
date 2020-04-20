@@ -188,9 +188,12 @@ int main() {
     window.clear();
     Juego->Draw(window);
    
+   
+    
     Juego->DrawBloques(window);
     Juego->DrawEnemigos(window);
     player.Draw(window);
+    
     window.display();
     
   }

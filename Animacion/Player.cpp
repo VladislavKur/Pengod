@@ -7,8 +7,8 @@ animacion(textura, cantidadImagenes, SwitchTimeSprite)
 {
     
     //matriz de 13*15 empezando en 1,1
-    int multiX = 1*2; //min
-    int multiY = 1*2;
+    int multiX = 7*2; //min
+    int multiY = 8*2;
     cuerpo.setSize(sf::Vector2f(16.0f*2,16.0f*2));
     cuerpo.setPosition(16*multiX,16*multiY);
     cuerpo.setTexture(textura);

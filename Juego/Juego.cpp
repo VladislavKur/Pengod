@@ -24,6 +24,14 @@ void Juego::update(float deltatime){
         if(listaEnemigos[k][n] == nullptr) continue;
             listaEnemigos[k][n]->Update(deltatime);
 
+       
+    
+      }
+    }
+    for(unsigned int k = 0; k < listaBloque.size();k++) {
+      for(unsigned int n = 0; n < listaBloque[k].size();n++) {
+       
+
         if(listaBloque[k][n] == nullptr) continue;
             listaBloque[k][n]->Update(deltatime);
     
@@ -126,7 +134,7 @@ void Juego::crearBloques(){
     int sad= rand()%8;
     for(int i = 1; i <= 13;i++){
         for(int j = 1; j<= 15;j++){
-            if(i != 1 || j != 1){ // PREGUNTAR A FIDEL QUE MIERDAS PASA, ESTO HACE QUE NO HAYA BLOQUE EN EL 1,1 SIN SENTIDO CON OPERADOR ||
+            if(i!= 7 || j != 8){ // PREGUNTAR A FIDEL QUE MIERDAS PASA, ESTO HACE QUE NO HAYA BLOQUE EN EL 1,1 SIN SENTIDO CON OPERADOR ||
             if(sad < 3){
                  // std::cout << i <<"," << j<< "rand -->"<< sad<<std::endl;
                 auxB.push_back(new Bloque (text, sf::Vector2u(40,18),0.25f, sf::Vector2f(i,j),0));
@@ -140,11 +148,13 @@ void Juego::crearBloques(){
     }
 }
 void Juego::DrawBloques(sf::RenderWindow &window){
-    
+
      for(unsigned int i = 0; i < listaBloque.size();i++){
         for(unsigned int j = 0; j < listaBloque[i].size();j++){
-        if(listaBloque[i][j]!= nullptr)
+        if(listaBloque[i][j]!= nullptr){
         listaBloque[i][j]->Draw(window);
+        std::cout << listaBloque[i][j]->getBody().getPosition().x/32 <<" , " << listaBloque[i][j]->getBody().getPosition().y/32 << " BLOQUES" << std::endl;
+        }
         }
     }
     
@@ -154,28 +164,29 @@ void Juego::crearEnemigos(){
      sf::Texture *text = new sf::Texture;
      std::vector<Enemigo *> auxE;
       text->loadFromFile("resources/pengoybees.png");
-      int ran=rand()%10;
+      int ran=rand()%12;
     int contadro = 0;
-    while(contadro < 4)
+    //while(contadro < 100)
     for(int i = 1; i <= 13;i++){
         for(int j = 1; j<= 15;j++){
             
             
                     if(ran == 0 ){
+                         if((i != 1 || j != 1 ) && (i!= 7 || j != 8)){
                         
-                        if(contadro < 4 && listaBloque[i][j] == NULL){
+                        if(contadro < 4 && listaBloque[i-1][j-1] == NULL){
                             
                         auxE.push_back(new Enemigo (text, sf::Vector2u(40,18),0.25f, sf::Vector2f(i,j)));
-                        j++;
+                        
                         contadro++;
 
                         }else auxE.push_back(nullptr);
                     }
 
-                //}
-            //}
+                }
+            
 
-             ran = rand()%10;
+             ran = rand()%12;
         }
         listaEnemigos.push_back(auxE);
         rlistaEnemigos.push_back(auxE);
@@ -183,12 +194,13 @@ void Juego::crearEnemigos(){
     }
 }
 void Juego::DrawEnemigos(sf::RenderWindow &window){
-  
+    int contador = 0;
     for(unsigned int i = 0; i < listaEnemigos.size();i++){
         for(unsigned int j = 0; j < listaEnemigos[i].size();j++){
-            if(listaEnemigos[i][j]!= nullptr)
+            if(listaEnemigos[i][j]!= nullptr){
                 listaEnemigos[i][j]->Draw(window);
-        }
+                std::cout << listaEnemigos[i][j]->getBody().getPosition().x/32 <<" , " << listaEnemigos[i][j]->getBody().getPosition().y/32 << " ENEMIGOS ->" << contador<<std::endl;
+        }}
     }
     
 }
