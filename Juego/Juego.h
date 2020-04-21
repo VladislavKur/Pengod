@@ -29,7 +29,7 @@
 
         public:
             static Juego *instance();
-            void update(float deltaTime);
+            void update(float deltaTime, Player * );
             
             void Draw(sf::RenderWindow &window);
             void DrawBloques(sf::RenderWindow &window);
@@ -49,7 +49,7 @@
 
             bool PlayerBloqueColision(Player * jugador,int ); 
             int EnemigoBloqueColision();
-            int BloqueBloqueColision(Player *);
+            int BloqueBloqueColision(Player *, float);
             std::vector<std::vector<Enemigo *>> getListaEnemigos(){return listaEnemigos;}
             
 

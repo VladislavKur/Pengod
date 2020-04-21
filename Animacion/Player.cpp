@@ -26,7 +26,7 @@ void Player::Update(int acciones, float deltaTime){
     sf::Vector2f movement;
     sf::Vector2u sprite;
     
-        
+    accion= acciones;    
         
 
       switch (acciones){

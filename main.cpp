@@ -146,7 +146,7 @@ int main() {
         }}
           break;
           case sf::Keyboard::Space:
-             //Juego
+             Juego->BloqueBloqueColision(&player, deltaTime);
           break;
           case sf::Keyboard::G:
             //player.PUTODIOS();
@@ -182,7 +182,7 @@ int main() {
     
       player.Update(accion,deltaTime);
 
-      Juego->update(deltaTime);
+      Juego->update(deltaTime, &player);
 
  
   

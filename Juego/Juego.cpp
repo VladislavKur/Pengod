@@ -16,7 +16,7 @@ Juego::Juego(){ //WIP FUNCION CARGARNIVEL
     crearEnemigos();
    
 }
-void Juego::update(float deltatime){
+void Juego::update(float deltatime, Player * player){
 
     for(unsigned int k = 0; k < listaEnemigos.size();k++) {
       for(unsigned int n = 0; n < listaEnemigos[k].size();n++) {
@@ -33,7 +33,7 @@ void Juego::update(float deltatime){
        
 
         if(listaBloque[k][n] == nullptr) continue;
-            //listaBloque[k][n]->Update(deltatime,false, player);
+            listaBloque[k][n]->Update(deltatime,false, player);
     
       }
     }
@@ -43,36 +43,84 @@ void Juego::update(float deltatime){
 
 }
 
-int Juego::BloqueBloqueColision(Player * player){
+int Juego::BloqueBloqueColision(Player * player, float deltaTime){
     int dir = 0;
-    int dirPlayer = player->getAcciones();
+    int dirPlayer = player->getAcciones(); // 0 pengo arriba 1 pengo derecha 2 pengo abajo 3 pengo derecha (dir opuesta a la normal)
     float xb =0, yb = 0, xe = 0, ye = 0;
-    for(unsigned int i = 0; i< listaBloque.size();i++){
-        for(unsigned int j = 0; j<listaBloque[i].size();j++){
-            if(listaBloque[i][j]->getMov() == true){
-
-            
-                /*for(unsigned int n = 0; i< listaBloque.size();i++){
-                    for(unsigned int m = 0; j<listaBloque[i].size();j++){
-                        if(listaBloque[i][j]->getBody().getGlobalBounds().intersects(listaBloque[n][m]->getBody().getGlobalBounds())){
-
-                            xe = (int) listaBloque[i][j]->getBody().getPosition().x/32;
-                            ye = (int) listaBloque[i][j]->getBody().getPosition().y/32;
-
-                            xb = (int) listaBloque[n][m]->getBody().getPosition().x/32;
-                            yb = (int) listaBloque[n][m]->getBody().getPosition().y/32;
-
-                            if(xe-xb != 0 && ye-yb == 0) dir = xe - xb; //bloque a la izq == 1 ||bloque derecha == -1
-                            if(ye-yb != 0 && xe-xb == 0) dir = ye - yb; //bloque a la arriba == 1 || bloque abajo == -1
-                            return dir;
-
+    
+    int i = player->getBody().getPosition().x/32-1;
+    int j = player->getBody().getPosition().y/32-1;
+    std::cout << i <<", " << j << std::endl;
+    
+            switch (dirPlayer)
+            {
+            case 0: if(listaBloque[i][j+1] != NULL){ // bloque se mueve hacia abajo
+                    std::cout << listaBloque[i][j]->getBody().getPosition().x/32 << ", " << listaBloque[i][j]->getBody().getPosition().y/32 <<std::endl;
+                    delete listaBloque[i][j]; listaBloque[i][j] =NULL;
+                    }else{
+                        for(unsigned int n = j+1; j< listaBloque[i].size();n++){
+                            if(listaBloque[i][n] == NULL){
+                                if(listaBloque[i][j] == NULL) std::cout << "NULL CASE 0" << std::endl;
+                                listaBloque[i][j]->getBody().move(0,200*deltaTime);
+                               
+                            }else break;
                         }
-                    }//forn
-                }//forM
-                */
+                        
+                    }
+
+
+
+
+
+                break;
+            case 1: if(listaBloque[i-1][j] != NULL){ //bloque se mueve hacia izq
+             std::cout << listaBloque[i][j]->getBody().getPosition().x/32 << ", " << listaBloque[i][j]->getBody().getPosition().y/32 <<std::endl;
+                    delete listaBloque[i][j]; listaBloque[i][j] =NULL;
+                    }else{
+                        for(unsigned int n = i-1; j == 0 ;n--){
+                            if(listaBloque[n][j] == NULL){
+                                if(listaBloque[i][j] == NULL) std::cout << "NULL CASE 1" << std::endl;
+                                listaBloque[i][j]->getBody().move(0,200*deltaTime);
+                               
+                            }else break;
+                        }
+                        
+                    }
+                break;
+            case 2: if(listaBloque[i][j-1] != NULL){ //bloque se mueve hacia arriba
+             std::cout << listaBloque[i][j]->getBody().getPosition().x/32 << ", " << listaBloque[i][j]->getBody().getPosition().y/32 <<std::endl;
+                    delete listaBloque[i][j]; listaBloque[i][j] =NULL;
+                    }else{
+                        for(unsigned int n = j-1; j == 0;n--){
+                            if(listaBloque[i][n] == NULL){
+                                if(listaBloque[i][j] == NULL) std::cout << "NULL CASE 2" << std::endl;
+                                listaBloque[i][j]->getBody().move(0,200*deltaTime);
+                               
+                            } else break;
+                        }
+                        
+                    }
+                break;
+            case 3: if(listaBloque[i+1][j] != NULL){ //bloque se mueve hacia derecha
+                    std::cout << listaBloque[i][j]->getBody().getPosition().x/32 << ", " << listaBloque[i][j]->getBody().getPosition().y/32 <<std::endl;
+                    delete listaBloque[i][j]; listaBloque[i][j] =NULL;
+                    }else{
+                        for(unsigned int n = i+1; j< listaBloque[i].size();n++){
+                            if(listaBloque[n][j] == NULL ){
+                                if(listaBloque[i][j] == NULL) std::cout << "NULL CASE 3" << std::endl;
+                                listaBloque[i][j]->getBody().move(200*deltaTime,0);
+                            }else break;
+                        
+                        }   
+                    }
+                break;
+            
+            default:
+                break;
             }
-        }//forj
-    }//fori
+
+
+          
     return dir;
 }
 
@@ -187,7 +235,7 @@ void Juego::DrawBloques(sf::RenderWindow &window){
         for(unsigned int j = 0; j < listaBloque[i].size();j++){
         if(listaBloque[i][j]!= nullptr){
         listaBloque[i][j]->Draw(window);
-        std::cout << listaBloque[i][j]->getBody().getPosition().x/32 <<" , " << listaBloque[i][j]->getBody().getPosition().y/32 << " BLOQUES" << std::endl;
+       
         }
         }
     }
@@ -233,7 +281,7 @@ void Juego::DrawEnemigos(sf::RenderWindow &window){
         for(unsigned int j = 0; j < listaEnemigos[i].size();j++){
             if(listaEnemigos[i][j]!= nullptr){
                 listaEnemigos[i][j]->Draw(window);
-                std::cout << listaEnemigos[i][j]->getBody().getPosition().x/32 <<" , " << listaEnemigos[i][j]->getBody().getPosition().y/32 << " ENEMIGOS ->" << contador<<std::endl;
+                
         }}
     }
     
