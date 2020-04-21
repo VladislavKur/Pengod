@@ -30,12 +30,12 @@ int main() {
 
   Player player(&playerTexture, sf::Vector2u(40,18),0.25f);
 
-  
+  std::vector<std::vector<Bloque *>>  listaBloque;
  
 
   float deltaTime =0.0f;
 
-
+  listaBloque =Juego->getListaBloque();
   
 
   sf::Clock clock;
@@ -145,10 +145,7 @@ int main() {
           player.setVelx(true);player.setVely(true);
         }}
           break;
-          case sf::Keyboard::Space:
-             //Juego->BloqueBloqueColision(&player, deltaTime);
-             //Juego->Emupujar();
-          break;
+        
           case sf::Keyboard::G:
             //player.PUTODIOS();
           break;

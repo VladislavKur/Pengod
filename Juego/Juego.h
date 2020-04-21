@@ -43,7 +43,7 @@
             void crearBloques(); 
             void crearEnemigos();
 
-            void empujar();
+            
 
 
             
@@ -51,8 +51,9 @@
 
             bool PlayerBloqueColision(Player * jugador,int ); 
             int EnemigoBloqueColision();
-            int BloqueBloqueColision(Player *, float);
+            sf::Vector2f BloqueBloqueColision(Player *, Bloque *);
             std::vector<std::vector<Enemigo *>> getListaEnemigos(){return listaEnemigos;}
+            std::vector<std::vector<Bloque *>> getListaBloque(){return listaBloque;}
             
 
        

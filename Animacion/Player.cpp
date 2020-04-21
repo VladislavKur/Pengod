@@ -39,9 +39,7 @@ void Player::Update(int acciones, float deltaTime){
 
         default :  break;
         }
-        //std::cout << cuerpo.getPosition().x << ", " << cuerpo.getPosition().y <<" ====" << PosDestino.x <<", " << PosDestino.y << std::endl;
-      
-     // std:: cout << cuerpo.getPosition().x <<", " <<cuerpo.getPosition().y <<"====" << PosDestino.x <<", " <<PosDestino.y << std::endl;
+       
      if((int)cuerpo.getPosition().x == (int)PosDestino.x){ movement.x = 0; velx=false;} 
      if((int)cuerpo.getPosition().y == (int)PosDestino.y) { movement.y = 0; vely= false;} 
     

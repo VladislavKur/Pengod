@@ -20,7 +20,7 @@ class Bloque{
     bool getMov(){return mov;}
     void setMov(bool);
 
-    
+    void setAccion(int a){dir = a;}
 
     
 
@@ -30,9 +30,10 @@ class Bloque{
     Animacion animacion;
     sf::Vector2u fila;
     bool mov=false;
-    float speed= 200;
-    int accion;
+    float speed=400;
+    int dir;
     int tipo = 0;
+    float tiempoT =0;
     
     sf::Vector2f PosDestino;
 

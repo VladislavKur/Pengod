@@ -42,18 +42,16 @@ void Juego::update(float deltatime, Player * player){
 
 
 }
-void  empujar(){
-    
-}    
 
-int Juego::BloqueBloqueColision(Player * player, float deltaTime){
-    int dir = -1;
-    int dirPlayer = player->getAcciones(); // 0 pengo arriba 1 pengo derecha 2 pengo abajo 3 pengo derecha (dir opuesta a la normal)
+
+sf::Vector2f Juego::BloqueBloqueColision(Player * player, Bloque * bloque){
     
+    int dirPlayer = player->getAcciones(); // 0 pengo arriba 1 pengo derecha 2 pengo abajo 3 pengo derecha (dir opuesta a la normal)
+    sf::Vector2f res(-1,-1);
     
     int i = player->getBody().getPosition().x/32-1;
     int j = player->getBody().getPosition().y/32-1;
-    std::cout << i <<", " << j << std::endl;
+    //std::cout << i <<", " << j << std::endl;
     
             switch (dirPlayer)
             {
@@ -63,9 +61,12 @@ int Juego::BloqueBloqueColision(Player * player, float deltaTime){
                     }else{
 
                         if(listaBloque[i][j+1] != NULL){
-                            for(int r = j+2; r < listaBloque[i].size();r++){
-                                if(listaBloque[i][r] == NULL)
-                                return 0;
+                            for(unsigned int r = j+2; r < listaBloque[i].size();r++){
+                                if(listaBloque[i][r] == NULL){
+                                listaBloque[i][j+1]->setAccion(0);
+                                res.x = listaBloque[i][j+1]->getBody().getPosition().x/32;
+                                res.y = listaBloque[i][j+1]->getBody().getPosition().y/32;
+                                }
                             }
 
                         }
@@ -85,8 +86,12 @@ int Juego::BloqueBloqueColision(Player * player, float deltaTime){
                     }else{
                          if(listaBloque[i-1][j] != NULL){
                             for(int r = i-2; r >= 0;r--){
-                                if(listaBloque[i][r] == NULL)
-                                return 1;
+                                if(listaBloque[i][r] == NULL){
+                                    listaBloque[i-1][j]->setAccion(1);
+                                    res.x = listaBloque[i-1][j]->getBody().getPosition().x/32;
+                                    res.y = listaBloque[i-1][j]->getBody().getPosition().y/32;
+                                }
+                                
                             }
 
                         }
@@ -99,8 +104,13 @@ int Juego::BloqueBloqueColision(Player * player, float deltaTime){
                     }else{
                          if(listaBloque[i][j-1] != NULL){
                             for(int r = j-2; r >= 0;r--){
-                                if(listaBloque[i][r] == NULL)
-                                return 2;
+                                if(listaBloque[i][r] == NULL){
+                                    listaBloque[i][j-1]->setAccion(2);
+                                    
+                                    res.x = listaBloque[i][j-1]->getBody().getPosition().x/32;
+                                    res.y = listaBloque[i][j-1]->getBody().getPosition().y/32;
+                                }
+                                
                             }
 
                         }
@@ -112,9 +122,13 @@ int Juego::BloqueBloqueColision(Player * player, float deltaTime){
                     delete listaBloque[i+1][j]; listaBloque[i+1][j] =NULL;
                     }else{
                          if(listaBloque[i+1][j] != NULL){
-                            for(int r = i+2; r < listaBloque.size();r++){
-                                if(listaBloque[i][r] == NULL)
-                                return 3;
+                            for(unsigned int r = i+2; r < listaBloque.size();r++){
+                                if(listaBloque[i][r] == NULL){
+                                    listaBloque[i+1][j]->setAccion(3);
+                                    res.x = listaBloque[i+1][j]->getBody().getPosition().x/32;
+                                    res.y = listaBloque[i+1][j]->getBody().getPosition().y/32;
+                                }
+                                
                             }
 
                         }
@@ -127,8 +141,8 @@ int Juego::BloqueBloqueColision(Player * player, float deltaTime){
             }
 
 
-          
-    return dir;
+      
+    return res;
 }
 
 Juego* Juego::instance(){
