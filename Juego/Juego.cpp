@@ -38,13 +38,27 @@ void Juego::update(float deltatime, Player * player){
       }
     }
 
+    sf::Vector2f coord(-1,-1);
+    
+    std::vector<std::vector<Bloque *>>lista = getListaBloque();
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
+        Bloque* bloq;
+        
+        coord = BloqueBloqueColision(player);
+        coord.x = (int)coord.x;
+        coord.y = (int)coord.y;
+       if(coord.x > -1 && coord.y >-1 && coord.x < 14 && coord.y < 16) 
+       if(lista[coord.x][coord.y] != nullptr){
+       //std::cout << cuerpo.getPosition().x << ", " << cuerpo.getPosition().y << std::endl;
+       }
+        }
     
 
 
 }
 
 
-sf::Vector2f Juego::BloqueBloqueColision(Player * player, Bloque * bloque){
+sf::Vector2f Juego::BloqueBloqueColision(Player * player){
     
     int dirPlayer = player->getAcciones(); // 0 pengo arriba 1 pengo derecha 2 pengo abajo 3 pengo derecha (dir opuesta a la normal)
     sf::Vector2f res(-1,-1);
@@ -70,15 +84,7 @@ sf::Vector2f Juego::BloqueBloqueColision(Player * player, Bloque * bloque){
                             }
 
                         }
-                        
-                       
-                        
                     }
-
-
-
-
-
                 break;
             case 1: if(listaBloque[i-1][j] != NULL && listaBloque[i-2][j]!=NULL){ //bloque se mueve hacia izq
              //std::cout << listaBloque[i][j]->getBody().getPosition().x/32 << ", " << listaBloque[i][j]->getBody().getPosition().y/32 <<std::endl;

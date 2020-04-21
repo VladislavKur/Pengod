@@ -51,7 +51,7 @@
 
             bool PlayerBloqueColision(Player * jugador,int ); 
             int EnemigoBloqueColision();
-            sf::Vector2f BloqueBloqueColision(Player *, Bloque *);
+            sf::Vector2f BloqueBloqueColision(Player *);
             std::vector<std::vector<Enemigo *>> getListaEnemigos(){return listaEnemigos;}
             std::vector<std::vector<Bloque *>> getListaBloque(){return listaBloque;}
             
