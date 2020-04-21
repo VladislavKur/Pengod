@@ -43,10 +43,29 @@ Bloque::~Bloque(){}
 void Bloque::Update(float deltaTime, bool mov, Player* player){
     sf::Vector2u sprite;
     sf::Vector2f movim;
+    int accion = -1;
     Juego* juego = Juego::instance();
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-    juego->BloqueBloqueColision(player,deltaTime);
     
+    accion = juego->BloqueBloqueColision(player,deltaTime);
+        
+        switch (accion)
+        {
+        case -1: movim.x = 0; movim.y = 0;
+            break;
+        case 0: movim.x = 0; movim.y = speed;
+            break;
+        case 1: movim.x = -speed; movim.y = 0;
+            break;
+        case 2: movim.x = 0; movim.y = -speed;
+            break;
+        case 3: movim.x = speed; movim.y = 0;
+            break;
+        
+        default:
+            break;
+        }
+    
+    cuerpo.move(movim.x*deltaTime,movim.y*deltaTime);
 
     animacion.Update(sprite, deltaTime);
     cuerpo.setTextureRect(animacion.textureRect);

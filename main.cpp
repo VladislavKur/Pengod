@@ -146,7 +146,8 @@ int main() {
         }}
           break;
           case sf::Keyboard::Space:
-             Juego->BloqueBloqueColision(&player, deltaTime);
+             //Juego->BloqueBloqueColision(&player, deltaTime);
+             //Juego->Emupujar();
           break;
           case sf::Keyboard::G:
             //player.PUTODIOS();

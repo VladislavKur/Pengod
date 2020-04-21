@@ -42,11 +42,14 @@ void Juego::update(float deltatime, Player * player){
 
 
 }
+void  empujar(){
+    
+}    
 
 int Juego::BloqueBloqueColision(Player * player, float deltaTime){
-    int dir = 0;
+    int dir = -1;
     int dirPlayer = player->getAcciones(); // 0 pengo arriba 1 pengo derecha 2 pengo abajo 3 pengo derecha (dir opuesta a la normal)
-    float xb =0, yb = 0, xe = 0, ye = 0;
+    
     
     int i = player->getBody().getPosition().x/32-1;
     int j = player->getBody().getPosition().y/32-1;
@@ -54,17 +57,20 @@ int Juego::BloqueBloqueColision(Player * player, float deltaTime){
     
             switch (dirPlayer)
             {
-            case 0: if(listaBloque[i][j+1] != NULL){ // bloque se mueve hacia abajo
-                    std::cout << listaBloque[i][j]->getBody().getPosition().x/32 << ", " << listaBloque[i][j]->getBody().getPosition().y/32 <<std::endl;
-                    delete listaBloque[i][j]; listaBloque[i][j] =NULL;
+            case 0: if(listaBloque[i][j+1] != NULL && listaBloque[i][j+2] != NULL){ // bloque se mueve hacia abajo
+                    //std::cout << listaBloque[i][j]->getBody().getPosition().x/32 << ", " << listaBloque[i][j]->getBody().getPosition().y/32 <<std::endl;
+                    delete listaBloque[i][j+1]; listaBloque[i][j+1] =NULL;
                     }else{
-                        for(unsigned int n = j+1; j< listaBloque[i].size();n++){
-                            if(listaBloque[i][n] == NULL){
-                                if(listaBloque[i][j] == NULL) std::cout << "NULL CASE 0" << std::endl;
-                                listaBloque[i][j]->getBody().move(0,200*deltaTime);
-                               
-                            }else break;
+
+                        if(listaBloque[i][j+1] != NULL){
+                            for(int r = j+2; r < listaBloque[i].size();r++){
+                                if(listaBloque[i][r] == NULL)
+                                return 0;
+                            }
+
                         }
+                        
+                       
                         
                     }
 
@@ -73,45 +79,46 @@ int Juego::BloqueBloqueColision(Player * player, float deltaTime){
 
 
                 break;
-            case 1: if(listaBloque[i-1][j] != NULL){ //bloque se mueve hacia izq
-             std::cout << listaBloque[i][j]->getBody().getPosition().x/32 << ", " << listaBloque[i][j]->getBody().getPosition().y/32 <<std::endl;
-                    delete listaBloque[i][j]; listaBloque[i][j] =NULL;
+            case 1: if(listaBloque[i-1][j] != NULL && listaBloque[i-2][j]!=NULL){ //bloque se mueve hacia izq
+             //std::cout << listaBloque[i][j]->getBody().getPosition().x/32 << ", " << listaBloque[i][j]->getBody().getPosition().y/32 <<std::endl;
+                    delete listaBloque[i-1][j]; listaBloque[i-1][j] =NULL;
                     }else{
-                        for(unsigned int n = i-1; j == 0 ;n--){
-                            if(listaBloque[n][j] == NULL){
-                                if(listaBloque[i][j] == NULL) std::cout << "NULL CASE 1" << std::endl;
-                                listaBloque[i][j]->getBody().move(0,200*deltaTime);
-                               
-                            }else break;
+                         if(listaBloque[i-1][j] != NULL){
+                            for(int r = i-2; r >= 0;r--){
+                                if(listaBloque[i][r] == NULL)
+                                return 1;
+                            }
+
                         }
                         
                     }
                 break;
-            case 2: if(listaBloque[i][j-1] != NULL){ //bloque se mueve hacia arriba
-             std::cout << listaBloque[i][j]->getBody().getPosition().x/32 << ", " << listaBloque[i][j]->getBody().getPosition().y/32 <<std::endl;
-                    delete listaBloque[i][j]; listaBloque[i][j] =NULL;
+            case 2: if(listaBloque[i][j-1] != NULL && listaBloque[i][j-2] != NULL){ //bloque se mueve hacia arriba
+             //std::cout << listaBloque[i][j]->getBody().getPosition().x/32 << ", " << listaBloque[i][j]->getBody().getPosition().y/32 <<std::endl;
+                    delete listaBloque[i][j-1]; listaBloque[i][j-1] =NULL;
                     }else{
-                        for(unsigned int n = j-1; j == 0;n--){
-                            if(listaBloque[i][n] == NULL){
-                                if(listaBloque[i][j] == NULL) std::cout << "NULL CASE 2" << std::endl;
-                                listaBloque[i][j]->getBody().move(0,200*deltaTime);
-                               
-                            } else break;
+                         if(listaBloque[i][j-1] != NULL){
+                            for(int r = j-2; r >= 0;r--){
+                                if(listaBloque[i][r] == NULL)
+                                return 2;
+                            }
+
                         }
                         
                     }
                 break;
-            case 3: if(listaBloque[i+1][j] != NULL){ //bloque se mueve hacia derecha
-                    std::cout << listaBloque[i][j]->getBody().getPosition().x/32 << ", " << listaBloque[i][j]->getBody().getPosition().y/32 <<std::endl;
-                    delete listaBloque[i][j]; listaBloque[i][j] =NULL;
+            case 3: if(listaBloque[i+1][j] != NULL && listaBloque[i+2][j] != NULL){ //bloque se mueve hacia derecha
+                    //std::cout << listaBloque[i][j]->getBody().getPosition().x/32 << ", " << listaBloque[i][j]->getBody().getPosition().y/32 <<std::endl;
+                    delete listaBloque[i+1][j]; listaBloque[i+1][j] =NULL;
                     }else{
-                        for(unsigned int n = i+1; j< listaBloque[i].size();n++){
-                            if(listaBloque[n][j] == NULL ){
-                                if(listaBloque[i][j] == NULL) std::cout << "NULL CASE 3" << std::endl;
-                                listaBloque[i][j]->getBody().move(200*deltaTime,0);
-                            }else break;
+                         if(listaBloque[i+1][j] != NULL){
+                            for(int r = i+2; r < listaBloque.size();r++){
+                                if(listaBloque[i][r] == NULL)
+                                return 3;
+                            }
+
+                        }
                         
-                        }   
                     }
                 break;
             

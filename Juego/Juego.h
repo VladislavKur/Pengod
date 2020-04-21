@@ -43,6 +43,8 @@
             void crearBloques(); 
             void crearEnemigos();
 
+            void empujar();
+
 
             
             
