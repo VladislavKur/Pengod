@@ -62,14 +62,16 @@ int main() {
 
         //Mapeo del cursor
         case sf::Keyboard::Right:
-         if(player.getvelocidadx() == false && player.getvelocidady() == false  ){
-         PlayerSprite.x = 7,PlayerSprite.y =0;
+        PlayerSprite.x = 7,PlayerSprite.y =0;
           player.setPlayerSprite(PlayerSprite);
+          accion = 3;
+         if(player.getvelocidadx() == false && player.getvelocidady() == false  ){
+         
 
           if(!Juego->PlayerBloqueColision(&player,3)){
           deltaTime = clock.restart().asSeconds();
         
-        accion = 3;
+        
         
        
       // std::cout << player.posDestino().x << ", " << player.posDestino().y << std::endl;
@@ -86,13 +88,15 @@ int main() {
           break;
 
         case sf::Keyboard::Left:
-         if(player.getvelocidadx() == false && player.getvelocidady() == false  ){
-          PlayerSprite.x = 3,PlayerSprite.y =0;
+        PlayerSprite.x = 3,PlayerSprite.y =0;
           player.setPlayerSprite(PlayerSprite);
+          accion = 1;
+         if(player.getvelocidadx() == false && player.getvelocidady() == false  ){
+          
 
           if(!Juego->PlayerBloqueColision(&player,1)){
           deltaTime = clock.restart().asSeconds();
-          accion = 1;
+          
            
          //std::cout << player.posDestino().x << ", " << player.posDestino().y << std::endl;
         if(abs((int)player.getBody().getPosition().x %32)==0)
@@ -104,13 +108,15 @@ int main() {
           break;
 
         case sf::Keyboard::Up:
-         if(player.getvelocidadx() == false && player.getvelocidady() == false  ){
         PlayerSprite.x = 5,PlayerSprite.y =0;
         player.setPlayerSprite(PlayerSprite);
+        accion = 2;
+         if(player.getvelocidadx() == false && player.getvelocidady() == false  ){
+        
 
         if(!Juego->PlayerBloqueColision(&player,2)){
         deltaTime = clock.restart().asSeconds();
-         accion = 2;
+         
           
                 // std::cout << player.posDestino().x << ", " << player.posDestino().y << std::endl;
           if(abs((int)player.getBody().getPosition().y %32)==0 && abs((int)player.getBody().getPosition().x %32)==0)
@@ -121,14 +127,16 @@ int main() {
           break;
 
         case sf::Keyboard::Down:
-        if(player.getvelocidadx() == false && player.getvelocidady() == false  ){
         PlayerSprite.x = 1,PlayerSprite.y =0;
          player.setPlayerSprite(PlayerSprite);
+          accion = 0;
+        if(player.getvelocidadx() == false && player.getvelocidady() == false  ){
+        
 
         if(!Juego->PlayerBloqueColision(&player,0)){
         deltaTime = clock.restart().asSeconds();
         
-          accion = 0;
+         
            
          //std::cout << player.posDestino().x << ", " << player.posDestino().y << std::endl;
          if(abs((int)player.getBody().getPosition().y %32)==0)
@@ -138,7 +146,7 @@ int main() {
         }}
           break;
           case sf::Keyboard::Space:
-            //empujar
+             //Juego
           break;
           case sf::Keyboard::G:
             //player.PUTODIOS();

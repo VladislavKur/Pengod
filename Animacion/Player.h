@@ -22,6 +22,8 @@ class Player{
     void setVely(bool v){vely = v;}
 
     void setvidas();
+
+    int getAcciones(){return accion;}
     
      
 
@@ -33,9 +35,9 @@ class Player{
     Animacion animacion;
     sf::Vector2u fila;
     bool nopulsarCheck=false;
-    float speed= 75;
+    float speed= 100;
     
-    int accion;
+    int accion =-1;
     
     sf::Vector2f PosDestino;
 

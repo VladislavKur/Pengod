@@ -40,12 +40,58 @@ animacion(textura, cantidadImagenes, SwitchTimeSprite)
  
 Bloque::~Bloque(){}
           
-void Bloque::Update(float deltaTime){
+void Bloque::Update(float deltaTime, bool mov, Player* player){
     sf::Vector2u sprite;
+    sf::Vector2f movim;
+    Juego* juego = Juego::instance();
+    int dir = player->getAcciones();
+    int bbColision = juego->BloqueBloqueColision();
+    //dir 0 abajo  1 izq 2 arriba 3 der
     
-        //std::cout << cuerpo.getPosition().x << ", " << cuerpo.getPosition().y <<" ====" << PosDestino.x <<", " << PosDestino.y << std::endl;
+        switch (dir)
+        {
+        case -1: movim.x = 0; movim.y= 0;
+            break;
+        case 0: movim.y = speed;
+            break;
+        case 1: movim.x = speed;
+            break;
+        case 2: movim.y = -speed;
+            break;
+        case 3: movim.x = -speed;
+            break;
+    
+        default:
+            break;
+    }
+
+
+    if(bbColision != 0){
+        switch (bbColision)
+        {
+        case -1:if(movim.x != 0 && movim.y == 0){ // esto esto derecha
+                    
+                }
+                if(movim.y != 0 && movim.x == 0){ // esto es abajo
+
+                }
+            break;
+        case 1: if(movim.x != 0 && movim.y == 0){ // esto es izq
+
+                }
+                if(movim.y != 0 && movim.x == 0){ // esto es arriba
+
+                }
+            break;
         
-   cuerpo.move(speed*deltaTime,speed*deltaTime);
+        default:
+            break;
+        }
+    }
+
+        
+        
+   cuerpo.move(movim.x*deltaTime,movim.y*deltaTime);
 
     animacion.Update(sprite, deltaTime);
     cuerpo.setTextureRect(animacion.textureRect);
@@ -58,7 +104,9 @@ void Bloque::setBloqueSprite(sf::Vector2u Sprites){
 }
 
 
-
+void Bloque::setMov(bool semueve){
+    mov = semueve;
+}
 
 
 

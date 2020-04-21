@@ -15,6 +15,10 @@ SFML/Graphics.hpp
 -
 Animacion.h
 ../Animacion/Animacion.h
+Player.h
+../Animacion/Player.h
+../Juego/Juego.h
+../Juego/Juego.h
 
 ../Animacion/Enemigo.h
 SFML/Graphics.hpp
@@ -28,11 +32,29 @@ SFML/Graphics.hpp
 Animacion.h
 ../Animacion/Animacion.h
 
+../Juego/Juego.h
+SFML/Graphics.hpp
+-
+../mapaxml/mapa.h
+../mapaxml/mapa.h
+iostream
+-
+../Animacion/Bloque.h
+../Animacion/Bloque.h
+../Animacion/Enemigo.h
+../Animacion/Enemigo.h
+../Animacion/Player.h
+../Animacion/Player.h
+
 /home/magiic/Escritorio/Pengod/Animacion/Bloque.h
 SFML/Graphics.hpp
 -
 Animacion.h
 /home/magiic/Escritorio/Pengod/Animacion/Animacion.h
+Player.h
+/home/magiic/Escritorio/Pengod/Animacion/Player.h
+../Juego/Juego.h
+/home/magiic/Escritorio/Pengod/Juego/Juego.h
 
 /home/magiic/Escritorio/Pengod/Animacion/Enemigo.h
 SFML/Graphics.hpp

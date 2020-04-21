@@ -8,6 +8,12 @@ CMakeFiles/libClases.dir/Animacion/Bloque.cpp.o
  /home/magiic/Escritorio/Pengod/Animacion/Animacion.h
  /home/magiic/Escritorio/Pengod/Animacion/Bloque.cpp
  /home/magiic/Escritorio/Pengod/Animacion/Bloque.h
+ /home/magiic/Escritorio/Pengod/Animacion/Enemigo.h
+ /home/magiic/Escritorio/Pengod/Animacion/Player.h
+ /home/magiic/Escritorio/Pengod/Juego/Juego.h
+ /home/magiic/Escritorio/Pengod/mapaxml/mapa.h
+ /home/magiic/Escritorio/Pengod/mapaxml/tinystr.h
+ /home/magiic/Escritorio/Pengod/mapaxml/tinyxml.h
 CMakeFiles/libClases.dir/Animacion/Enemigo.cpp.o
  /home/magiic/Escritorio/Pengod/Animacion/Animacion.h
  /home/magiic/Escritorio/Pengod/Animacion/Enemigo.cpp

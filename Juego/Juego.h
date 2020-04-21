@@ -8,6 +8,7 @@
 
 #ifndef JUEGO_H
 #define JUEGO_H
+    class Bloque;
 
     class Juego{
 
@@ -48,6 +49,7 @@
 
             bool PlayerBloqueColision(Player * jugador,int ); 
             int EnemigoBloqueColision();
+            int BloqueBloqueColision(Player *);
             std::vector<std::vector<Enemigo *>> getListaEnemigos(){return listaEnemigos;}
             
 

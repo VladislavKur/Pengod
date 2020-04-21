@@ -5,6 +5,7 @@ CMakeFiles/Pengo.dir/main.cpp.o: ../Animacion/Animacion.h
 CMakeFiles/Pengo.dir/main.cpp.o: ../Animacion/Bloque.h
 CMakeFiles/Pengo.dir/main.cpp.o: ../Animacion/Enemigo.h
 CMakeFiles/Pengo.dir/main.cpp.o: ../Animacion/Player.h
+CMakeFiles/Pengo.dir/main.cpp.o: ../Juego/Juego.h
 CMakeFiles/Pengo.dir/main.cpp.o: ../Animacion/Bloque.h
 CMakeFiles/Pengo.dir/main.cpp.o: ../Animacion/Enemigo.h
 CMakeFiles/Pengo.dir/main.cpp.o: ../Animacion/Player.h

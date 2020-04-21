@@ -33,7 +33,7 @@ void Juego::update(float deltatime){
        
 
         if(listaBloque[k][n] == nullptr) continue;
-            listaBloque[k][n]->Update(deltatime);
+            //listaBloque[k][n]->Update(deltatime,false, player);
     
       }
     }
@@ -41,6 +41,39 @@ void Juego::update(float deltatime){
     
 
 
+}
+
+int Juego::BloqueBloqueColision(Player * player){
+    int dir = 0;
+    int dirPlayer = player->getAcciones();
+    float xb =0, yb = 0, xe = 0, ye = 0;
+    for(unsigned int i = 0; i< listaBloque.size();i++){
+        for(unsigned int j = 0; j<listaBloque[i].size();j++){
+            if(listaBloque[i][j]->getMov() == true){
+
+            
+                /*for(unsigned int n = 0; i< listaBloque.size();i++){
+                    for(unsigned int m = 0; j<listaBloque[i].size();j++){
+                        if(listaBloque[i][j]->getBody().getGlobalBounds().intersects(listaBloque[n][m]->getBody().getGlobalBounds())){
+
+                            xe = (int) listaBloque[i][j]->getBody().getPosition().x/32;
+                            ye = (int) listaBloque[i][j]->getBody().getPosition().y/32;
+
+                            xb = (int) listaBloque[n][m]->getBody().getPosition().x/32;
+                            yb = (int) listaBloque[n][m]->getBody().getPosition().y/32;
+
+                            if(xe-xb != 0 && ye-yb == 0) dir = xe - xb; //bloque a la izq == 1 ||bloque derecha == -1
+                            if(ye-yb != 0 && xe-xb == 0) dir = ye - yb; //bloque a la arriba == 1 || bloque abajo == -1
+                            return dir;
+
+                        }
+                    }//forn
+                }//forM
+                */
+            }
+        }//forj
+    }//fori
+    return dir;
 }
 
 Juego* Juego::instance(){
@@ -64,6 +97,7 @@ int Juego::EnemigoBloqueColision(){
             if(listaBloque[i][j]->getBody().getGlobalBounds().intersects(listaEnemigos[i][j]->getBody().getGlobalBounds())){
                     xb = (int) listaBloque[i][j]->getBody().getPosition().x/32;
                     yb = (int) listaBloque[i][j]->getBody().getPosition().y/32;
+
                     xe = (int) listaEnemigos[i][j]->getBody().getPosition().x/32;
                     ye = (int) listaEnemigos[i][j]->getBody().getPosition().y/32;
 

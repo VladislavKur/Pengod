@@ -31,6 +31,10 @@ SFML/Graphics.hpp
 -
 Animacion.h
 /home/magiic/Escritorio/Pengod/Animacion/Animacion.h
+Player.h
+/home/magiic/Escritorio/Pengod/Animacion/Player.h
+../Juego/Juego.h
+/home/magiic/Escritorio/Pengod/Juego/Juego.h
 
 /home/magiic/Escritorio/Pengod/Animacion/Enemigo.cpp
 SFML/Graphics.hpp
