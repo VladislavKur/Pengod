@@ -13,10 +13,12 @@ animacion(textura, cantidadImagenes, SwitchTimeSprite)
     cuerpo.setPosition(16*multiX,16*multiY);
     cuerpo.setTexture(textura);
     PosDestino= cuerpo.getPosition();
+
+    
     
 
 
-    vida = 5;
+    vida = 3;
     
 }
  
@@ -61,10 +63,24 @@ void Player::setPosDespues(float x, float y){
 }
 
 
-void Player::setvidas(){
-    vida--;
-   // if(vida<= 0) morir();
+bool Player::PerderVida(sf::RenderWindow &window){
+    bool res = false;
+    Juego * juego= Juego::instance();
+    if(vida > 0 && !godMod){
+        vida--;
+        
+        std::cout << "VIDAS :" << vida << std::endl;
+    }
+        
+    else if(vida<= 0){
+        std::cout << "Pengo a Muerto..." <<std::endl;
+        std::cout << "Se Reinicia el nivel..." << vida << std::endl;
+        res = true;
+        juego->Next(window);
+        }
+        return res;
 }
+
 
 
 

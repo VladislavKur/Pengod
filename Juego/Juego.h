@@ -9,6 +9,7 @@
 #ifndef JUEGO_H
 #define JUEGO_H
     class Bloque;
+    class Player;
 
     class Juego{
 
@@ -25,6 +26,8 @@
 
             sf::Vector2f bcoord;
             sf::Vector2f bcoordF;
+            float timer = 0;
+            float timer2 = 0;
             
 
         protected:
@@ -32,15 +35,17 @@
 
         public:
             static Juego *instance();
-            void update(float deltaTime, Player * );
+            void update(float deltaTime, Player *,sf::RenderWindow &window );
             
             void Draw(sf::RenderWindow &window);
             void DrawBloques(sf::RenderWindow &window);
             void DrawEnemigos(sf::RenderWindow &window);
+            void DrawrBloques(sf::RenderWindow &window);
+            void DrawrEnemigos(sf::RenderWindow &window);
 
 
         
-            void Reinicio(sf::RenderWindow &window);
+            bool Reinicio(Player *, sf::RenderWindow &window);
             void Next(sf::RenderWindow &window);
             void Borrar();
             void crearBloques(); 

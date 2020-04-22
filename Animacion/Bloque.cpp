@@ -27,7 +27,9 @@ animacion(textura, cantidadImagenes, SwitchTimeSprite)
      
     cuerpo.setTexture(text);
     dir = -1;
-    
+    textu = text;
+    CI.x = cantidadImagenes.x; CI.y = cantidadImagenes.y;
+    ST = SwitchTimeSprite;
 
    //por defecto es un bloque de hielo, no diamante ese raro
 

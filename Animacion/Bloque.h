@@ -5,7 +5,7 @@
 #include "Player.h"
 #include "../Juego/Juego.h"
 
-
+class Player;
 class Bloque{
     public:
     Bloque(sf::Texture* textura, sf::Vector2u cantidadImagenes, float SwitchTimeSprite,sf::Vector2f pos, int );
@@ -20,6 +20,10 @@ class Bloque{
     bool getMov(){return mov;}
     void setMov(bool);
 
+    int getTipo(){return tipo;}
+    sf::Texture* getTexture(){return textu;}
+    sf::Vector2f getCI(){return CI;}
+    float getST(){return ST;}
     void setAccion(int a){dir = a;}
 
     
@@ -27,6 +31,9 @@ class Bloque{
     private:
 
     sf::RectangleShape cuerpo;
+    sf::Texture * textu;
+    sf::Vector2f CI;
+    float ST;
     Animacion animacion;
     sf::Vector2u fila;
     bool mov=false;

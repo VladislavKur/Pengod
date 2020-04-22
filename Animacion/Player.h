@@ -2,6 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 #include "Animacion.h"
+#include "../Juego/Juego.h"
 
 
 class Player{
@@ -21,7 +22,8 @@ class Player{
     bool getvelocidady(){return vely;}
     void setVely(bool v){vely = v;}
 
-    void setvidas();
+    bool PerderVida(sf::RenderWindow &window);
+    void setVidas(int a){vida = a;}
 
     int getAcciones(){return accion;}
     
@@ -34,6 +36,10 @@ class Player{
     sf::RectangleShape cuerpo;
     Animacion animacion;
     sf::Vector2u fila;
+
+    
+
+    bool godMod = false;
     bool nopulsarCheck=false;
     float speed= 100;
     

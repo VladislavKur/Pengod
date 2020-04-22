@@ -24,6 +24,7 @@ int main() {
 
 //ANIMACIOn
   int accion= -1;
+  bool reini = false;
   
   
   sf::Vector2u PlayerSprite(0,0);
@@ -150,7 +151,7 @@ int main() {
             //player.PUTODIOS();
           break;
           case sf::Keyboard::X:
-            Juego->Reinicio(window);
+            reini = Juego->Reinicio(&player,window);
           break;
           case sf::Keyboard::N:
             Juego->Next(window);
@@ -180,7 +181,7 @@ int main() {
     
       player.Update(accion,deltaTime);
 
-      Juego->update(deltaTime, &player);
+      Juego->update(deltaTime, &player,window);
 
  
   
@@ -196,8 +197,14 @@ int main() {
    
    
     
-    Juego->DrawBloques(window);
-    Juego->DrawEnemigos(window);
+    if(!reini){
+      Juego->DrawBloques(window);
+      Juego->DrawEnemigos(window);
+    }
+    else {
+      Juego->DrawrBloques(window);
+      Juego->DrawrEnemigos(window);
+    }
     player.Draw(window);
     
     window.display();
