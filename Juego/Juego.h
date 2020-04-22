@@ -22,6 +22,9 @@
             std::vector<std::vector<Enemigo *>>  listaEnemigos;
             std::vector<std::vector<Bloque *>>  rlistaBloque;
             std::vector<std::vector<Enemigo *>>  rlistaEnemigos;
+
+            sf::Vector2f bcoord;
+            sf::Vector2f bcoordF;
             
 
         protected:
@@ -52,6 +55,7 @@
             bool PlayerBloqueColision(Player * jugador,int ); 
             int EnemigoBloqueColision();
             sf::Vector2f BloqueBloqueColision(Player *);
+            sf::Vector2f BloqueBloqueColisionF(Player *);
             std::vector<std::vector<Enemigo *>> getListaEnemigos(){return listaEnemigos;}
             std::vector<std::vector<Bloque *>> getListaBloque(){return listaBloque;}
             
