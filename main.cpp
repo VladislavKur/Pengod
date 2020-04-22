@@ -155,9 +155,11 @@ int main() {
             Juego->morir(&player,deltaTime,window);
           break;
           case sf::Keyboard::N:
-            Juego->Next(window);
+            
             player.setVidas(0);
             Juego->morir(&player,deltaTime,window);
+            
+            reini =Juego->Next(window);
           break;
         
         //Tecla ESC para salir
@@ -200,14 +202,10 @@ int main() {
    
    
     
-    if(!reini){
+    
       Juego->DrawBloques(window);
       Juego->DrawEnemigos(window);
-    }
-    else {
-      Juego->DrawrBloques(window);
-      Juego->DrawrEnemigos(window);
-    }
+   
 
     
     player.Draw(window);

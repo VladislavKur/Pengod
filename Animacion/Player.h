@@ -45,7 +45,7 @@ class Player{
 
     bool godMod = false;
     bool nopulsarCheck=false;
-    float speed= 100;
+    float speed= 60;
     bool perVi =false;
     
     int accion =-1;

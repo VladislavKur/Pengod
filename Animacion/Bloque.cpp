@@ -8,7 +8,8 @@ animacion(textura, cantidadImagenes, SwitchTimeSprite)
 
 {
          sf::Texture *text = new sf::Texture;
-         tipo = t; if (t == 0){
+         tipo = t; 
+         if (t == 0){
              text->loadFromFile("resources/CuboDeHielo.png");
              if(!text->loadFromFile("resources/CuboDeHielo.png")) std::cout << "sadasds";
 
@@ -30,6 +31,7 @@ animacion(textura, cantidadImagenes, SwitchTimeSprite)
     textu = text;
     CI.x = cantidadImagenes.x; CI.y = cantidadImagenes.y;
     ST = SwitchTimeSprite;
+    
 
    //por defecto es un bloque de hielo, no diamante ese raro
 

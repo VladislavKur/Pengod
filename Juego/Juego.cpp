@@ -19,17 +19,23 @@ Juego::Juego(){ //WIP FUNCION CARGARNIVEL
     bcoord.y = -1;
     bcoordF.y = -1;
     bcoordF.x = -1;
+    
+    text = new sf::Texture;
+    text->loadFromFile("resources/pengoybees.png");
+   
    
 }
 void Juego::morir(Player * player, float deltatime, sf::RenderWindow &window){
                     player->setPerdVid(true);
                     if(player->PerderVida(window)){
                         player->setVidas(3);
+                        player->setAccion(-1);
                         player->setVelx(false);player->setVely(false);
                         player->setPosDespues(7*32,8*32);
                         player->setPerdVid(true);
                        
                     }else {
+                        player->setAccion(-1);
                         player->setVelx(false);player->setVely(false);
                         player->setPosDespues(7*32,8*32);
                         player->setPerdVid(true);
@@ -38,7 +44,8 @@ void Juego::morir(Player * player, float deltatime, sf::RenderWindow &window){
                     
 }
 void Juego::update(float deltatime, Player * player,sf::RenderWindow &window){
-    sf::Texture  playerTexture; playerTexture.loadFromFile("resources/pengoybees.png");
+   
+   
     timer += deltatime;
     timer2 += deltatime;
     for(unsigned int k = 0; k < listaEnemigos.size();k++) 
@@ -56,12 +63,42 @@ void Juego::update(float deltatime, Player * player,sf::RenderWindow &window){
                 
             }
     player->Update(player->getAcciones(),deltatime);
-           
+    
     for(unsigned int k = 0; k < listaEnemigos.size();k++) {
       for(unsigned int n = 0; n < listaEnemigos[k].size();n++) {
         
-        if(listaEnemigos[k][n] == nullptr) continue;
+        if(listaEnemigos[k][n] != nullptr){
+            
             listaEnemigos[k][n]->Update(deltatime);
+            
+        }
+
+   
+    Enemigo * newEnemigo;
+    timerEnemigos += deltatime;
+    if(timerEnemigos > 3000) // entorno a 15s aprox para que reaparezcan los snoobees
+    if(!listaBloque.empty() && !listaEnemigos.empty())
+    for(unsigned int i = 1; i < listaBloque.size() && cantEnem < 4;i++){
+        for(unsigned int j = 1; j < listaBloque[i].size() && cantEnem < 4;j++){
+            std:: cout << listaEnemigos.size()<< ", " << listaEnemigos[i].size() << " dsadsa "<< listaBloque.size() << ", " << listaBloque[i].size() <<std::endl;;
+            if(listaBloque[i-1][j-1] == NULL 
+            && listaEnemigos[i-1][j-1] == NULL && 
+            (int)player->getBody().getPosition().x/32 != i && (int)player->getBody().getPosition().y/32 != j){
+                
+                newEnemigo = new Enemigo (text, sf::Vector2u(40,18),0.25f, sf::Vector2f(i,j));
+                if (newEnemigo != nullptr){
+                    listaEnemigos[i-1][j-1] = newEnemigo;
+                    timerEnemigos = 0;
+                    cantEnem++;
+                } 
+            }
+
+                
+        }
+    }
+        
+
+    if(cantEnem == 0) Next(window);    
 
        
     
@@ -82,12 +119,12 @@ void Juego::update(float deltatime, Player * player,sf::RenderWindow &window){
         bcoord.x = (int)bcoord.x;
         bcoord.y = (int)bcoord.y;
         Bloque * aux = nullptr;
-        if(bcoordF.x > -1 && bcoordF.y >-1 && bcoordF.x < 14 && bcoordF.y < 16 && bcoord.x > -1 && bcoord.y >-1 && bcoord.x < 14 && bcoord.y < 16){
-           /* aux = listaBloque[bcoord.x][bcoord.y];
+        /*if(bcoordF.x > -1 && bcoordF.y >-1 && bcoordF.x < 14 && bcoordF.y < 16 && bcoord.x > -1 && bcoord.y >-1 && bcoord.x < 14 && bcoord.y < 16){
+            aux = listaBloque[bcoord.x][bcoord.y];
             listaBloque[bcoord.x][bcoord.y] = nullptr;
             listaBloque[bcoordF.x][bcoordF.y] = aux;
             
-            if(bcoordF.x == bcoord.x && bcoordF.y == bcoord.y){*/
+            if(bcoordF.x == bcoord.x && bcoordF.y == bcoord.y){
               
                if( listaBloque[bcoordF.x][bcoordF.y] != nullptr) {
                 
@@ -95,8 +132,8 @@ void Juego::update(float deltatime, Player * player,sf::RenderWindow &window){
                 
             }
         
-        
-    }
+            }
+        }*/
     
     
     if(timer2 >= 0.5)
@@ -113,7 +150,7 @@ void Juego::update(float deltatime, Player * player,sf::RenderWindow &window){
     
     
 
-
+ EnemigoBloqueColision();
 }
 
 
@@ -343,40 +380,52 @@ Juego* Juego::instance(){
 bool Juego::EnemigoBloqueColision(){
     Bloque*  pBloque;
     Enemigo * pEnemigo;
+ 
     
-    bool parar = false;
-    bool pararE = false;
-     for(unsigned int i = 0; i < listaBloque.size();i++){
-        for(unsigned int j = 0; j <listaBloque[i].size();j++){
-
-       if(listaBloque[i][j] != nullptr ){
-           pBloque = listaBloque[i][j];
-           
-            } 
-        for(unsigned int n = 0; n < listaEnemigos.size();n++){
+     for(unsigned int n = 0; n < listaEnemigos.size();n++){
             for(unsigned int m = 0; m <listaEnemigos[n].size();m++){
                 if(listaEnemigos[n][m] != nullptr ){
                     pEnemigo = listaEnemigos[n][m];
                     
                 } 
-            if(pBloque != nullptr && pEnemigo != nullptr && listaEnemigos[n][m]){
-                if(pBloque->getMov() && pBloque->getBody().getGlobalBounds().intersects(pEnemigo->getBody().getGlobalBounds())){
-                    delete pEnemigo; pEnemigo = nullptr; listaEnemigos[n][m] = pEnemigo;
+
+
+
+        for(unsigned int i = 0; i < listaBloque.size();i++){
+            for(unsigned int j = 0; j <listaBloque[i].size();j++){
+                if(listaBloque[i][j] != nullptr ){
+                    pBloque = listaBloque[i][j];
+           
+                } 
+
+            
+       
+
+                
+            
+                if(pBloque != nullptr && pEnemigo != nullptr && listaEnemigos[n][m] != nullptr){
+                    if(pBloque->getMov() == true && pBloque->getBody().getGlobalBounds().intersects(pEnemigo->getBody().getGlobalBounds())){
+                        delete pEnemigo; pEnemigo = nullptr; listaEnemigos[n][m] = pEnemigo;
+                        cantEnem--;
+                        timerEnemigos = 0;
+                    }
                 }
-                if(!pBloque->getMov()&& pBloque->getBody().getGlobalBounds().intersects(pEnemigo->getBody().getGlobalBounds())){
-                    return true;
+                if(pBloque != nullptr && pEnemigo != nullptr && listaEnemigos[n][m] != nullptr){    
+                    if(!pBloque->getMov()){
+                        if(pBloque->getBody().getGlobalBounds().intersects(pEnemigo->getBody().getGlobalBounds())){// si salta este error, recargar, no se porque 
+                                                                 //pBloque me sale null cuando lo compruebo antes  2 veces
+                        }
+                    }
                 }
             
             }
-            
-            
 
-            }//n
-        }//m
+        }
        
 
-        }//fin forj
-    }//fin fori
+    
+        }
+    }//fin f
     return false;
 }
 
@@ -481,24 +530,24 @@ void Juego::crearEnemigos(){
    
       text->loadFromFile("resources/pengoybees.png");
       int ran=rand()%12;
-    int contadro = 0;
+    
     //while(contadro < 100)
     for(int i = 1; i <= 13;i++){
         for(int j = 1; j<= 15;j++){
             
-            
+                 if((i != 1 || j != 1 ) && (i!= 7 || j != 8)){
                     if(ran == 0 ){
-                         if((i != 1 || j != 1 ) && (i!= 7 || j != 8)){
                         
-                        if(contadro < 4 && listaBloque[i-1][j-1] == NULL){
+                        
+                        if(cantEnem < 4 && listaBloque[i-1][j-1] == NULL){
                             
                         auxE.push_back(new Enemigo (text, sf::Vector2u(40,18),0.25f, sf::Vector2f(i,j)));
                         
                         
-                        contadro++;
+                        cantEnem++;
 
                         }else auxE.push_back(nullptr);
-                    }
+                    }else auxE.push_back(NULL);
 
                 }
             
@@ -567,10 +616,15 @@ bool Juego::Reinicio(Player * player,sf::RenderWindow &window){
     return true;
   
 }
-void Juego::Next(sf::RenderWindow &window){
-    Borrar();crearBloques();crearEnemigos();
+bool Juego::Next(sf::RenderWindow &window){
+    Borrar();
+    cantEnem = 0;
+    crearBloques();
+    
+    crearEnemigos();
     DrawBloques(window);
     DrawEnemigos(window);
+    return true;
 }
 
 

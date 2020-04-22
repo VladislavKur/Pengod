@@ -29,7 +29,7 @@ void Enemigo::Update( float deltaTime){
     sf::Vector2u sprite;
     float timer = 0;
     bool choca = false;
-    choca =juego->EnemigoBloqueColision();
+    //choca =juego->EnemigoBloqueColision();
     timer += deltaTime;
     for(int i = 0; i <= 4; i++){
     int acciones;

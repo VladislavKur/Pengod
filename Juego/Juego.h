@@ -15,7 +15,10 @@
     class Juego{
 
         private:
-            
+
+            sf::Texture * text;
+            sf::Texture *playerTexture; 
+            int cantEnem = 0;
             static Juego* pinstance;
             int numEmenigos; 
             int numObjetos;
@@ -29,6 +32,7 @@
             sf::Vector2f bcoordF;
             float timer = 0;
             float timer2 = 0;
+            float timerEnemigos = 0;
             
 
         protected:
@@ -47,7 +51,7 @@
 
         
             bool Reinicio(Player *, sf::RenderWindow &window);
-            void Next(sf::RenderWindow &window);
+            bool Next(sf::RenderWindow &window);
             void Borrar();
             void crearBloques(); 
             void crearEnemigos();
