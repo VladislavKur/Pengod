@@ -44,7 +44,7 @@ void Player::Update(int acciones, float deltaTime){
        
      if((int)cuerpo.getPosition().x == (int)PosDestino.x){ movement.x = 0; velx=false;} 
      if((int)cuerpo.getPosition().y == (int)PosDestino.y) { movement.y = 0; vely= false;} 
-    
+    if(perVi)cuerpo.setPosition(7*32,8*32);
     cuerpo.move(movement.x*deltaTime,movement.y*deltaTime);
 
     animacion.Update(sprite, deltaTime);
@@ -72,11 +72,11 @@ bool Player::PerderVida(sf::RenderWindow &window){
         std::cout << "VIDAS :" << vida << std::endl;
     }
         
-    else if(vida<= 0){
+    else{
         std::cout << "Pengo a Muerto..." <<std::endl;
         std::cout << "Se Reinicia el nivel..." << vida << std::endl;
-        res = true;
-        juego->Next(window);
+        return true;
+        //juego->Reinicio(this,window);
         }
         return res;
 }
@@ -86,6 +86,17 @@ bool Player::PerderVida(sf::RenderWindow &window){
 
 void Player::Draw(sf::RenderWindow &window){
     window.draw(cuerpo);
+}
+
+void Player::setGod(){
+    if(godMod == true){
+        
+        std::cout << "!!GodMode DESACTIVADO :( !!!" << std::endl;
+        godMod= false;
+     } else{
+         std::cout << "!!GodMode ACTIVADO :) !!!" << std::endl;
+         godMod = true;
+     } 
 }
 
 

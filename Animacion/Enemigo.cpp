@@ -24,11 +24,12 @@ animacion(textura, cantidadImagenes, SwitchTimeSprite)
 Enemigo::~Enemigo(){}
           
 void Enemigo::Update( float deltaTime){
-    
+    Juego *juego = Juego::instance();
     sf::Vector2f movement;
     sf::Vector2u sprite;
     float timer = 0;
-
+    bool choca = false;
+    choca =juego->EnemigoBloqueColision();
     timer += deltaTime;
     for(int i = 0; i <= 4; i++){
     int acciones;

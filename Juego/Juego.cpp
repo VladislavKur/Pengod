@@ -21,6 +21,22 @@ Juego::Juego(){ //WIP FUNCION CARGARNIVEL
     bcoordF.x = -1;
    
 }
+void Juego::morir(Player * player, float deltatime, sf::RenderWindow &window){
+                    player->setPerdVid(true);
+                    if(player->PerderVida(window)){
+                        player->setVidas(3);
+                        player->setVelx(false);player->setVely(false);
+                        player->setPosDespues(7*32,8*32);
+                        player->setPerdVid(true);
+                        player->Update(player->getAcciones(),deltatime);
+                    }else {
+                        player->setVelx(false);player->setVely(false);
+                        player->setPosDespues(7*32,8*32);
+                        player->setPerdVid(true);
+                        player->Update(player->getAcciones(),deltatime);
+                    } 
+                    
+}
 void Juego::update(float deltatime, Player * player,sf::RenderWindow &window){
     sf::Texture  playerTexture; playerTexture.loadFromFile("resources/pengoybees.png");
     timer += deltatime;
@@ -28,15 +44,15 @@ void Juego::update(float deltatime, Player * player,sf::RenderWindow &window){
     for(unsigned int k = 0; k < listaEnemigos.size();k++) 
       for(unsigned int n = 0; n < listaEnemigos[k].size();n++) 
         if(listaEnemigos[k][n] != nullptr)
-            if(timer >= 0.5){
+            if(timer >= 1.5){
                 if(player->getBody().getGlobalBounds().intersects(listaEnemigos[k][n]->getBody().getGlobalBounds())){
                     timer = 0;
-                    if(player->PerderVida(window)){
-                        player->setVidas(3);
-                        player->getBody().setPosition(7*32,8*32);
-                       
-                    }else player->getBody().setPosition(7*32,8*32);
-                }
+                    morir(player,deltatime,window);
+                    
+                }else{
+                     player->setPerdVid(false);
+                     player->Update(player->getAcciones(),deltatime);
+                } 
                 
             }
            
@@ -111,12 +127,12 @@ sf::Vector2f Juego::BloqueBloqueColisionF(Player * player){
     
             switch (dirPlayer)
             {
-            case 0: if(i> 0 && j+1>0 && i < 16 && j+1<16 && j+2>0 && j+2<16)
+            case 0:if(i> 0 && j+1>0 && i < 14 && j+1<15 && j+2 < 14 && j+2 > 0)
                     if(listaBloque[i][j+1] != NULL && listaBloque[i][j+2] != NULL){ // bloque se mueve hacia abajo
                     //std::cout << listaBloque[i][j]->getBody().getPosition().x/32 << ", " << listaBloque[i][j]->getBody().getPosition().y/32 <<std::endl;
                     delete listaBloque[i][j+1]; listaBloque[i][j+1] =NULL;
                     }else{
-                        if(i> 0 && j+1>0 && i < 16 && j+1<16)
+                        if(i> 0 && j+1>0 && i < 14 && j+1<14)
                         if(listaBloque[i][j+1] != NULL){
                             for(unsigned int r = j+2; r < listaBloque[i].size();r++){
                                  if(r > 0 && r< 16)
@@ -131,12 +147,12 @@ sf::Vector2f Juego::BloqueBloqueColisionF(Player * player){
                         }
                     }
                 break;
-            case 1:  if(i-1> 0 && j>0 && i-1 < 16 && j<16 && i-2 >0 && i-2 < 16)
+            case 1:  if(i-1> 0 && j>0 && i-1 < 15 && j<15 && i-2 < 16)
                     if(listaBloque[i-1][j] != NULL && listaBloque[i-2][j]!=NULL){ //bloque se mueve hacia izq
              //std::cout << listaBloque[i][j]->getBody().getPosition().x/32 << ", " << listaBloque[i][j]->getBody().getPosition().y/32 <<std::endl;
                     delete listaBloque[i-1][j]; listaBloque[i-1][j] =NULL;
                     }else{
-                         if(i-1> 0 && j>0 && i-1 < 16 && j<16)
+                         if(i-1> 0 && j>0 && i-1 < 15 && j<15)
                          if(listaBloque[i-1][j] != NULL){
                             for(int r = i-2; r >= 0;r--){
                                  if(r > 0 && r< 16)
@@ -153,12 +169,12 @@ sf::Vector2f Juego::BloqueBloqueColisionF(Player * player){
                         
                     }
                 break;
-            case 2: if(i> 0 && j-1>0 && i < 16 && j-1<16 && j-2 >0 && j-2 <16)
+            case 2: if(i> 0 && j-1>0 && i < 14 && j-1<16 && j-2 < 17)
                     if(listaBloque[i][j-1] != NULL && listaBloque[i][j-2] != NULL){ //bloque se mueve hacia arriba
              //std::cout << listaBloque[i][j]->getBody().getPosition().x/32 << ", " << listaBloque[i][j]->getBody().getPosition().y/32 <<std::endl;
                     delete listaBloque[i][j-1]; listaBloque[i][j-1] =NULL;
                     }else{
-                        if(i> 0 && j-1>0 && i < 16 && j-1<16)
+                        if(i> 0 && j-1>0 && i < 14 && j-1<16)
                          if(listaBloque[i][j-1] != NULL){
                             for(int r = j-2; r >= 0;r--){
                                  if(r > 0 && r< 16)
@@ -175,12 +191,12 @@ sf::Vector2f Juego::BloqueBloqueColisionF(Player * player){
                         
                     }
                 break;
-            case 3: if(i+1> 0 && j>0 && i+1 < 16 && j<16 && i+2 > 0 && i+2 <16)
+            case 3: if(i+1> 0 && j>0 && i+1 < 13 && j<15 && i+2 < 12)
                     if(listaBloque[i+1][j] != NULL && listaBloque[i+2][j] != NULL){ //bloque se mueve hacia derecha
                     //std::cout << listaBloque[i][j]->getBody().getPosition().x/32 << ", " << listaBloque[i][j]->getBody().getPosition().y/32 <<std::endl;
                     delete listaBloque[i+1][j]; listaBloque[i+1][j] =NULL;
                     }else{
-                        if(i+1> 0 && j>0 && i+1 < 16 && j<16)
+                        if(i+1> 0 && j>0 && i+1 < 13 && j<15)
                          if(listaBloque[i+1][j] != NULL){
                             for(unsigned int r = i+2; r < listaBloque.size();r++){
                                  if(r > 0 && r< 16)
@@ -218,7 +234,7 @@ sf::Vector2f Juego::BloqueBloqueColision(Player * player){
             switch (dirPlayer)
             {
             case 0: 
-                         if(i> 0 && j+1>0 && i < 16 && j+1<16){
+                         if(i> 0 && j+1>0 && i < 14 && j+1<14){
                             if(listaBloque[i][j+1] != NULL){
                             for(unsigned int r = j+2; r < listaBloque[i].size();r++){
                                 if(r > 0 && r< 16)
@@ -236,7 +252,7 @@ sf::Vector2f Juego::BloqueBloqueColision(Player * player){
                         
                     
                 break;
-            case 1:     if(i-1> 0 && j>0 && i-1 < 16 && j<16){
+            case 1:     if(i-1> 0 && j>0 && i-1 < 15 && j<15){
                             if(listaBloque[i-1][j] != NULL){
                             for(int r = i-2; r >= 0;r--){
                                 if(r > 0 && r< 16)
@@ -256,7 +272,7 @@ sf::Vector2f Juego::BloqueBloqueColision(Player * player){
                         
                     
                 break;
-            case 2:      if(i> 0 && j-1>0 && i < 16 && j-1<16){
+            case 2:      if(i> 0 && j-1>0 && i < 14 && j-1<16){
                             if(listaBloque[i][j-1] != NULL){
                             for(int r = j-2; r >= 0;r--){
                                 if(r > 0 && r< 16)
@@ -278,7 +294,7 @@ sf::Vector2f Juego::BloqueBloqueColision(Player * player){
                          
                     
                 break;
-            case 3:  if(i+1> 0 && j>0 && i+1 < 16 && j<16){
+            case 3:  if(i+1> 0 && j>0 && i+1 < 13 && j<15){
                     if(listaBloque[i+1][j] != NULL){
                             for(unsigned int r = i+2; r < listaBloque.size();r++){
                                 if(r > 0 && r< 16)
@@ -319,28 +335,41 @@ Juego* Juego::instance(){
     return(pinstance);
 }
 
-int Juego::EnemigoBloqueColision(){
+bool Juego::EnemigoBloqueColision(){
+    Bloque*  pBloque;
+    Enemigo * pEnemigo;
+    
+    bool parar = false;
+    bool pararE = false;
+     for(unsigned int i = 0; i < listaBloque.size();i++){
+        for(unsigned int j = 0; j <listaBloque[i].size();j++){
 
-    int dir = 0;
-    float xb =0, yb = 0, xe = 0, ye = 0;
-    for(unsigned int i = 0; i< listaBloque.size();i++){
-        for(unsigned int j = 0; j<listaBloque[i].size();j++){
+       if(listaBloque[i][j] != nullptr && parar == false){
+           pBloque = listaBloque[i][j];
+           parar = true;
+            } 
+        for(unsigned int n = 0; i < listaEnemigos.size();n++){
+            for(unsigned int m = 0; j <listaEnemigos[n].size();m++){
+                if(listaEnemigos[i][j] != nullptr && pararE == false){
+                    pEnemigo = listaEnemigos[n][m];
+                    pararE = true;
+                } 
 
-            if(listaBloque[i][j]->getBody().getGlobalBounds().intersects(listaEnemigos[i][j]->getBody().getGlobalBounds())){
-                    xb = (int) listaBloque[i][j]->getBody().getPosition().x/32;
-                    yb = (int) listaBloque[i][j]->getBody().getPosition().y/32;
+            if(pBloque->getMov() && pBloque->getBody().getGlobalBounds().intersects(pEnemigo->getBody().getGlobalBounds())){
+                delete pEnemigo; pEnemigo = nullptr; listaEnemigos[n][m] = nullptr;
+            }
+            if(!pBloque->getMov()&& pBloque->getBody().getGlobalBounds().intersects(pEnemigo->getBody().getGlobalBounds())){
+                return true;
+            }
+            
 
-                    xe = (int) listaEnemigos[i][j]->getBody().getPosition().x/32;
-                    ye = (int) listaEnemigos[i][j]->getBody().getPosition().y/32;
+            }//n
+        }//m
+       
 
-                    if(xe-xb != 0 && ye-yb == 0) dir = xe - xb; //bloque a la izq == 1 ||bloque derecha == -1
-                    if(ye-yb != 0 && xe-xb == 0) dir = ye - yb; //bloque a la arriba == 1 || bloque abajo == -1
-                return dir;
-             }
-        }
-    }//fori
-
-    return dir;
+        }//fin forj
+    }//fin fori
+    return false;
 }
 
 bool Juego::PlayerBloqueColision(Player * jugador, int dir){
@@ -441,6 +470,7 @@ void Juego::crearEnemigos(){
     rlistaEnemigos.clear();
      sf::Texture *text = new sf::Texture;
      std::vector<Enemigo *> auxE;
+   
       text->loadFromFile("resources/pengoybees.png");
       int ran=rand()%12;
     int contadro = 0;
@@ -455,6 +485,7 @@ void Juego::crearEnemigos(){
                         if(contadro < 4 && listaBloque[i-1][j-1] == NULL){
                             
                         auxE.push_back(new Enemigo (text, sf::Vector2u(40,18),0.25f, sf::Vector2f(i,j)));
+                        
                         
                         contadro++;
 

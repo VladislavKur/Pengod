@@ -26,7 +26,10 @@ class Player{
     void setVidas(int a){vida = a;}
 
     int getAcciones(){return accion;}
-    
+    void setGod();
+    void setPerdVid(bool a){perVi =a;}
+    bool getPerVid(){return perVi;}
+    void setAccion(int accion2) {accion= accion2; }
      
 
     
@@ -41,7 +44,8 @@ class Player{
 
     bool godMod = false;
     bool nopulsarCheck=false;
-    float speed= 100;
+    float speed= 25;
+    bool perVi =false;
     
     int accion =-1;
     

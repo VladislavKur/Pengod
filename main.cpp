@@ -29,7 +29,7 @@ int main() {
   
   sf::Vector2u PlayerSprite(0,0);
 
-  Player player(&playerTexture, sf::Vector2u(40,18),0.25f);
+  Player player(&playerTexture, sf::Vector2u(40,18),0.75f);
 
   std::vector<std::vector<Bloque *>>  listaBloque;
  
@@ -148,13 +148,16 @@ int main() {
           break;
         
           case sf::Keyboard::G:
-            //player.PUTODIOS();
+            player.setGod();
           break;
           case sf::Keyboard::X:
-            reini = Juego->Reinicio(&player,window);
+            player.setVidas(0);
+            Juego->morir(&player,deltaTime,window);
           break;
           case sf::Keyboard::N:
             Juego->Next(window);
+            player.setVidas(0);
+            Juego->morir(&player,deltaTime,window);
           break;
         
         //Tecla ESC para salir
@@ -205,6 +208,8 @@ int main() {
       Juego->DrawrBloques(window);
       Juego->DrawrEnemigos(window);
     }
+
+    
     player.Draw(window);
     
     window.display();

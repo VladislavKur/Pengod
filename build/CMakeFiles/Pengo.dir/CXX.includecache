@@ -25,6 +25,8 @@ SFML/Graphics.hpp
 -
 Animacion.h
 ../Animacion/Animacion.h
+../Juego/Juego.h
+../Juego/Juego.h
 
 ../Animacion/Player.h
 SFML/Graphics.hpp
@@ -63,6 +65,8 @@ SFML/Graphics.hpp
 -
 Animacion.h
 /home/magiic/Escritorio/Pengod/Animacion/Animacion.h
+../Juego/Juego.h
+/home/magiic/Escritorio/Pengod/Juego/Juego.h
 
 /home/magiic/Escritorio/Pengod/Animacion/Player.h
 SFML/Graphics.hpp

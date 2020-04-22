@@ -9,6 +9,7 @@
 #ifndef JUEGO_H
 #define JUEGO_H
     class Bloque;
+    class Enemigo;
     class Player;
 
     class Juego{
@@ -51,6 +52,8 @@
             void crearBloques(); 
             void crearEnemigos();
 
+            void morir(Player *, float,sf::RenderWindow &window);
+
             
 
 
@@ -58,7 +61,7 @@
             
 
             bool PlayerBloqueColision(Player * jugador,int ); 
-            int EnemigoBloqueColision();
+            bool EnemigoBloqueColision();
             sf::Vector2f BloqueBloqueColision(Player *);
             sf::Vector2f BloqueBloqueColisionF(Player *);
             std::vector<std::vector<Enemigo *>> getListaEnemigos(){return listaEnemigos;}
