@@ -12,6 +12,7 @@ Juego::Juego(){ //WIP FUNCION CARGARNIVEL
     Mapa * mundo = Mapa::instance(); 
     mundo->cargarmapa("mapaxml/MapaBaseF.tmx");
     mundo->hacerSprites();
+    crearBordes();
     crearBloques();
     crearEnemigos();
 
@@ -171,7 +172,7 @@ sf::Vector2f Juego::BloqueBloqueColisionF(Player * player){
                     delete listaBloque[i][j+1]; listaBloque[i][j+1] =NULL;
                     }else{
                         if(i> 0 && j+1>0 && i < 14 && j+1<14)
-                        if(listaBloque[i][j+1] != NULL){
+                        if(listaBloque[i][j+1] != NULL ){
                             for(unsigned int r = j+2; r < listaBloque[i].size();r++){
                                  if(r > 0 && r< 16)
                                 if(listaBloque[i][r] != NULL){
@@ -192,7 +193,7 @@ sf::Vector2f Juego::BloqueBloqueColisionF(Player * player){
                     delete listaBloque[i-1][j]; listaBloque[i-1][j] =NULL;
                     }else{
                          if(i-1> 0 && j>0 && i-1 < 15 && j<15)
-                         if(listaBloque[i-1][j] != NULL){
+                         if(listaBloque[i-1][j] != NULL ){
                             for(int r = i-2; r >= 0;r--){
                                  if(r > 0 && r< 16)
                                 if(listaBloque[r][j] != NULL){
@@ -215,7 +216,7 @@ sf::Vector2f Juego::BloqueBloqueColisionF(Player * player){
                     delete listaBloque[i][j-1]; listaBloque[i][j-1] =NULL;
                     }else{
                         if(i> 0 && j-1>0 && i < 14 && j-1<16)
-                         if(listaBloque[i][j-1] != NULL){
+                         if(listaBloque[i][j-1] != NULL ){
                             for(int r = j-2; r >= 0;r--){
                                  if(r > 0 && r< 16)
                                 if(listaBloque[i][r] != NULL){
@@ -428,7 +429,53 @@ bool Juego::EnemigoBloqueColision(){
     }//fin f
     return false;
 }
+bool Juego::PlayerBordeColision(Player * jugador, int dir){
+     sf:: Vector2f posBloque;
+    sf::Vector2f posant;
+    
+   // 0 abajo 1 izq 2 up 3 der
+    
+    
+    for(unsigned int i = 0; i < listaBorde.size();i++){
+        for(unsigned int j = 0; j <listaBorde[i].size();j++){
 
+       if(listaBorde[i][j] != nullptr){
+           posBloque = listaBorde[i][j]->getBody().getPosition();
+
+            switch (dir)
+            {
+            case 0: if((int)posBloque.y == (int)jugador->getBody().getPosition().y+32 && (int)posBloque.x == (int)jugador->getBody().getPosition().x){
+                   
+                return true;
+                    }
+                break;
+            case 1 :if((int)posBloque.x == (int)jugador->getBody().getPosition().x-32 && (int)posBloque.y == (int)jugador->getBody().getPosition().y){
+                
+                return true;
+                    }
+                break;
+            case 2: if((int)posBloque.y == (int) jugador->getBody().getPosition().y-32 && (int)posBloque.x == (int)jugador->getBody().getPosition().x){
+                
+                return true;
+                    }
+                break;
+            case 3: if((int)posBloque.x == (int)jugador->getBody().getPosition().x+32 && (int)posBloque.y == (int)jugador->getBody().getPosition().y){
+                
+                return true;
+                    }
+                break;
+
+            
+            default:
+                break;
+            } 
+       }
+       
+
+        }//fin forj
+    }//fin fori
+    return false;
+}
 bool Juego::PlayerBloqueColision(Player * jugador, int dir){
     sf:: Vector2f posBloque;
     sf::Vector2f posant;
@@ -477,19 +524,54 @@ bool Juego::PlayerBloqueColision(Player * jugador, int dir){
     return false;
 }
 
-void Juego::crearBloques(){
-    rlistaBloque.clear();
-
+void Juego::crearBordes(){
+     
+    
      sf::Texture *text = new sf::Texture;
      std::vector<Bloque *> auxB;
-      text->loadFromFile("resources/CuboDeHielo.png");
+      text->loadFromFile("resources/CuboDeDiamante.png");
+    
+    for(int i = 0; i <= 14;i++){
+        for(int j = 0; j<= 16;j++){
+            if( i == 0 || j == 0 || i == 14 || j == 16){
+            
+                 // std::cout << i <<"," << j<< "rand -->"<< sad<<std::endl;
+                auxB.push_back(new Bloque (text, sf::Vector2u(40,18),0.25f, sf::Vector2f(i,j),1));
+            
+            
+        }
+        }
+        listaBorde.push_back(auxB);
+        
+        auxB.clear();
+    }
+}
+void Juego::DrawBordes(sf::RenderWindow &window){
+
+     for(unsigned int i = 0; i < listaBorde.size();i++){
+        for(unsigned int j = 0; j < listaBorde[i].size();j++){
+        if(listaBorde[i][j]!= nullptr){
+        listaBorde[i][j]->Draw(window);
+       
+        }
+        }
+    }
+    
+}
+
+void Juego::crearBloques(){
+    rlistaBloque.clear();
+    
+     sf::Texture *text = new sf::Texture;
+     std::vector<Bloque *> auxB;
+     text->loadFromFile("resources/CuboDeHielo.png");
     int sad= rand()%8;
     for(int i = 1; i <= 13;i++){
         for(int j = 1; j<= 15;j++){
             if(i!= 7 || j != 8){ // PREGUNTAR A FIDEL QUE MIERDAS PASA, ESTO HACE QUE NO HAYA BLOQUE EN EL 1,1 SIN SENTIDO CON OPERADOR ||
             if(sad < 3){
                  // std::cout << i <<"," << j<< "rand -->"<< sad<<std::endl;
-                auxB.push_back(new Bloque (text, sf::Vector2u(40,18),0.25f, sf::Vector2f(i,j),0));
+                auxB.push_back(new Bloque (nullptr, sf::Vector2u(40,18),0.25f, sf::Vector2f(i,j),0));
             }else auxB.push_back(NULL);
             sad= rand()%8;
         }

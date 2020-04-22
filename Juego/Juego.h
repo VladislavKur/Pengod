@@ -28,6 +28,8 @@
             std::vector<std::vector<Bloque *>>  rlistaBloque;
             std::vector<std::vector<Enemigo *>>  rlistaEnemigos;
 
+            std::vector<std::vector<Bloque *>>  listaBorde;
+
             sf::Vector2f bcoord;
             sf::Vector2f bcoordF;
             float timer = 0;
@@ -43,6 +45,7 @@
             void update(float deltaTime, Player *,sf::RenderWindow &window );
             
             void Draw(sf::RenderWindow &window);
+            void DrawBordes(sf::RenderWindow &window);
             void DrawBloques(sf::RenderWindow &window);
             void DrawEnemigos(sf::RenderWindow &window);
             void DrawrBloques(sf::RenderWindow &window);
@@ -53,7 +56,8 @@
             bool Reinicio(Player *, sf::RenderWindow &window);
             bool Next(sf::RenderWindow &window);
             void Borrar();
-            void crearBloques(); 
+            void crearBloques();
+            void crearBordes();  
             void crearEnemigos();
 
             void morir(Player *, float,sf::RenderWindow &window);
@@ -64,7 +68,8 @@
             
             
 
-            bool PlayerBloqueColision(Player * jugador,int ); 
+            bool PlayerBloqueColision(Player * jugador,int );
+            bool PlayerBordeColision(Player * jugador,int );  
             bool EnemigoBloqueColision();
             sf::Vector2f BloqueBloqueColision(Player *);
             sf::Vector2f BloqueBloqueColisionF(Player *);

@@ -1,7 +1,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-#include "Animacion.h"
+
 #include "Player.h"
 #include "../Juego/Juego.h"
 
@@ -34,7 +34,7 @@ class Bloque{
     sf::Texture * textu;
     sf::Vector2f CI;
     float ST;
-    Animacion animacion;
+    
     sf::Vector2u fila;
     bool mov=false;
     float speed=400;

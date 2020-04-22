@@ -3,8 +3,8 @@
 #include "Bloque.h"
 #include <iostream>
 
-Bloque::Bloque(sf::Texture* textura, sf::Vector2u cantidadImagenes, float SwitchTimeSprite,sf::Vector2f pos, int t) : 
-animacion(textura, cantidadImagenes, SwitchTimeSprite)
+Bloque::Bloque(sf::Texture* textura, sf::Vector2u cantidadImagenes, float SwitchTimeSprite,sf::Vector2f pos, int t) 
+
 
 {
          sf::Texture *text = new sf::Texture;
@@ -12,11 +12,13 @@ animacion(textura, cantidadImagenes, SwitchTimeSprite)
          if (t == 0){
              text->loadFromFile("resources/CuboDeHielo.png");
              if(!text->loadFromFile("resources/CuboDeHielo.png")) std::cout << "sadasds";
-
+            cuerpo.setTextureRect(sf::IntRect (0,0,16,16));
          }else {
                 text->loadFromFile("resources/CuboDeDiamante.png");
-             if(!text->loadFromFile("resources/CuboDeDiamante.png")) std::cout << "sadasds";
-
+             if(!text->loadFromFile("resources/CuboDeDiamante.png")) {
+                 std::cout << "sadasds";
+                    cuerpo.setTextureRect(sf::IntRect (0,0,32,32));
+             }
          }
    
    
@@ -70,15 +72,12 @@ void Bloque::Update(float deltaTime, bool mov, Player* player){
         
     cuerpo.move(movim.x*deltaTime,movim.y*deltaTime);
 
-    animacion.Update(sprite, deltaTime);
-    cuerpo.setTextureRect(animacion.textureRect);
+    
+    
     
 }
 
 
-void Bloque::setBloqueSprite(sf::Vector2u Sprites){
-    animacion.setSprite(Sprites);
-}
 
 
 void Bloque::setMov(bool semueve){
@@ -88,6 +87,6 @@ void Bloque::setMov(bool semueve){
 
 
 void Bloque::Draw(sf::RenderWindow &window){
-    cuerpo.setTextureRect(sf::IntRect (0,0,16,16));
+    
     window.draw(cuerpo);
 }

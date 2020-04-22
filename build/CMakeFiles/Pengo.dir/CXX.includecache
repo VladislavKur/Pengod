@@ -13,8 +13,6 @@ SFML/Graphics.hpp
 ../Animacion/Bloque.h
 SFML/Graphics.hpp
 -
-Animacion.h
-../Animacion/Animacion.h
 Player.h
 ../Animacion/Player.h
 ../Juego/Juego.h
@@ -53,8 +51,6 @@ iostream
 /home/magiic/Escritorio/Pengod/Animacion/Bloque.h
 SFML/Graphics.hpp
 -
-Animacion.h
-/home/magiic/Escritorio/Pengod/Animacion/Animacion.h
 Player.h
 /home/magiic/Escritorio/Pengod/Animacion/Player.h
 ../Juego/Juego.h

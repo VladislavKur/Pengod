@@ -68,7 +68,7 @@ int main() {
           accion = 3;
          if(player.getvelocidadx() == false && player.getvelocidady() == false  ){
          
-
+           if(!Juego->PlayerBordeColision(&player,3))
           if(!Juego->PlayerBloqueColision(&player,3)){
           deltaTime = clock.restart().asSeconds();
         
@@ -94,7 +94,7 @@ int main() {
           accion = 1;
          if(player.getvelocidadx() == false && player.getvelocidady() == false  ){
           
-
+           if(!Juego->PlayerBordeColision(&player,1))
           if(!Juego->PlayerBloqueColision(&player,1)){
           deltaTime = clock.restart().asSeconds();
           
@@ -114,7 +114,7 @@ int main() {
         accion = 2;
          if(player.getvelocidadx() == false && player.getvelocidady() == false  ){
         
-
+        if(!Juego->PlayerBordeColision(&player,2))
         if(!Juego->PlayerBloqueColision(&player,2)){
         deltaTime = clock.restart().asSeconds();
          
@@ -133,7 +133,7 @@ int main() {
           accion = 0;
         if(player.getvelocidadx() == false && player.getvelocidady() == false  ){
         
-
+        if(!Juego->PlayerBordeColision(&player,0))
         if(!Juego->PlayerBloqueColision(&player,0)){
         deltaTime = clock.restart().asSeconds();
         
@@ -198,11 +198,12 @@ int main() {
     /////DRAW/////
     //////////////
     window.clear();
+    Juego->DrawBordes(window);
     Juego->Draw(window);
    
    
     
-    
+      
       Juego->DrawBloques(window);
       Juego->DrawEnemigos(window);
    
