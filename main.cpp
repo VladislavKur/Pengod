@@ -29,7 +29,7 @@ int main() {
   
   sf::Vector2u PlayerSprite(0,0);
 
-  Player player(&playerTexture, sf::Vector2u(40,18),0.75f);
+  Player player(&playerTexture, sf::Vector2u(40,18),0.25f);
 
   std::vector<std::vector<Bloque *>>  listaBloque;
  

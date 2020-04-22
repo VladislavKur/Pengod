@@ -28,12 +28,12 @@ void Juego::morir(Player * player, float deltatime, sf::RenderWindow &window){
                         player->setVelx(false);player->setVely(false);
                         player->setPosDespues(7*32,8*32);
                         player->setPerdVid(true);
-                        player->Update(player->getAcciones(),deltatime);
+                       
                     }else {
                         player->setVelx(false);player->setVely(false);
                         player->setPosDespues(7*32,8*32);
                         player->setPerdVid(true);
-                        player->Update(player->getAcciones(),deltatime);
+                       
                     } 
                     
 }
@@ -44,17 +44,18 @@ void Juego::update(float deltatime, Player * player,sf::RenderWindow &window){
     for(unsigned int k = 0; k < listaEnemigos.size();k++) 
       for(unsigned int n = 0; n < listaEnemigos[k].size();n++) 
         if(listaEnemigos[k][n] != nullptr)
-            if(timer >= 1.5){
+            if(timer >= 1.5 && !player->getDios()){
                 if(player->getBody().getGlobalBounds().intersects(listaEnemigos[k][n]->getBody().getGlobalBounds())){
                     timer = 0;
                     morir(player,deltatime,window);
                     
                 }else{
                      player->setPerdVid(false);
-                     player->Update(player->getAcciones(),deltatime);
+                     
                 } 
                 
             }
+    player->Update(player->getAcciones(),deltatime);
            
     for(unsigned int k = 0; k < listaEnemigos.size();k++) {
       for(unsigned int n = 0; n < listaEnemigos[k].size();n++) {
@@ -138,6 +139,7 @@ sf::Vector2f Juego::BloqueBloqueColisionF(Player * player){
                                  if(r > 0 && r< 16)
                                 if(listaBloque[i][r] != NULL){
                                 listaBloque[i][j+1]->setAccion(0);
+                                listaBloque[i][j+1]->setMov(true);
                                 res.x = listaBloque[i][r]->getBody().getPosition().x/32;
                                 res.y = listaBloque[i][r]->getBody().getPosition().y/32-1;
                                 
@@ -158,6 +160,7 @@ sf::Vector2f Juego::BloqueBloqueColisionF(Player * player){
                                  if(r > 0 && r< 16)
                                 if(listaBloque[r][j] != NULL){
                                     listaBloque[i-1][j]->setAccion(1);
+                                    listaBloque[i-1][j]->setMov(true);
                                     res.x = listaBloque[r][j]->getBody().getPosition().x/32+1;
                                     res.y = listaBloque[r][j]->getBody().getPosition().y/32;
                                    
@@ -180,6 +183,7 @@ sf::Vector2f Juego::BloqueBloqueColisionF(Player * player){
                                  if(r > 0 && r< 16)
                                 if(listaBloque[i][r] != NULL){
                                     listaBloque[i][j-1]->setAccion(2);
+                                    listaBloque[i][j-1]->setMov(true);
                                      res.x = listaBloque[i][r]->getBody().getPosition().x/32;
                                     res.y = listaBloque[i][r]->getBody().getPosition().y/32+1;
                                    
@@ -202,6 +206,7 @@ sf::Vector2f Juego::BloqueBloqueColisionF(Player * player){
                                  if(r > 0 && r< 16)
                                 if(listaBloque[r][j] != NULL){
                                     listaBloque[i+1][j]->setAccion(3);
+                                    listaBloque[i+1][j]->setMov(true);
                                     res.x = listaBloque[r][j]->getBody().getPosition().x/32-1;
                                     res.y = listaBloque[r][j]->getBody().getPosition().y/32;
                                     
@@ -344,23 +349,26 @@ bool Juego::EnemigoBloqueColision(){
      for(unsigned int i = 0; i < listaBloque.size();i++){
         for(unsigned int j = 0; j <listaBloque[i].size();j++){
 
-       if(listaBloque[i][j] != nullptr && parar == false){
+       if(listaBloque[i][j] != nullptr ){
            pBloque = listaBloque[i][j];
-           parar = true;
+           
             } 
-        for(unsigned int n = 0; i < listaEnemigos.size();n++){
-            for(unsigned int m = 0; j <listaEnemigos[n].size();m++){
-                if(listaEnemigos[i][j] != nullptr && pararE == false){
+        for(unsigned int n = 0; n < listaEnemigos.size();n++){
+            for(unsigned int m = 0; m <listaEnemigos[n].size();m++){
+                if(listaEnemigos[n][m] != nullptr ){
                     pEnemigo = listaEnemigos[n][m];
-                    pararE = true;
+                    
                 } 
-
-            if(pBloque->getMov() && pBloque->getBody().getGlobalBounds().intersects(pEnemigo->getBody().getGlobalBounds())){
-                delete pEnemigo; pEnemigo = nullptr; listaEnemigos[n][m] = nullptr;
+            if(pBloque != nullptr && pEnemigo != nullptr && listaEnemigos[n][m]){
+                if(pBloque->getMov() && pBloque->getBody().getGlobalBounds().intersects(pEnemigo->getBody().getGlobalBounds())){
+                    delete pEnemigo; pEnemigo = nullptr; listaEnemigos[n][m] = pEnemigo;
+                }
+                if(!pBloque->getMov()&& pBloque->getBody().getGlobalBounds().intersects(pEnemigo->getBody().getGlobalBounds())){
+                    return true;
+                }
+            
             }
-            if(!pBloque->getMov()&& pBloque->getBody().getGlobalBounds().intersects(pEnemigo->getBody().getGlobalBounds())){
-                return true;
-            }
+            
             
 
             }//n
